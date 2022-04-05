@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Sound;
+using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.PopUpController;
 using Truongtv.Services.IAP;
@@ -29,9 +30,9 @@ namespace UIController.Popup
                 img.material = isBlockAd ? grayScaleMaterial : normalMaterial;
             }
 
-            coinAdPrice.text = IAPManager.Instance.GetItemLocalPriceString(coinAdSku);
-            lifeAdPrice.text = IAPManager.Instance.GetItemLocalPriceString(lifeAdSku);
-            noAdPrice.text = IAPManager.Instance.GetItemLocalPriceString(blockAdSku);
+            coinAdPrice.text = GameServiceManager.Instance.iapManager.GetItemLocalPriceString(coinAdSku);
+            lifeAdPrice.text = GameServiceManager.Instance.iapManager.GetItemLocalPriceString(lifeAdSku);
+            noAdPrice.text = GameServiceManager.Instance.iapManager.GetItemLocalPriceString(blockAdSku);
         }
 
         private void RegisterEvent()
@@ -54,7 +55,7 @@ namespace UIController.Popup
         private void BuyAdCoin()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.PurchaseProduct(coinAdSku, (result, sku) =>
+            GameServiceManager.Instance.iapManager.PurchaseProduct(coinAdSku, (result, sku) =>
             {
                 if(!result)return;
                 Initialized();
@@ -66,7 +67,7 @@ namespace UIController.Popup
         private void BuyAdLife()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.PurchaseProduct(lifeAdSku, (result, sku) =>
+            GameServiceManager.Instance.iapManager.PurchaseProduct(lifeAdSku, (result, sku) =>
             {
                 if(!result)return;
                 UserDataController.SetBlockAd();
@@ -77,7 +78,7 @@ namespace UIController.Popup
         private void BuyBlockAd()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.PurchaseProduct(blockAdSku, (result, sku) =>
+            GameServiceManager.Instance.iapManager.PurchaseProduct(blockAdSku, (result, sku) =>
             {
                 if(!result)return;
                 Initialized();
@@ -100,7 +101,7 @@ namespace UIController.Popup
 
         public void RestorePurchase()
         {
-            IAPManager.Instance.RestorePurchase();
+            GameServiceManager.Instance.iapManager.RestorePurchase();
         }
     }
 }

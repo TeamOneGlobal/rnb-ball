@@ -1,15 +1,11 @@
 using System;
-using System.Collections.Generic;
-using MEC;
 using Sound;
-using Spine.Unity;
+using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.PopUpController;
-using Truongtv.SoundManager;
 using UnityEngine;
 using UnityEngine.UI;
 using UserDataModel;
-using Random = UnityEngine.Random;
 
 namespace UIController.Popup
 {
@@ -87,10 +83,8 @@ namespace UIController.Popup
             doubleButton.onClick.RemoveAllListeners();
             doubleButton.onClick.AddListener(() =>
             {
-                
-                NetWorkHelper.ShowRewardedAdInMenu("Rewarded_ReceiveValue_Double",adResult: result =>
+                GameServiceManager.Instance.adManager.ShowRewardedAd("menu_double_value", () =>
                 {
-                    if(!result) return;
                     Close();
                     if(SoundMenuController.Instance!=null)
                         SoundMenuController.Instance.PlayButtonClickSound();
@@ -103,8 +97,6 @@ namespace UIController.Popup
                         LifeController.Instance.Addlife(value*2);
                     }
                 });
-                
-                
             });
         }
     }

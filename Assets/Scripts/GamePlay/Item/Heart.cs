@@ -1,4 +1,5 @@
 using DG.Tweening;
+using ThirdParties.Truongtv;
 using Truongtv.Services.Ad;
 using Truongtv.SoundManager;
 using UIController;
@@ -23,9 +24,8 @@ namespace GamePlay.Item
             GamePlayController.Instance.controlCharacter.CancelAllMove();
             if (adItem)
             {
-                NetWorkHelper.ShowRewardedAdInGame("Rewarded_HeartInGame", adResult:result =>
+                GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_heart_item", () =>
                 {
-                    if (!result) return;
                     LifeController.Instance.Addlife(Config.REWARDED_FREE_LIFE);
                     gameObject.SetActive(false);
                 });

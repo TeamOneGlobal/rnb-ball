@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Scriptable;
 using Sound;
+using ThirdParties.Truongtv;
 using Truongtv.Services.Ad;
 using UIController.Popup;
 using UnityEngine;
@@ -75,9 +76,8 @@ namespace UIController.SkinPopupController
         private void TryNow()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.ShowRewardedAdInMenu("Rewarded_Rewarded_SkinPopup_TryNow", adResult:result =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("skin_popup_try_now",() =>
             {
-                if(!result) return;
                 UserDataController.DemoSkin(Item.skinName);
                 LoadSceneController.LoadLevel(UserDataController.GetCurrentLevel());       
             });

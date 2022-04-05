@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Scriptable;
 using Sound;
+using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.Services.IAP;
 using Truongtv.Utilities;
@@ -72,7 +73,7 @@ namespace UIController.SkinPopupController
         {
             SoundMenuController.Instance.PlayButtonClickSound();
             //TODO buy Iap
-            NetWorkHelper.PurchaseProduct(skuId, (result, sku) =>
+            GameServiceManager.Instance.iapManager.PurchaseProduct(skuId, (result, sku) =>
             {
                 if(!result) return;
                 for (var i = 0; i < _skinDatas.Count; i++)

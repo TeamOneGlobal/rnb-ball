@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using GamePlay;
 using Sound;
+using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.PopUpController;
 using Truongtv.Services.IAP;
@@ -24,7 +25,7 @@ namespace UIController.Popup
         public void Initialized()
         {
             RegisterEvent();
-            valueText.text = IAPManager.Instance.GetItemLocalPriceString(skuId);
+            valueText.text = GameServiceManager.Instance.iapManager.GetItemLocalPriceString(skuId);
         }
 
         private void OnStart()
@@ -58,7 +59,7 @@ namespace UIController.Popup
 
         private void Buy()
         {
-            NetWorkHelper.PurchaseProduct(skuId, (result, sku) =>
+            GameServiceManager.Instance.iapManager.PurchaseProduct(skuId, (result, sku) =>
             {
                 if (!result) return;
                 UserDataController.UnlockSkin("19");

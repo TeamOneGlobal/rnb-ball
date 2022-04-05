@@ -3,6 +3,7 @@ using DG.Tweening;
 using Scriptable;
 using Sound;
 using Spine.Unity;
+using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.PopUpController;
 using UIController.Scene;
@@ -72,9 +73,8 @@ namespace UIController.Popup
         private void TryNow()
         {
             SoundMenuController.Instance.PlayButtonClickSound(); 
-            NetWorkHelper.ShowRewardedAdInMenu("Rewarded_ExpiredPopup_TrySkin", adResult:result =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("expire_popup_try_skin", () =>
             {
-                if(!result) return;
                 LoadSceneController.LoadLevel(UserDataController.GetCurrentLevel());
             });
         }
@@ -110,9 +110,8 @@ namespace UIController.Popup
         private void BuyByAdNow()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.ShowRewardedAdInMenu("Rewarded_SkinPopup_PremiumSkinTab_UnlockSKin", adResult:result =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("skin_popup_premium_unlock_skin", ()=>
             {
-                if(!result) return;
                 UserDataController.UnlockProgress(_skinName);
                 if (UserDataController.GetUnlockProgress(_skinName) == _skinInfo.unlockValue)
                 {

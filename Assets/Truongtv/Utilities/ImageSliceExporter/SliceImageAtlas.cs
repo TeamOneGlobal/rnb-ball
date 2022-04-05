@@ -12,7 +12,7 @@ using Object = UnityEngine.Object;
 
 public class SliceImageAtlas : OdinEditorWindow
 {
-    [MenuItem("Truongtv/Utilities/Slice Atlas Image")]
+    [MenuItem("Truongtv/Utilities/Slice Image")]
     private static void OpenWindow()
     {
         GetWindow<SliceImageAtlas>().Show();

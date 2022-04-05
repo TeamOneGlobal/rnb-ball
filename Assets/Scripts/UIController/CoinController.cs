@@ -3,7 +3,6 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
-using Truongtv.Services.Firebase;
 using Truongtv.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +27,6 @@ namespace UIController
         [Button]
         public void DecreaseCoin(long value)
         {
-            FirebaseLogEvent.LogCoinUsedEvent(-value);
             var newValue = _currentCoin - value;
             UserDataController.UpdateCoin(-value);
             DOTween.To(() => _currentCoin, x => _currentCoin = x,newValue,0.5f).SetEase(Ease.Linear).OnUpdate(() =>
@@ -45,7 +43,6 @@ namespace UIController
         public async void IncreaseCoin(Transform target,long value,Action callback =null)
         {
             UserDataController.UpdateCoin(value);
-            FirebaseLogEvent.LogCoinEarnEvent(value);
             var newValue = _currentCoin + value;
             
             if (target != null)

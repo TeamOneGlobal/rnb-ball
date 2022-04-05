@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -10,8 +11,13 @@ using Object = UnityEngine.Object;
 namespace Truongtv.Utilities.ImageSliceExporter
 {
     [Serializable]
-    public class SliceImageTexturePacker:Singleton<SliceImageTexturePacker>
+    public class SliceImageTexturePacker:OdinEditorWindow
     {
+        [MenuItem("Truongtv/Utilities/Slice Atlas Image")]
+        private static void OpenWindow()
+        {
+            GetWindow<SliceImageTexturePacker>().Show();
+        }
         [ListDrawerSettings(Expanded = true),SerializeField] private Texture2D[] textureSlices;
         [SerializeField,FolderPath]private string outputDirectory;
         private struct SheetFrame

@@ -1,7 +1,6 @@
 using System;
-using System.Linq;
-using Notification;
 using Scriptable;
+using ThirdParties.Truongtv;
 using TMPro;
 using UIController.Popup;
 using UnityEngine;
@@ -75,7 +74,7 @@ namespace UIController.DailyGift
                 }
             }
 
-            CustomNotification.Instance.DailyRewardResetReminder(false);
+            GameServiceManager.Instance.mobileNotification.DailyRewardResetReminder(false);
             InitStatus(DailyGiftStatus.Claimed);
         }
 

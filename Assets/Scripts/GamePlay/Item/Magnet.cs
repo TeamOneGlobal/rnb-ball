@@ -1,4 +1,5 @@
 using DG.Tweening;
+using ThirdParties.Truongtv;
 using Truongtv.SoundManager;
 using UIController;
 using UnityEngine;
@@ -22,16 +23,13 @@ namespace GamePlay.Item
             if (adsItem)
             {
                 GamePlayController.Instance.controlCharacter.CancelAllMove();
-                NetWorkHelper.ShowRewardedAdInGame("Rewarded_MagnetInGame", adResult:result =>
+                GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_magnet_item", () =>
                 {
-                    if (!result) return;
                     UserDataController.UpdateMagnetDuration(Config.REWARDED_MAGNET_DURATION);
                     MagneticController.Instance.ActiveMagnetic();
                     
                     gameObject.SetActive(false);
                 });
-                
-                
             }
             else
             {

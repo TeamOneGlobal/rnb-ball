@@ -3,6 +3,7 @@ using System.Linq;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using Spine.Unity;
+using ThirdParties.Truongtv;
 using Truongtv.Services.Ad;
 using Truongtv.SoundManager;
 using UIController;
@@ -37,9 +38,9 @@ namespace GamePlay.Item
             if (adsItem)
             {
                 GamePlayController.Instance.controlCharacter.CancelAllMove();
-                NetWorkHelper.ShowRewardedAdInGame("Rewarded_TrySkinInGame", adResult:result =>
+                
+                GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_try_skin_item", () =>
                 {
-                    if (!result) return;
                     ActiveSkin();
                     gameObject.SetActive(false);
                 });

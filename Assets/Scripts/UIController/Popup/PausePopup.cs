@@ -1,9 +1,9 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using GamePlay;
 using Sound;
+using ThirdParties.Truongtv;
 using Truongtv.PopUpController;
-using Truongtv.Services.Ad;
-using Truongtv.Services.Firebase;
 using Truongtv.SoundManager;
 using UnityEngine;
 using UnityEngine.UI;
@@ -95,42 +95,44 @@ namespace UIController.Popup
 
         private void ReStartLevel()
         {
-            NetWorkHelper.ShowInterstitialAd(result =>
+            GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
             {
                 GamePlayController.Instance.TogglePause();
-                FirebaseLogEvent.LogLevelLose(GamePlayController.Instance.level);
+                GameServiceManager.Instance.logEventManager.LogEvent("in_game_restart",new Dictionary<string, object>
+                {
+                    {"level","lv_"+GamePlayController.Instance.level}
+                });
                 LoadSceneController.LoadLevel(GamePlayController.Instance.level);
             });
-           
         }
 
         private void Home()
         {
-            NetWorkHelper.ShowInterstitialAd(result =>
+            GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
             {
                 GamePlayController.Instance.TogglePause();
                 LoadSceneController.LoadMenu();
             });
-            
         }
 
         private void SkipLevel()
         {
-            NetWorkHelper.ShowRewardedAdInGame("Rewarded_PausePopup_SkipLevel", adResult:result =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_skip_level", () =>
             {
-                if (!result) return;
                 ForceWin();
                 Resume();
             });
-            
         }
 
         private void ForceWin()
         {
             var level = GamePlayController.Instance.level;
-            FirebaseLogEvent.LogLevelWin(level);
             if (level >= 3)
             {
+                GameServiceManager.Instance.logEventManager.LogEvent("level_complete",new Dictionary<string, object>
+                {
+                    { "level","lv_"+level}
+                });
                 UserDataController.SetLevelWin(level, CoinCollector.Instance.total);
                 LoadSceneController.LoadMenu();
             }
@@ -140,7 +142,7 @@ namespace UIController.Popup
                 {
                     UserDataController.UpdateCoin(CoinCollector.Instance.total);
                     var maxLevel = UserDataController.UpdateLevel(level);
-                    FirebaseLogEvent.SerUserMaxLevel(maxLevel);
+                    GameServiceManager.Instance.logEventManager.SetUserProperties("max_level","lv_"+maxLevel); 
                     UserDataController.ClearPreviousLevelData();
                     var newLevel = UserDataController.GetCurrentLevel();
                     LoadSceneController.LoadLevel(newLevel);

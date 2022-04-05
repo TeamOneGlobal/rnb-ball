@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Scriptable;
 using Sound;
+using ThirdParties.Truongtv;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -96,9 +97,8 @@ namespace UIController.Gift
         private void WatchAd()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.ShowRewardedAdInMenu("Rewarded_GiftPopup_UnlockSKin", adResult:result =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("menu_gift_popup_unlock_skin", () =>
             {
-                if(!result) return;
                 UserDataController.UnlockProgress(_item.skinName);
                 var unlockProgress = UserDataController.GetUnlockProgress(_item.skinName);
                 numberText.text = unlockProgress + "/" + _item.unlockValue;
@@ -108,7 +108,6 @@ namespace UIController.Gift
                     UserDataController.UpdateSelectedSkin(_item.skinName);
                     MenuPopupController.Instance.ShowUnlockSkinsPopup(new List<string>{_item.skinName});
                 }
-                
             });
         }
 

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using DG.Tweening;
 using MEC;
-using Notification;
 using Scriptable;
-using Sirenix.OdinInspector;
 using Sound;
+using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.PopUpController;
 using Truongtv.Utilities;
@@ -127,9 +125,8 @@ namespace UIController.Popup
         private void OnAdSpinButtonClick()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.ShowRewardedAdInMenu("Rewarded_Spin",adResult: result =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("spin",() =>
             {
-                if(!result) return;
                 adSpinButton.interactable = false;
                 UserDataController.Spin(false);
                 Spin();
@@ -140,7 +137,7 @@ namespace UIController.Popup
         {
             UserDataController.Spin(true);
             Spin();
-            CustomNotification.Instance.SetLuckySpinReminder();
+            GameServiceManager.Instance.mobileNotification.SetLuckySpinReminder();
             SetOnCountDown();
             LuckySpinButton.Instance.CheckTime();
         }

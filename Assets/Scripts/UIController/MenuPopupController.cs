@@ -37,7 +37,6 @@ namespace UIController
             winPopup.gameObject.SetActive(true);
             winPopup.Initialized();
             winPopup.Show(this);
-            NetWorkHelper.ShowBannerAd();
         }
 
         public void ShowSkinPopup()
@@ -97,7 +96,6 @@ namespace UIController
             spinPopup.gameObject.SetActive(true);
             spinPopup.Initialized();
             spinPopup.Show(this);
-            NetWorkHelper.ShowBannerAd();
         }
 
         public void ShowSpecialOffer()

@@ -5,6 +5,7 @@ using DG.Tweening;
 using MEC;
 using Sound;
 using Spine.Unity;
+using ThirdParties.Truongtv;
 using Truongtv.PopUpController;
 using Truongtv.Services.Ad;
 using Truongtv.SoundManager;
@@ -92,9 +93,8 @@ namespace UIController.Popup
         private void GotIt()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.ShowRewardedAdInMenu("Rewarded_CongratsPopup_ReceiveSkin", adResult:result =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("menu_congrats_popup_receive_skin", () =>
             {
-                if(!result) return;
                 UserDataController.UnlockSkin(_skin);
                 UserDataController.UpdateSelectedSkin(_skin);
                 MenuScene.Instance.UpdateBall();

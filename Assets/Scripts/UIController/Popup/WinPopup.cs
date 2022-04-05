@@ -4,9 +4,9 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MEC;
 using Sound;
+using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.PopUpController;
-using Truongtv.Services.Firebase;
 using Truongtv.SoundManager;
 using UIController.Scene;
 using UnityEngine;
@@ -41,7 +41,7 @@ namespace UIController.Popup
         private void UpdateDb()
         {
             var maxLevel = UserDataController.UpdateLevel(_lastLevel.lastLevelWin);
-            FirebaseLogEvent.SerUserMaxLevel(maxLevel);
+            //FirebaseLogEvent.SerUserMaxLevel(maxLevel);
             UserDataController.ClearPreviousLevelData();
         }
 
@@ -123,9 +123,9 @@ namespace UIController.Popup
 
         private void DoubleCoin()
         {
-            NetWorkHelper.ShowRewardedAdInMenu("Rewarded_DoubleCoin", adResult: result =>
+            
+            GameServiceManager.Instance.adManager.ShowRewardedAd("menu_double_coin", () =>
             {
-                if (!result) return;
                 x2CoinButton.interactable = false;
                 x2CoinButton.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
                 Transform transform1;

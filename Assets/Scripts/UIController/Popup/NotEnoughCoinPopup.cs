@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using DG.Tweening;
 using Sound;
+using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.PopUpController;
 using Truongtv.Services.IAP;
@@ -22,7 +23,7 @@ namespace UIController.Popup
         {
             _complete = callback;
             adValue.text = "" + Config.REWARDED_FREE_COIN;
-            iapPrice.text = IAPManager.Instance.GetItemLocalPriceString(sku);
+            iapPrice.text = GameServiceManager.Instance.iapManager.GetItemLocalPriceString(sku);
             RegisterEvent();
         }
         private void OnStart()
@@ -56,7 +57,7 @@ namespace UIController.Popup
         private void BuyIap()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.PurchaseProduct(sku, (result, sku) =>
+            GameServiceManager.Instance.iapManager.PurchaseProduct(sku, (result, sku) =>
             {
                 if(!result) return;
                 Close();
@@ -70,9 +71,8 @@ namespace UIController.Popup
         private void BuyAd()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.ShowRewardedAdInMenu("Rewarded_NotEnoughCoin",adResult: result =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("menu_not_enough_coin",() =>
             {
-                if(!result) return;
                 Close();
                 MenuPopupController.Instance.ShowPurchaseSuccess(PurchaseSuccessPopup.PurchaseType.FreeCoin,Config.REWARDED_FREE_COIN,() =>
                 {

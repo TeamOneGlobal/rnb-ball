@@ -6,7 +6,9 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Scriptable;
 using Sirenix.OdinInspector;
-using Sound;  using Truongtv.Utilities;
+using Sound;
+using ThirdParties.Truongtv;
+using Truongtv.Utilities;
 using UIController.Popup;
 using UnityEngine;
 using UnityEngine.UI;
@@ -113,10 +115,8 @@ namespace UIController.Scene
             {
                 HideOfferButton();
             }
-
             UpdateBall();
-            NetWorkHelper.RequestBanner();
-            NetWorkHelper.ShowBannerAd();
+            GameServiceManager.Instance.adManager.ShowBanner();
         }
 
         private void ShowWin()
@@ -155,7 +155,6 @@ namespace UIController.Scene
 
         private async void StartLevel()
         {
-            NetWorkHelper.HideBannerAd();
             await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
             LoadSceneController.LoadLevel(UserDataController.GetCurrentLevel());
         }
@@ -170,9 +169,8 @@ namespace UIController.Scene
         private void AddHeart()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.ShowRewardedAdInMenu("Rewarded_Menu_FreeHeart", adResult: result =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("menu_free_heart", ()=>
             {
-                if (!result) return;
                 MenuPopupController.Instance.ShowPurchaseSuccess(PurchaseSuccessPopup.PurchaseType.FreeLife, 3);
             });
         }

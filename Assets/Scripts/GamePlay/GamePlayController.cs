@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Com.LuisPedroFonseca.ProCamera2D;
 using Cysharp.Threading.Tasks;
@@ -8,9 +9,8 @@ using MEC;
 using Scriptable;
 using Sirenix.OdinInspector;
 using Sound;
+using ThirdParties.Truongtv;
 using TMPro;
-using Truongtv.Services.Ad;
-using Truongtv.Services.Firebase;
 using Truongtv.Utilities;
 using UIController;
 using UnityEngine;
@@ -79,8 +79,14 @@ namespace GamePlay
             MagneticController.Instance.Init();
             _gameState = GameState.Playing;
             var skin = UserDataController.GetSelectedSkin();
-            FirebaseLogEvent.LogSkinUsed(skin);
-            FirebaseLogEvent.LogLevelStart(level); 
+            GameServiceManager.Instance.logEventManager.LogEvent("skin_used",new Dictionary<string, object>
+            {
+                { "skin",skin}
+            });
+            GameServiceManager.Instance.logEventManager.LogEvent("level_start",new Dictionary<string, object>
+            {
+                { "level","lv_"+level}
+            });
             if ((level-Config.SHOW_REVIEW_AFTER_LEVEL)%Config.SHOW_REVIEW_PER_LEVEL ==0 && !UserDataController.IsRating())
             {
 #if UNITY_ANDROID || UNITY_EDITOR
@@ -174,16 +180,16 @@ namespace GamePlay
             controlCharacter.CancelAllMove();
             red.PlayWinAnim();
             blue.PlayWinAnim();
-            FirebaseLogEvent.LogLevelWin(level);
+            GameServiceManager.Instance.logEventManager.LogEvent("level_complete",new Dictionary<string, object>
+            {
+                { "level","lv_"+level}
+            });
             if (level >= 3||UserDataController.GetCurrentLevel()>3)
             {
                 UserDataController.SetLevelWin(level, CoinCollector.Instance.total);
                 SoundGamePlayController.Instance.PlayWinSound(()=>
                 {
-                    NetWorkHelper.ShowInterstitialAd(result =>
-                    {
-                        LoadSceneController.LoadMenu();
-                    });
+                    GameServiceManager.Instance.adManager.ShowInterstitialAd(LoadSceneController.LoadMenu);
                 });
             }
             else
@@ -191,17 +197,15 @@ namespace GamePlay
                 SoundGamePlayController.Instance.PlayWinSound(() =>
                 {
                    
-
-                    NetWorkHelper.ShowInterstitialAd(result =>
+                    GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
                     {
                         UserDataController.UpdateCoin(CoinCollector.Instance.total);
                         var maxLevel = UserDataController.UpdateLevel(level);
-                        FirebaseLogEvent.SerUserMaxLevel(maxLevel);
+                        GameServiceManager.Instance.logEventManager.SetUserProperties("max_level","lv_"+maxLevel); 
                         UserDataController.ClearPreviousLevelData();
                         var newLevel = UserDataController.GetCurrentLevel();
                         LoadSceneController.LoadLevel(newLevel);
                     });
-                        
                 });
             }
         }
@@ -223,7 +227,10 @@ namespace GamePlay
         [Button]
         public void Lose()
         {
-            FirebaseLogEvent.LogLevelLose(level);
+            GameServiceManager.Instance.logEventManager.LogEvent("level_fail",new Dictionary<string, object>
+            {
+                { "level","lv_"+level}
+            });
             SoundGamePlayController.Instance.PlayLoseSound(() =>
             {
                 _gameState = GameState.End;

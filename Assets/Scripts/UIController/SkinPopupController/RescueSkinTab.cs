@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Scriptable;
 using Sound;
+using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.Services.Ad;
 using Truongtv.Utilities;
@@ -140,9 +141,8 @@ namespace UIController.SkinPopupController
         private void GetIt()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            NetWorkHelper.ShowRewardedAdInMenu("Rewarded_SkinPopup_GetIt", adResult: result =>
+             GameServiceManager.Instance.adManager.ShowRewardedAd("menu_skin_popup_get", () =>
             {
-                if (!result) return;
                 UserDataController.UnlockSkin(Item.skinName);
                 UserDataController.UpdateSelectedSkin(Item.skinName);
                 tryNowButton.gameObject.SetActive(false);

@@ -3,11 +3,14 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using GamePlay;
 using Sound;
+using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.PopUpController;
 using Truongtv.Services.Ad;
+using UIController.Scene;
 using UnityEngine;
 using UnityEngine.UI;
+using UserDataModel;
 
 namespace UIController.Popup
 {
@@ -88,16 +91,14 @@ namespace UIController.Popup
 
         private void AddLife()
         {
-            NetWorkHelper.ShowRewardedAdInGame("Rewarded_LosePopup_AddHeart", adResult:result =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_revive", () =>
             {
-                if (!result) return;
                 GamePlayController.Instance.LogicalResume();
-               // LifeController.Instance.Addlife(Config.REWARDED_FREE_LIFE);
+                // LifeController.Instance.Addlife(Config.REWARDED_FREE_LIFE);
                 GamePlayController.Instance.SetCharacterRevive();
                 SoundGamePlayController.Instance.ResumeBgm();
                 Close();
             });
-            
         }
     }
 }
