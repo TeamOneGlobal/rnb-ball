@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.one.ball.jungle" android:versionCode="1" android:versionName="1.0">
+  <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+  <application android:label="@string/app_name" android:icon="@drawable/app_icon">
+    <activity android:name="com.google.firebase.MessagingUnityPlayerActivity" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+      <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+    </activity>
+    <meta-data android:name="applovin.sdk.key" android:value="zhCclCTFiAv41HA09J1y3lQa-z7GFq6mBgaVWPUACRUmQFTRzUb8sySJtA_X6TMKeambpvOCWuUpczo3H8LTk1" />
+
+    <receiver android:name ="com.kochava.base.ReferralReceiver"
+              android:enabled="true"
+              android:exported ="true">
+      <intent-filter>
+        <action android:name ="com.android.vending.INSTALL_REFERRER" />
+      </intent-filter>
+    </receiver>
+    <service android:name="com.google.firebase.messaging.MessageForwardingService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"></service>
+  </application>
+</manifest>
