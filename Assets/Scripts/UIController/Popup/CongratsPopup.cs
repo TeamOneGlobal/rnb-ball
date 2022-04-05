@@ -93,7 +93,7 @@ namespace UIController.Popup
         private void GotIt()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            GameServiceManager.Instance.adManager.ShowRewardedAd("menu_congrats_popup_receive_skin", () =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("congrats_popup_receive_skin", () =>
             {
                 UserDataController.UnlockSkin(_skin);
                 UserDataController.UpdateSelectedSkin(_skin);

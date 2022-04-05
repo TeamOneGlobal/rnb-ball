@@ -38,7 +38,6 @@ namespace GamePlay.Item
             if (adsItem)
             {
                 GamePlayController.Instance.controlCharacter.CancelAllMove();
-                
                 GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_try_skin_item", () =>
                 {
                     ActiveSkin();

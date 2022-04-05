@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Sirenix.OdinInspector;
 using ThirdParties.Truongtv.AdsManager;
 using ThirdParties.Truongtv.LogManager;
@@ -10,6 +11,10 @@ using UnityEngine;
 #if UNITY_EDITOR
 using System.IO;
 using System.Xml;
+#endif
+#if USING_LOG_FIREBASE||USING_REMOTE_FIREBASE
+using Firebase;
+using Firebase.Extensions;
 #endif
 namespace ThirdParties.Truongtv
 {

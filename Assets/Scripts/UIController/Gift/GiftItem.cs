@@ -97,7 +97,7 @@ namespace UIController.Gift
         private void WatchAd()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            GameServiceManager.Instance.adManager.ShowRewardedAd("menu_gift_popup_unlock_skin", () =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("gift_popup_unlock_skin", () =>
             {
                 UserDataController.UnlockProgress(_item.skinName);
                 var unlockProgress = UserDataController.GetUnlockProgress(_item.skinName);

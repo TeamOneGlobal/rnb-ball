@@ -141,7 +141,7 @@ namespace UIController.SkinPopupController
         private void GetIt()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-             GameServiceManager.Instance.adManager.ShowRewardedAd("menu_skin_popup_get", () =>
+             GameServiceManager.Instance.adManager.ShowRewardedAd("skin_popup_get", () =>
             {
                 UserDataController.UnlockSkin(Item.skinName);
                 UserDataController.UpdateSelectedSkin(Item.skinName);

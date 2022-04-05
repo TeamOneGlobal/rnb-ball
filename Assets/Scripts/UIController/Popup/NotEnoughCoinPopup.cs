@@ -71,7 +71,7 @@ namespace UIController.Popup
         private void BuyAd()
         {
             SoundMenuController.Instance.PlayButtonClickSound();
-            GameServiceManager.Instance.adManager.ShowRewardedAd("menu_not_enough_coin",() =>
+            GameServiceManager.Instance.adManager.ShowRewardedAd("not_enough_coin",() =>
             {
                 Close();
                 MenuPopupController.Instance.ShowPurchaseSuccess(PurchaseSuccessPopup.PurchaseType.FreeCoin,Config.REWARDED_FREE_COIN,() =>
