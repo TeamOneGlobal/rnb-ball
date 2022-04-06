@@ -38,9 +38,19 @@ namespace GamePlay.Item
             if (adsItem)
             {
                 GamePlayController.Instance.controlCharacter.CancelAllMove();
+                GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_click",new Dictionary<string, object>
+                {
+                    {"reward_for","try_skin"},
+                    {"level","lv_"+GamePlayController.Instance.level}
+                });
                 GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_try_skin_item", () =>
                 {
                     ActiveSkin();
+                    GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_finish",new Dictionary<string, object>
+                    {
+                        {"reward_for","try_skin"},
+                        {"level","lv_"+GamePlayController.Instance.level}
+                    });
                     gameObject.SetActive(false);
                 });
             }

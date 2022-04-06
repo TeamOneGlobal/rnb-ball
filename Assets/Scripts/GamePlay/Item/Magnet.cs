@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using ThirdParties.Truongtv;
 using Truongtv.SoundManager;
@@ -23,11 +24,20 @@ namespace GamePlay.Item
             if (adsItem)
             {
                 GamePlayController.Instance.controlCharacter.CancelAllMove();
+                GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_click",new Dictionary<string, object>
+                {
+                    {"reward_for","magnet"},
+                    {"level","lv_"+GamePlayController.Instance.level}
+                });
                 GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_magnet_item", () =>
                 {
                     UserDataController.UpdateMagnetDuration(Config.REWARDED_MAGNET_DURATION);
                     MagneticController.Instance.ActiveMagnetic();
-                    
+                    GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_finish",new Dictionary<string, object>
+                    {
+                        {"reward_for","magnet"},
+                        {"level","lv_"+GamePlayController.Instance.level}
+                    });
                     gameObject.SetActive(false);
                 });
             }

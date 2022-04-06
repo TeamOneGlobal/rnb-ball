@@ -158,7 +158,10 @@ namespace ThirdParties.Truongtv.AdsManager
                     return;
                 }
                 adResult?.Invoke();
-                GameServiceManager.Instance.logEventManager.LogEvent("ads_reward_complete");
+                GameServiceManager.Instance.logEventManager.LogEvent("ads_reward_complete",new Dictionary<string, object>
+                {
+                    {"reward_for",location}
+                });
             });
         }
         #endregion

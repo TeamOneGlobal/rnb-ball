@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using ThirdParties.Truongtv;
 using Truongtv.Services.Ad;
@@ -24,9 +25,19 @@ namespace GamePlay.Item
             GamePlayController.Instance.controlCharacter.CancelAllMove();
             if (adItem)
             {
+                GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_click",new Dictionary<string, object>
+                {
+                    {"reward_for","heart"},
+                    {"level","lv_"+GamePlayController.Instance.level}
+                });
                 GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_heart_item", () =>
                 {
                     LifeController.Instance.Addlife(Config.REWARDED_FREE_LIFE);
+                    GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_finish",new Dictionary<string, object>
+                    {
+                        {"reward_for","try_skin"},
+                        {"level","lv_"+GamePlayController.Instance.level}
+                    });
                     gameObject.SetActive(false);
                 });
             }

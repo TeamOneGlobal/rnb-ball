@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using GamePlay;
@@ -6,11 +7,8 @@ using Sound;
 using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.PopUpController;
-using Truongtv.Services.Ad;
-using UIController.Scene;
 using UnityEngine;
 using UnityEngine.UI;
-using UserDataModel;
 
 namespace UIController.Popup
 {
@@ -77,24 +75,40 @@ namespace UIController.Popup
             replayButton.interactable = true;
             replayButton.GetComponent<Image>().DOFade(1, 0.35f).SetEase(Ease.Linear).SetUpdate(UpdateType.Normal, true);
         }
-        private async void Home()
+        private void Home()
         {
-            await UniTask.Delay(TimeSpan.FromMilliseconds(100),DelayType.Realtime);
-            GamePlayController.Instance.LogicalResume();
-            LoadSceneController.LoadMenu();
+            GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
+            {
+                GamePlayController.Instance.LogicalResume();
+                LoadSceneController.LoadMenu();
+            });
+            
         }
         private void RestartLevel()
         {
-            GamePlayController.Instance.LogicalResume();
-            LoadSceneController.LoadLevel(GamePlayController.Instance.level);
+            GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
+            {
+                GamePlayController.Instance.LogicalResume();
+                LoadSceneController.LoadLevel(GamePlayController.Instance.level);
+            });
+            
         }
 
         private void AddLife()
         {
+            GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_click",new Dictionary<string, object>
+            {
+                {"reward_for","revive"},
+                {"level","lv_"+GamePlayController.Instance.level}
+            });
             GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_revive", () =>
             {
+                GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_finish",new Dictionary<string, object>
+                {
+                    {"reward_for","revive"},
+                    {"level","lv_"+GamePlayController.Instance.level}
+                });
                 GamePlayController.Instance.LogicalResume();
-                // LifeController.Instance.Addlife(Config.REWARDED_FREE_LIFE);
                 GamePlayController.Instance.SetCharacterRevive();
                 SoundGamePlayController.Instance.ResumeBgm();
                 Close();
