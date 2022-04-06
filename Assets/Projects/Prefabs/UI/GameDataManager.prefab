@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3336688837468805514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3336688837468805512}
+  - component: {fileID: 3336688837468805513}
+  m_Layer: 0
+  m_Name: GameDataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3336688837468805512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3336688837468805514}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3336688837468805513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3336688837468805514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329fce381a6c437bafee7389ac8a43af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cheated: 0
+  debugger: 0
+  coinValueInGame: 100
+  maxLevel: 60
+  maxHpInGame: 3
+  showBannerInGame: 0
+  squidDifficulty: 2.5
+  blockAdTime: 20
+  minLevelShowInterstitial: 2
+  showInterstitialPerLevel: 1
+  adCoin: 1000
+  adLife: 1
+  checkInternetPerLevel: 10
+  versionReview: 0.3.5
+  freeSpinCooldownHours: 8
+  levelShowSpecialOffer: 11
+  showOfferPerLevel: 10
+  levelShowDailyReward: 3
+  levelShowRating: 14
+  showRatingPerLevel: 10
+  levelShowLottery: 9
+  showLotteryPerLevel: 10
+  showContinueAfterLevel: 10
+  multipleCoinInMenu: 5
+  startData:
+    level: 1
+    life: 1
+    currentSkin: Base
+  skinData: {fileID: 11400000, guid: c18d432d8e22aea40adc263913c4fc72, type: 2}
+  shopData: {fileID: 11400000, guid: b94ad5da7cd2e84439755ecd544a887f, type: 2}
+  termOfUseUrl: https://teamone.studio/term-of-use/
+  privacyPolicyUrl: https://teamone.studio/policy/
+  firstCreate: 0
+  defaultSkin: 
