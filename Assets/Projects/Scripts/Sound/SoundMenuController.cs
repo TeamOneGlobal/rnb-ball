@@ -1,4 +1,4 @@
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 
 namespace Sound

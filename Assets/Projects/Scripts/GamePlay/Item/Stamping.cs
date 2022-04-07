@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sirenix.OdinInspector;
-using Truongtv.SoundManager;
-using Unity.Collections;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 
 namespace GamePlay.Item

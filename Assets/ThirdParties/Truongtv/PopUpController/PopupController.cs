@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using Truongtv.Utilities;
-using UIController.Popup;
 using UnityEngine;
-using UnityEngine.UI;
-using UserDataModel;
 
 namespace Truongtv.PopUpController
 {
@@ -16,23 +13,32 @@ namespace Truongtv.PopUpController
 
         //[SerializeField] private Image shadowBackground;
         [SerializeField] private Canvas lockSceneCanvas;
-        protected Stack<BasePopup> _stackPopup = new Stack<BasePopup>();
+        private Stack<BasePopup> _stackPopup = new Stack<BasePopup>();
         private Canvas _canvasPopup;
 
-        [SerializeField] private NotificationPopup notificationPopup;
-       // private Button _blackButton;
-       [SerializeField] private Sprite forestImg,factoryImg;
+        [SerializeField] private Toast toast;
 
-       public static PopupController Instance;
+        [SerializeField] private PopupNoInternet noInternet;
+       // private Button _blackButton;
         #endregion
-        
-        #region Unity function
+        private static PopupController _instance;
+        public static PopupController Instance => _instance;
 
         private void Awake()
         {
+            if (_instance != null)
+            {
+                Destroy(_instance.gameObject);
+            }
+
+            _instance = this;
+        }
+        #region Unity function
+
+        private void Start()
+        {
             _stackPopup = new Stack<BasePopup>();
             _canvasPopup = GetComponent<Canvas>();
-            Instance = this;
             //_blackButton = shadowBackground.GetComponent<Button>();
             // _blackButton.onClick.AddListener(OutSideClick);
         }
@@ -114,17 +120,20 @@ namespace Truongtv.PopUpController
 
         #endregion
 
-        public void ShowNotification(string title,string description,Action buttonAction = null)
+        [Button]
+        public void ShowToast(string description)
         {
-            notificationPopup.gameObject.SetActive(true);
-            notificationPopup.Initialized(title,description,buttonAction);
-            notificationPopup.Show(this);
+            toast.gameObject.SetActive(true);
+            toast.Initialized(description);
+            toast.Show(this);
         }
 
-        public Sprite GetBackgroundImg()
+        public void ShowNoInternet()
         {
-            if (UserDataController.GetCurrentLevel() <= 50) return forestImg;
-            return factoryImg;
+            noInternet.Init();
+            noInternet.gameObject.SetActive(true);
+            noInternet.Show(this);
         }
+       
     }
 }

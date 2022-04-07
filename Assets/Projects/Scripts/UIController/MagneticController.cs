@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using GamePlay;
 using MEC;
+using Projects.Scripts;
 using TMPro;
 using Truongtv.Utilities;
 using UnityEngine;
-using UserDataModel;
 
 namespace UIController
 {
@@ -23,7 +23,7 @@ namespace UIController
         public void ActiveMagnetic()
         {
             
-            var duration = UserDataController.GetMagneticDuration();
+            var duration = GameDataManager.Instance.GetMagnetDuration();
             if (duration > 0)
             {
                 magnetObj.SetActive(true);
@@ -34,13 +34,13 @@ namespace UIController
 
         private IEnumerator<float> CountDown()
         {
-            var duration = UserDataController.GetMagneticDuration();
+            var duration = GameDataManager.Instance.GetMagnetDuration();
             do
             {
                 durationText.text = TimeSpan.FromSeconds(duration).ToString(@"mm\:ss");
                 yield return Timing.WaitForSeconds(1f);
-                UserDataController.UpdateMagnetDuration(-1);
-                duration = UserDataController.GetMagneticDuration();
+                GameDataManager.Instance.CountDownMagnet();
+                duration = GameDataManager.Instance.GetMagnetDuration();
             } while (duration >= 1);
             magnetObj.SetActive(false);
             GamePlayController.Instance.MagnetCallback(false);
@@ -48,7 +48,7 @@ namespace UIController
 
         public bool IsActiveMagnetic()
         {
-            var duration = UserDataController.GetMagneticDuration();
+            var duration = GameDataManager.Instance.GetMagnetDuration();
             return duration > 0;
         }
     }

@@ -1,8 +1,8 @@
-using System;
+using Projects.Scripts;
+using Projects.Scripts.UIController;
 using UIController;
 using UnityEngine;
 using UnityEngine.UI;
-using UserDataModel;
 
 namespace Tutorial
 {
@@ -13,7 +13,7 @@ namespace Tutorial
         [SerializeField] private GameObject step;
         private void Start()
         {
-            if (UserDataController.GetTutorialStep() != (int) TutorialStep.Level7)
+            if (GameDataManager.Instance.GetTutorialStep() != (int) TutorialStep.Level7)
             {
                 gameObject.SetActive(false);
                 return;
@@ -21,7 +21,7 @@ namespace Tutorial
             fakeSwitch.onClick.AddListener(() =>
             {
                 switchCharacter.onClick.Invoke();
-                UserDataController.SetFinishStep();
+                GameDataManager.Instance.FinishStep();
                 gameObject.SetActive(false);
             });
         }

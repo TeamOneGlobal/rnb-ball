@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using Projects.Scripts;
 using ThirdParties.Truongtv;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UIController;
 using UnityEngine;
-using UserDataModel;
 
 namespace GamePlay.Item
 {
@@ -31,7 +31,7 @@ namespace GamePlay.Item
                 });
                 GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_magnet_item", () =>
                 {
-                    UserDataController.UpdateMagnetDuration(Config.REWARDED_MAGNET_DURATION);
+                    GameDataManager.Instance.IncreaseMagnetDuration(GameDataManager.Instance.magnetDuration);
                     MagneticController.Instance.ActiveMagnetic();
                     GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_finish",new Dictionary<string, object>
                     {
@@ -43,11 +43,11 @@ namespace GamePlay.Item
             }
             else
             {
-                UserDataController.UpdateMagnetDuration(Config.FREE_MAGNET_DURATION);
+                GameDataManager.Instance.IncreaseMagnetDuration(GameDataManager.Instance.magnetDuration);
                 MagneticController.Instance.ActiveMagnetic();
                 gameObject.SetActive(false);
             }
-            audio.Play().Forget();
+            audio.Play();
             
         }
     }

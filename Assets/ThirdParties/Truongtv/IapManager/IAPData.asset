@@ -12,5 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3203c63ab660be9439b0fa6f6b0dc311, type: 3}
   m_Name: IAPData
   m_EditorClassIdentifier: 
-  androidSkuId: []
+  androidSkuId:
+  - skuId: com.rnb.ball.coin
+    productType: 0
+    defaultValue: 1.99$
+  - skuId: com.rnb.ball.life
+    productType: 0
+    defaultValue: 1.99
+  - skuId: com.rnb.ball.block_ad
+    productType: 0
+    defaultValue: 0.99
+  - skuId: com.rnb.ball.offer
+    productType: 0
+    defaultValue: 4.99
+  - skuId: com.rnb.ball.coin_pack
+    productType: 0
+    defaultValue: 0.99
+  - skuId: com.rnb.ball.sub
+    productType: 2
+    defaultValue: 2.99
   iosSkuId: []

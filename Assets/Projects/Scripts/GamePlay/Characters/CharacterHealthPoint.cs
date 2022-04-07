@@ -1,6 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -27,7 +27,7 @@ namespace GamePlay.Characters
             {
                 _controller.HideBall(false);
                 var r = Random.Range(0, reviveSounds.Length);
-                audio.Play(reviveSounds[r]).Forget();
+                audio.Play(reviveSounds[r]);
                 _controller.PlayIdle();
                 _controller.CancelAllMove();
                 _currentHp = maxHp;
@@ -48,7 +48,7 @@ namespace GamePlay.Characters
         {
             _isDie = true;
             var r = Random.Range(0, diesSounds.Length);
-            audio.Play(diesSounds[r]).Forget();
+            audio.Play(diesSounds[r]);
             _controller.PlayDie(async () =>
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(0.5f));

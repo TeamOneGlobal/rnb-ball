@@ -1,7 +1,6 @@
 using DG.Tweening;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace GamePlay.Switches
 {
@@ -32,7 +31,7 @@ namespace GamePlay.Switches
             switchObj.transform.DOMove(on.position, actionDuration).SetEase(Ease.Linear)
                 .SetUpdate(UpdateType.Normal,true)
                 .OnComplete(()=>SwitchOn(triggerObject));
-            simpleAudio.Play().Forget();
+            simpleAudio.Play();
         }
 
         protected override void TriggerExit(string triggerTag, Transform triggerObject)
@@ -52,7 +51,7 @@ namespace GamePlay.Switches
                 {
                     SwitchOff(triggerObject);
                     
-                    simpleAudio.Play().Forget();
+                    simpleAudio.Play();
                 });
             }
         }

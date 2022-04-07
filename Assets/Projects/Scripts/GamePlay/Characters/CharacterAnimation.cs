@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
+using Projects.Scripts;
 using Spine;
 using Spine.Unity;
+using ThirdParties.Truongtv;
 using UnityEngine;
-using UserDataModel;
 using Random = UnityEngine.Random;
 
 namespace GamePlay.Characters
@@ -23,7 +25,11 @@ namespace GamePlay.Characters
         }
         private void Start()
         {
-            var skin = UserDataController.GetSelectedSkin();
+            var skin = GameDataManager.Instance.GetCurrentSkin();
+            GameServiceManager.Instance.logEventManager.LogEvent("skin_used",new Dictionary<string, object>
+            {
+                { "skin",skin}
+            });
             TrySkin(skin);
         }
 

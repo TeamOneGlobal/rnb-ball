@@ -1,10 +1,10 @@
 using System;
 using Cysharp.Threading.Tasks;
-using GamePlay;
-using UIController;
+using Projects.Scripts;
+using Projects.Scripts.UIController;
 using UnityEngine;
 using UnityEngine.UI;
-using UserDataModel;
+using GamePlayController = GamePlay.GamePlayController;
 
 namespace Tutorial
 {
@@ -19,7 +19,7 @@ namespace Tutorial
 
         private async void Start()
         {
-            if (UserDataController.GetTutorialStep() != (int) TutorialStep.Level1)
+            if (GameDataManager.Instance.GetTutorialStep() != (int) TutorialStep.Level1)
             {
                 gameObject.SetActive(false);
                 return;
@@ -58,7 +58,7 @@ namespace Tutorial
             GamePlayController.Instance.onOpenBlue = OnBlueOpenDoor;
             GamePlayController.Instance.onOpenRed = () =>
             {
-                UserDataController.SetFinishStep();
+                GameDataManager.Instance.FinishStep();
                 step4.SetActive(false);
             };
             StartStep1();

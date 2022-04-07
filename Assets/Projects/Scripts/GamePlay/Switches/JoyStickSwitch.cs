@@ -1,5 +1,5 @@
 using DG.Tweening;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 
 namespace GamePlay.Switches
@@ -27,7 +27,7 @@ namespace GamePlay.Switches
             {
                 GamePlayController.Instance.PauseForCinematic(true);
             }
-            simpleAudio.Play().Forget();
+            simpleAudio.Play();
 
             if (triggerObject.transform.position.x < transform.position.x && oneTime)
             {

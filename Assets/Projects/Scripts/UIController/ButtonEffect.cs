@@ -1,11 +1,12 @@
+﻿using System;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UIController
+namespace Projects.Scripts.UIController
 {
-
     [RequireComponent(typeof(Button))]
     public class ButtonEffect : MonoBehaviour,IPointerDownHandler,IPointerEnterHandler,IPointerExitHandler,IPointerUpHandler
     {
@@ -20,6 +21,7 @@ namespace UIController
         public void OnPointerDown(PointerEventData eventData)
         {
             if (!_button.IsInteractable()) return;
+            MMVibrationManager.Haptic (HapticTypes.Selection );
             transform.DOKill();
             transform.DOScale(new Vector3(0.95f, 0.95f, 0.95f), 0.1f).SetEase(Ease.InQuad)
                 .SetUpdate(UpdateType.Normal, true);
@@ -48,6 +50,11 @@ namespace UIController
             transform.DOKill();
             transform.DOScale(new Vector3(1, 1, 1), 0.1f).SetEase(Ease.InQuad)
                 .SetUpdate(UpdateType.Normal, true);
+        }
+
+        private void OnValidate()
+        {
+            GetComponent<Button>().transition = Selectable.Transition.None;
         }
     }
 }

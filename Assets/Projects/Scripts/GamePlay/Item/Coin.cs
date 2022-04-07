@@ -1,8 +1,8 @@
 using DG.Tweening;
 using GamePlay.Characters;
-using Truongtv.SoundManager;
+using Projects.Scripts;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
-using UserDataModel;
 
 namespace GamePlay.Item
 {
@@ -42,12 +42,8 @@ namespace GamePlay.Item
 
         private void OnCollect()
         {
-            
-            CoinCollector.Instance.Collect(UserDataController.GetCurrentLevel()>GamePlayController.Instance.level
-                ? 1
-                : Config.COIN_VALUE_IN_GAME,transform.position);
-
-            simpleAudio.Play().Forget();
+            CoinCollector.Instance.Collect(GameDataManager.Instance.coinValueInGame,transform.position);
+            simpleAudio.Play();
             effect.SetActive(true);
             gameObject.SetActive(false);
         }

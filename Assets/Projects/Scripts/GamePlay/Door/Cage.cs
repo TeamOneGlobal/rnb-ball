@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using Spine.Unity;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 using CharacterController = GamePlay.Characters.CharacterController;
 
@@ -56,7 +56,7 @@ namespace GamePlay.Door
             triggerObject.GetComponent<CharacterController>().PlayCallAnim();
             if (_isRedOpen && _isBlueOpen)
             {
-                simpleAudio.Play(open).Forget();
+                simpleAudio.Play(open);
                 OpenGate();
             }
             sequence.Play();
@@ -81,12 +81,12 @@ namespace GamePlay.Door
         {
             if (characterTag.Equals(TagManager.BLUE_TAG) && !_isPlayBlueKey)
             {
-                simpleAudio.Play(setKey).Forget();
+                simpleAudio.Play(setKey);
                 _isPlayBlueKey = true;
             }
             if (characterTag.Equals(TagManager.RED_TAG) && !_isPlayRedKey)
             {
-                simpleAudio.Play(setKey).Forget();
+                simpleAudio.Play(setKey);
                 _isPlayRedKey = true;
             }
            

@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 
 namespace GamePlay.Item

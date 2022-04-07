@@ -1,6 +1,5 @@
-using System;
+using Projects.Scripts;
 using UnityEngine;
-using UserDataModel;
 
 namespace Tutorial
 {
@@ -22,7 +21,7 @@ namespace Tutorial
         private void OnEndMoveCamera()
         {
             gameObject.SetActive(false);
-            UserDataController.SetFinishStep();
+            GameDataManager.Instance.FinishStep();
         }
     }
 }

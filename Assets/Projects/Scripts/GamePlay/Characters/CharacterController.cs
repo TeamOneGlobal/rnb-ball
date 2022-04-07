@@ -1,5 +1,5 @@
 using System;
-using UIController;
+using Projects.Scripts;
 using UnityEngine;
 
 namespace GamePlay.Characters
@@ -149,7 +149,7 @@ namespace GamePlay.Characters
                 magnetic.ActiveMagnetic(false);
             else
             {
-                if(MagneticController.Instance.IsActiveMagnetic())
+                if(GameDataManager.Instance.GetMagnetDuration()>0)
                     magnetic.ActiveMagnetic(true);
             }
             selected.HideBall(isHide);

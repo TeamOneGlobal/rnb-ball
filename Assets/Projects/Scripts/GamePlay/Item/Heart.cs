@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using Projects.Scripts;
 using ThirdParties.Truongtv;
-using Truongtv.Services.Ad;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UIController;
 using UnityEngine;
-using UserDataModel;
 
 namespace GamePlay.Item
 {
@@ -32,7 +31,7 @@ namespace GamePlay.Item
                 });
                 GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_heart_item", () =>
                 {
-                    LifeController.Instance.Addlife(Config.REWARDED_FREE_LIFE);
+                    LifeController.Instance.Addlife(GameDataManager.Instance.adLife);
                     GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_finish",new Dictionary<string, object>
                     {
                         {"reward_for","try_skin"},
@@ -47,7 +46,7 @@ namespace GamePlay.Item
                 gameObject.SetActive(false);
             }
 
-            audio.Play().Forget();
+            audio.Play();
             gameObject.SetActive(false);
         }
     }

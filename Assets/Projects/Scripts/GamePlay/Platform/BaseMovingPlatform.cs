@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 
 namespace GamePlay.Platform
@@ -51,11 +51,11 @@ namespace GamePlay.Platform
 
         public void PlaySoundMoving()
         {
-            simpleAudio.Play(moving, true).Forget();
+            simpleAudio.Play(moving, true);
         }
         public void PlaySoundStop()
         {
-            simpleAudio.Play(stop).Forget();
+            simpleAudio.Play(stop);
         }
 
         protected void ReserveMove(bool ignoreTimeScale = false,Action onComplete = null,Action onUpdate = null)

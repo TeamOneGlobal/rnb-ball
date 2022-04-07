@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 using CharacterController = GamePlay.Characters.CharacterController;
 
@@ -46,7 +46,7 @@ namespace GamePlay.Item
             target.DOMove(points[1].position, moveTime)
                 .SetEase(Ease.Linear)
                 .SetDelay(delayTime)
-                .OnStart(()=>audio.Play(true).Forget())
+                .OnStart(()=>audio.Play())
                 .OnUpdate(() => { lineRenderer.SetPosition(1, target.position); })
                 .OnComplete(MoveUp);
         }
@@ -57,7 +57,7 @@ namespace GamePlay.Item
             target.DOMove(points[0].position, moveTime)
                 .SetEase(Ease.Linear)
                 .SetDelay(delayTime)
-                .OnStart(()=>audio.Play(true).Forget())
+                .OnStart(()=>audio.Play())
                 .OnUpdate(() => { lineRenderer.SetPosition(1, target.position); })
                 .OnComplete(MoveDown);
         }

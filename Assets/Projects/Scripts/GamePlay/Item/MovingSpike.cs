@@ -1,5 +1,5 @@
 using DG.Tweening;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 
 namespace GamePlay.Item
@@ -24,7 +24,7 @@ namespace GamePlay.Item
         {
             spike.DOMoveY(_endPos.y, timeUp).SetDelay(delayUp).SetEase(Ease.InExpo).OnComplete(()=>
             {
-                simpleAudio.Play().Forget();
+                simpleAudio.Play();
                 MoveDown();
             });
         }

@@ -1,6 +1,7 @@
 using System;
+using System.Collections;
 using DG.Tweening;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 using CharacterController = GamePlay.Characters.CharacterController;
 
@@ -35,20 +36,28 @@ namespace GamePlay.Door
                 CloseGate();
                 triggerObject.GetComponent<CharacterController>().PlayIdle();
                 simpleAudio.Stop();
-                simpleAudio.Play(close, delay: 0.3f).Forget();
+                simpleAudio.Play(close, delay: 0.3f);
             }
         }
         private void  OntriggerPlaySound()
         {
             if (!_isPlayKey)
             {
-                simpleAudio.Play(setKey,onComplete: () => { simpleAudio.Play(open).Forget(); }).Forget();
                 _isPlayKey = true;
+
+                IEnumerator playSound()
+                {
+                    simpleAudio.Play(setKey);
+                    yield return new WaitForSeconds(0.3f);
+                    simpleAudio.Play(open);
+                }
+
+                StartCoroutine(playSound());
             }
             else
             {
                 simpleAudio.Stop();
-                simpleAudio.Play(open).Forget();
+                simpleAudio.Play(open);
             }
         }
         protected void OpenGate(Action onStart = null, Action onComplete = null)

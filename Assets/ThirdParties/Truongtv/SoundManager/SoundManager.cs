@@ -1,121 +1,133 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
-namespace Truongtv.SoundManager
+namespace ThirdParties.Truongtv.SoundManager
 {
     public class SoundManager : MonoBehaviour
     {
         private const string INSERT_KEY = "_number_";
         private const string SOUND_SFX = "sfx";
         private const string SOUND_BGM = "bgm";
-        [SerializeField] private SimpleAudio sfxPrefab;
-        [SerializeField] private List<SimpleAudio> simpleAudioList;
-        private static bool _soundSfx, _soundBgm;
-        [SerializeField] private AudioClip buttonClickSound;
-        public static Action<bool> OnBgmSettingChange;
-        public static Action<bool> OnSfxSettingChange;
-        public void Awake()
+        [SerializeField] private Sfx sfxPrefab;
+        [SerializeField] private List<Sfx> sfxList;
+        [SerializeField] private AudioClip buttonSound, popupOpenSound, popupCloseSound;
+        [SerializeField] private AudioMixer mixer;
+        private static SoundManager _instance;
+        public static SoundManager Instance => _instance;
+
+        private void Awake()
         {
-           // SceneManager.sceneUnloaded += SceneUnloaded;
-            _soundSfx = IsSoundSfx();
-            _soundBgm = IsSoundBgm();
+            if (_instance != null)
+            {
+                Destroy(_instance.gameObject);
+            }
+
+            _instance = this;
         }
 
-        public static bool IsSoundSfx()
+        private void Start()
         {
-            return PlayerPrefs.GetInt(SOUND_SFX) ==0;
+            SetBgm(IsBgm());
+            SetSfx(IsSfx());
         }
 
-        public static  bool IsSoundBgm()
+        public static bool IsBgm()
         {
-            return PlayerPrefs.GetInt(SOUND_BGM) ==0;
+            return PlayerPrefs.GetInt(SOUND_BGM) == 0;
         }
 
-        public static void SetSoundSfx(bool isOn)
+        public static bool IsSfx()
         {
-            _soundSfx = isOn;
-            OnSfxSettingChange?.Invoke(isOn);
+            return PlayerPrefs.GetInt(SOUND_SFX) == 0;
+        }
+        public void SetSfx(bool isOn)
+        {
+            SetAudio("Sfx", isOn ? 1:0);
             PlayerPrefs.SetInt(SOUND_SFX, isOn?0:-1);
             PlayerPrefs.Save();
         }
-
-        public static void SetSoundBgm(bool isOn)
+        public void SetBgm(bool isOn)
         {
-            _soundBgm = isOn;
-            OnBgmSettingChange?.Invoke(isOn);
+            SetAudio("Bgm", isOn ?  1:0);
             PlayerPrefs.SetInt(SOUND_BGM, isOn?0:-1);
             PlayerPrefs.Save();
         }
         public void PlaySfx(AudioClip clip, bool isLoop = false,float delay = 0f,Action onComplete = null)
         {
             var simple = GetSfxInstance();
-            simple.Play(clip, isLoop,delay,onComplete).Forget();
+            simple.Play(clip, isLoop,delay,onComplete);
         }
 
         public void PlayBgm(AudioClip clip)
         {
-            if(!BgmAudio.Instance.IsPlaying())
-                BgmAudio.Instance.Play(clip, true).Forget();
+            if(!Bgm.Instance.IsPlaying())
+                Bgm.Instance.Play(clip);
             else
             {
-                BgmAudio.Instance.Resume();
+                if(Bgm.Instance.IsPlayingClip(clip))
+                    Bgm.Instance.Resume();
+                else
+                    Bgm.Instance.Play(clip);
             }
         }
         public void Pause(bool isPause)
         {
-            if(isPause)
-                BgmAudio.Instance.Pause();
-            else BgmAudio.Instance.Resume();
-        }
-
-        public void StopSfx(AudioClip clip)
-        {
-            for (var i = 0; i < simpleAudioList.Count; i++)
+            if (isPause)
             {
-                if (simpleAudioList[i] == null || !simpleAudioList[i].gameObject.activeSelf) continue;
-                var currentClip = simpleAudioList[i].CurrentClip();
-                if(currentClip==null|| currentClip.Equals(clip))
-                    simpleAudioList[i].Stop();
+                Bgm.Instance.Pause();
+                for (var i = 0; i < sfxList.Count; i++)
+                {
+                    sfxList[i].Pause();
+                }
+            }
+
+            else
+            {
+                Bgm.Instance.Resume();
+                for (var i = 0; i < sfxList.Count; i++)
+                {
+                    sfxList[i].Resume();
+                }
             }
         }
-
-        private SimpleAudio GetSfxInstance()
+        private Sfx GetSfxInstance()
         {
             if (sfxPrefab == null)
                 return null;
-            for (var i = 0; i < simpleAudioList.Count; i++)
+            for (var i = 0; i < sfxList.Count; i++)
             {
-                if (simpleAudioList[i].gameObject.activeSelf) continue;
-                simpleAudioList[i].gameObject.SetActive(true);
-                return simpleAudioList[i];
+                if (sfxList[i].gameObject.activeSelf) continue;
+                sfxList[i].gameObject.SetActive(true);
+                return sfxList[i];
             }
-            var count = simpleAudioList.Count;
+            var count = sfxList.Count;
             var go = Instantiate(sfxPrefab, transform);
             go.transform.SetParent(transform);
             go.gameObject.name = SOUND_SFX + INSERT_KEY + count;
-            simpleAudioList.Add(go);
+            sfxList.Add(go);
             return go;
         }
-
-
-        private void SceneUnloaded(Scene scene)
+        private void SetAudio(string nameVolum,float volum)
         {
-            StopAllSoundEffect();
+            var value = Mathf.Log10(Mathf.Clamp(volum, 0.0001f, 1))*20;
+            mixer.SetFloat(nameVolum, value );
         }
 
-        private void StopAllSoundEffect()
+        public void PlayPopupOpenSound()
         {
-            for (var i = 0; i < simpleAudioList.Count; i++)
-            {
-                if(simpleAudioList[i].gameObject.activeSelf)
-                    simpleAudioList[i].Stop();
-            }
+            PlaySfx(popupOpenSound);
         }
-        public void PlayButtonClickSound()
+        public void PlayPopupCloseSound()
         {
-            PlaySfx(buttonClickSound);
+            PlaySfx(popupCloseSound);
+        }
+        
+        public void PlayButtonSound(Action complete = null)
+        {
+            PlaySfx(buttonSound,onComplete:complete);
         }
     }
 }

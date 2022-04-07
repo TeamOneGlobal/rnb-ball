@@ -6,7 +6,9 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using GamePlay.CameraControl;
 using MEC;
-using Scriptable;
+using Projects.Scripts;
+using Projects.Scripts.Data;
+using Projects.Scripts.UIController;
 using Sirenix.OdinInspector;
 using Sound;
 using ThirdParties.Truongtv;
@@ -16,7 +18,6 @@ using UIController;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UserDataModel;
 using CharacterController = GamePlay.Characters.CharacterController;
 using UpdateType = DG.Tweening.UpdateType;
 
@@ -30,7 +31,7 @@ namespace GamePlay
         [SerializeField] public CharacterController red, blue;
         [SerializeField] private GameObject hand;
 
-        [Title("UI")] [SerializeField] private TextMeshProUGUI levelText;
+        [Title("UI")] [SerializeField] private TextMeshProUGUI levelText,lifeText;
         [SerializeField] private Image[] controlObject;
         [SerializeField] private Image imgChangeCharacter;
         [SerializeField] private Sprite redImg, blueImg;
@@ -38,15 +39,14 @@ namespace GamePlay
         [BoxGroup("Button")] [SerializeField] private CustomButton moveLeft, moveRight, jump, changeTarget;
         [BoxGroup("Button"), SerializeField] private Button pauseButton;
         [BoxGroup("Button"), SerializeField] private Joystick joyStick;
+        [SerializeField] private ParticleGold particleGold;
+        [SerializeField] private ParticleGold particleHeart;
         private GameState _gameState;
         private bool _isBlueGateOpen, _isRedGateOpen;
         private bool _changingCharacter;
 
         public override void Awake()
         {
-#if UNITY_EDITOR
-            UserDataController.LoadUserData();
-#endif
             base.Awake();
             var sceneName = SceneManager.GetActiveScene().name;
             level = int.Parse(sceneName.Replace("Level ", ""));
@@ -74,26 +74,8 @@ namespace GamePlay
                 controlCharacter.CancelAllMove();
             };
             MoveCamera.Instance.onEndMove = () => { _gameState = GameState.Playing; };
-
-            LifeController.Instance.UpdateLife();
             MagneticController.Instance.Init();
             _gameState = GameState.Playing;
-            var skin = UserDataController.GetSelectedSkin();
-            GameServiceManager.Instance.logEventManager.LogEvent("skin_used",new Dictionary<string, object>
-            {
-                { "skin",skin}
-            });
-            GameServiceManager.Instance.logEventManager.LogEvent("level_start",new Dictionary<string, object>
-            {
-                { "level","lv_"+level}
-            });
-            if ((level-Config.SHOW_REVIEW_AFTER_LEVEL)%Config.SHOW_REVIEW_PER_LEVEL ==0 && !UserDataController.IsRating())
-            {
-#if UNITY_ANDROID || UNITY_EDITOR
-                RatingHelper.RequestReviewInfo();
-#endif
-            }
-            
         }
 
         #region Gate state
@@ -156,7 +138,7 @@ namespace GamePlay
         {
             _gameState = GameState.Pause;
             LogicalPause();
-            GamePlayPopupController.Instance.ShowPausePopup();
+            //GamePlayPopupController.Instance.ShowPausePopup();
         }
 
         private void Resume()
@@ -184,9 +166,9 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
-            if (level >= 3||UserDataController.GetCurrentLevel()>3)
+            GameDataManager.Instance.GameResult(GameResult.Win, level, (int)CoinCollector.Instance.total);
+            if (level >= 3||GameDataManager.Instance.GetCurrentLevel()>3)
             {
-                UserDataController.SetLevelWin(level, CoinCollector.Instance.total);
                 SoundGamePlayController.Instance.PlayWinSound(()=>
                 {
                     GameServiceManager.Instance.adManager.ShowInterstitialAd(LoadSceneController.LoadMenu);
@@ -199,11 +181,11 @@ namespace GamePlay
                    
                     GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
                     {
-                        UserDataController.UpdateCoin(CoinCollector.Instance.total);
-                        var maxLevel = UserDataController.UpdateLevel(level);
-                        GameServiceManager.Instance.logEventManager.SetUserProperties("max_level","lv_"+maxLevel); 
-                        UserDataController.ClearPreviousLevelData();
-                        var newLevel = UserDataController.GetCurrentLevel();
+                        var lastLevelData = GameDataManager.Instance.GetLastLevelData();
+                        GameDataManager.Instance.UpdateCoin((int)CoinCollector.Instance.total);
+                        GameDataManager.Instance.UpdateCoin(lastLevelData.coins);
+                        GameDataManager.Instance.UpdateLastLevel();
+                        var newLevel = GameDataManager.Instance.GetCurrentLevel();
                         LoadSceneController.LoadLevel(newLevel);
                     });
                 });
@@ -236,7 +218,7 @@ namespace GamePlay
                 _gameState = GameState.End;
                 controlCharacter.CancelAllMove();
                 LogicalPause();
-                GamePlayPopupController.Instance.ShowLosePopup();
+                //GamePlayPopupController.Instance.ShowLosePopup();
             });
         }
 
@@ -245,7 +227,7 @@ namespace GamePlay
             _gameState = GameState.Pause;
             controlCharacter.CancelAllMove();
             await UniTask.Delay(TimeSpan.FromSeconds(2.5f));
-            var totalLife = UserDataController.GetTotalLife();
+            var totalLife = GameDataManager.Instance.GetCurrentLife();
             if (totalLife > 1)
             {
                 LifeController.Instance.Addlife(-1);
@@ -416,30 +398,25 @@ namespace GamePlay
 
         #endregion
 
-        #region private
-
-#if UNITY_EDITOR
-        [Button]
-        void SetUpBall()
+        private Sequence _increaseLife;
+        public void UpdateLife(int value,Transform from = null)
         {
-            var balls = FindObjectsOfType<CharacterController>().ToList();
-            controlCharacter = balls.Find(a => a.name.Equals("BlueBall"));
-            blue = balls.Find(a => a.name.Equals("BlueBall"));
-            red = balls.Find(a => a.name.Equals("RedBall"));
-            UnityEditor.SceneManagement.EditorSceneManager.SaveOpenScenes();
-        }
-#endif
-
-        #endregion
-
-        private int countClick = 0;
-        public void UnlockAllLevel()
-        {
-            countClick++;
-            if (countClick >= 10)
+            if(value<=0) return;
+            var currentLife = GameDataManager.Instance.GetCurrentLife();
+            GameDataManager.Instance.AddLife(value);
+            var newLifeValue =  GameDataManager.Instance.GetCurrentLife();
+            if(_increaseLife.IsActive())
+                _increaseLife.Kill(true);
+            if (from != null)
             {
-                UserDataController.ForceUpdateLevel();
+                particleHeart.transform.position = from.position;
+                particleHeart.gameObject.SetActive(true);
+                particleHeart.Play(value);
             }
+            _increaseLife = DOTween.Sequence();
+            _increaseLife.Append(DOTween.To(() => currentLife, x => currentLife = x, newLifeValue, 1f).SetEase(Ease.InOutSine));
+            _increaseLife.OnUpdate(() => { lifeText.text = "" + currentLife; });
+            _increaseLife.OnComplete(() => { lifeText.text = "" + newLifeValue; });
         }
     }
 }

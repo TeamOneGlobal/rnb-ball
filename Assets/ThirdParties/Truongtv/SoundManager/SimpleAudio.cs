@@ -1,93 +1,40 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 
-namespace Truongtv.SoundManager
+namespace ThirdParties.Truongtv.SoundManager
 {
-    public class SimpleAudio : MonoBehaviour
+    public class SimpleAudio : BaseAudio
     {
-        [SerializeField] private protected AudioSource source;
-        [SerializeField] private bool uiAudio;
-        [SerializeField] public bool autoPlay;
-        private bool _isPause;
-        private bool _isPlay;
-
-
-        protected virtual void Awake()
-        {
-            SoundManager.OnSfxSettingChange += OnSettingChange;
-        }
-
+        [SerializeField] public bool autoPlay,loop;
         private void Start()
         {
+            AudioSource.loop = loop;
             if (autoPlay)
             {
-                PlaySound();
+                AudioSource.Play();
             }
         }
-        private void OnDestroy()
+        public void Play()
         {
-            SoundManager.OnSfxSettingChange -= OnSettingChange;
-            SoundManager.OnBgmSettingChange -= OnSettingChange;
+            AudioSource.Play();
         }
 
-        public AudioClip CurrentClip()
+        public void Play(AudioClip clip, bool isLoop = false,float delay = 0f)
         {
-            return source.clip;
-        }
-        public async UniTaskVoid Play(AudioClip playClip, bool isLoop = false,float delay = 0f,Action onComplete = null)
-        {
-            source.Stop();
-            source.clip = playClip;
-            source.loop = isLoop;
-            await UniTask.Delay(TimeSpan.FromSeconds(delay), cancellationToken: this.GetCancellationTokenOnDestroy());
-            if(source==null) return;
-            if(!_isPause) PlaySound();
-            if (isLoop) return;
-            await UniTask.WaitUntil(() => source==null||source.isPlaying==false, cancellationToken: this.GetCancellationTokenOnDestroy());
-            onComplete?.Invoke();
-            if(gameObject==null|| source==null) return;
-            if(gameObject.activeSelf && uiAudio)
-                Stop();
+            AudioSource.loop = isLoop;
+            AudioSource.clip = clip;
+            if(delay<=0f)
+                AudioSource.Play();
+            else
+            {
+                AudioSource.PlayDelayed(delay);
+            }
         }
 
-        public async UniTaskVoid Play( bool isLoop = false)
+        public void SetLoop(bool auto)
         {
-            source.Stop();
-            source.loop = isLoop;
-            if(source==null) return;
-            if(!_isPause) PlaySound();
+            AudioSource.loop = auto;
         }
-        protected void OnSettingChange(bool isOn)
-        {
-            source.mute = !isOn;
-        }
-
-       
-        protected virtual void PlaySound()
-        {
-            if(source ==null) return;
-            source.mute = !SoundManager.IsSoundSfx();
-            source.Play();
-        }
-        public virtual void Stop(bool forceStop = false)
-        {
-            source.Stop();
-            source.loop = false;
-            if(uiAudio)
-                gameObject.SetActive(false);
-        }
-        public void Pause()
-        {
-            _isPause = true;
-            source.Pause();
-        }
-
-        public void Resume()
-        {
-            _isPause = false;
-            source.UnPause();
-        }
-    
     }
 }

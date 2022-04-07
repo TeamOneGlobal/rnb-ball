@@ -1,7 +1,6 @@
-using System;
+using Projects.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
-using UserDataModel;
 
 namespace Tutorial
 {
@@ -16,16 +15,16 @@ namespace Tutorial
 
         private void Start()
         {
-            if (UserDataController.GetTutorialStep() != (int) TutorialStep.ClickStart)
+            if (GameDataManager.Instance.GetTutorialStep()!= (int) TutorialStep.ClickStart)
             {
                 gameObject.SetActive(false);
                 return;
             }
-            if (UserDataController.GetTutorialStep() == (int) TutorialStep.ClickStart)
+            if (GameDataManager.Instance.GetTutorialStep() == (int) TutorialStep.ClickStart)
             {
                 startButton.onClick.AddListener(() =>
                 {
-                    UserDataController.SetFinishStep();
+                    GameDataManager.Instance.FinishStep();
                 });
                 fakeButton.onClick = startButton.onClick;
                 step1.SetActive(true);

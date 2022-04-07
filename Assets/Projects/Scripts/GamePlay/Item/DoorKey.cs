@@ -2,7 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sirenix.OdinInspector;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -34,7 +34,7 @@ namespace GamePlay.Item
             Collider2D.enabled = false;
             keyUi.SetActive(false);
             effect.SetActive(true);
-            simpleAudio.Play().Forget();
+            simpleAudio.Play();
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
             gameObject.SetActive(false);
             

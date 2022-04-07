@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f63af42affca41018fefc2d804f51712, type: 3}
+  m_Script: {fileID: 11500000, guid: 85a1e895425144079f7b3d08403132be, type: 3}
   m_Name: SkinData
   m_EditorClassIdentifier: 
   serializationData:
@@ -22,24 +22,32 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   skeleton: {fileID: 11400000, guid: 2c4cde40176988842a5d37819c41f65d, type: 2}
-  skins:
+  skinList:
   - skinName: 0
-    unlockType: 5
+    unlockType: 0
     unlockValue: 0
     location: 1
   - skinName: 1
-    unlockType: 1
-    unlockValue: 3
+    unlockType: 0
+    unlockValue: 0
     location: 1
   - skinName: 2
     unlockType: 0
     unlockValue: 0
-    location: 2
+    location: 1
   - skinName: 3
-    unlockType: 1
-    unlockValue: 5
+    unlockType: 0
+    unlockValue: 0
+    location: 1
+  - skinName: 4
+    unlockType: 0
+    unlockValue: 0
     location: 1
   - skinName: 5
+    unlockType: 0
+    unlockValue: 0
+    location: 2
+  - skinName: 6
     unlockType: 0
     unlockValue: 0
     location: 2
@@ -56,60 +64,53 @@ MonoBehaviour:
     unlockValue: 0
     location: 2
   - skinName: 10
-    unlockType: 4
-    unlockValue: 7
+    unlockType: 0
+    unlockValue: 0
+    location: 0
+  - skinName: 11
+    unlockType: 0
+    unlockValue: 0
     location: 0
   - skinName: 12
-    unlockType: 4
-    unlockValue: 7
+    unlockType: 0
+    unlockValue: 0
     location: 0
   - skinName: 13
-    unlockType: 1
-    unlockValue: 15
-    location: 1
+    unlockType: 0
+    unlockValue: 0
+    location: 0
   - skinName: 14
     unlockType: 0
     unlockValue: 0
-    location: 1
+    location: 0
   - skinName: 15
-    unlockType: 1
-    unlockValue: 25
-    location: 1
+    unlockType: 0
+    unlockValue: 0
+    location: 0
   - skinName: 16
     unlockType: 0
     unlockValue: 0
-    location: 2
+    location: 0
   - skinName: 17
     unlockType: 0
     unlockValue: 0
-    location: 2
+    location: 0
   - skinName: 18
-    unlockType: 1
-    unlockValue: 35
-    location: 1
-  - skinName: 4
-    unlockType: 2
-    unlockValue: 45
-    location: 1
-  - skinName: 6
-    unlockType: 3
+    unlockType: 0
     unlockValue: 0
-    location: 1
-  - skinName: 11
-    unlockType: 2
-    unlockValue: 0
-    location: 1
+    location: 0
   - skinName: 19
-    unlockType: 4
-    unlockValue: 10
+    unlockType: 0
+    unlockValue: 0
     location: 0
   - skinName: 20
-    unlockType: 4
-    unlockValue: 5
+    unlockType: 0
+    unlockValue: 0
     location: 0
   - skinName: 21
-    unlockType: 3
-    unlockValue: 5
+    unlockType: 0
+    unlockValue: 0
     location: 0
-  baseCoinValue: 20000
-  increaseValue: 10000
+  licensingSkin: []
+  baseCoinValue: 30000
+  increaseCoinValue: 10000

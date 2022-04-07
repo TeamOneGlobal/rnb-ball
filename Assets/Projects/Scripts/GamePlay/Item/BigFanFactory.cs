@@ -1,6 +1,6 @@
 using DG.Tweening;
 using Sirenix.OdinInspector;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 
 namespace GamePlay.Item

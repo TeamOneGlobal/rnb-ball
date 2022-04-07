@@ -1,14 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using Projects.Scripts;
 using Sirenix.OdinInspector;
 using Spine.Unity;
 using ThirdParties.Truongtv;
-using Truongtv.Services.Ad;
-using Truongtv.SoundManager;
-using UIController;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
-using UserDataModel;
 
 namespace GamePlay.Item
 {
@@ -22,7 +20,7 @@ namespace GamePlay.Item
         {
             var position = transform.localPosition;
             transform.DOLocalMoveY(position.y + 0.3f, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
-            var totalUnlock = UserDataController.GetTotalUnlockSKins();
+            var totalUnlock = GameDataManager.Instance.GetUnlockedSkin();
             var data = GetAllSkinName().Except(totalUnlock).ToList();
             if (data.Count == 0)
             {
@@ -60,7 +58,7 @@ namespace GamePlay.Item
                 gameObject.SetActive(false);
             }
 
-            audio.Play().Forget();
+            audio.Play();
             
         }
 

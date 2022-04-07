@@ -1,4 +1,4 @@
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 
 namespace GamePlay.Item
@@ -23,7 +23,7 @@ namespace GamePlay.Item
                 if (!_isMove )
                 {
                     _isMove = true;
-                    simpleAudio.Play(move, true).Forget();
+                    simpleAudio.Play(move, true);
                 }
                
             }
@@ -41,7 +41,7 @@ namespace GamePlay.Item
             }
             if (_isDrop && grounded )
             {
-                simpleAudio.Play(drop).Forget();
+                simpleAudio.Play(drop);
                 _isDrop = false;
             }
             if(!_isCollisionBall) return;

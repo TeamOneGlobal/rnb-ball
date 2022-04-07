@@ -1,5 +1,5 @@
 using System;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

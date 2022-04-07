@@ -1,9 +1,7 @@
-using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sirenix.OdinInspector;
-using Truongtv.SoundManager;
-using UIController;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 
 namespace GamePlay.Characters
@@ -41,7 +39,7 @@ namespace GamePlay.Characters
         public void Init(CharacterController controller)
         {
             _controller = controller;
-            moveMaxSpeed = Config.BALL_MAX_MOVE_SPEED;
+            //moveMaxSpeed = Config.BALL_MAX_MOVE_SPEED;
         }
         private void Update()
         {
@@ -114,7 +112,7 @@ namespace GamePlay.Characters
         {
             if (!_isGrounded&&!_isWater) return;
             rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpSpeed);
-            simpleAudio.Play(jumpSound).Forget();
+            simpleAudio.Play(jumpSound);
             await UniTask.WaitUntil(() => _isGrounded);
             _velocity.y = 0;
         }
@@ -174,7 +172,7 @@ namespace GamePlay.Characters
         {
             var eff = Instantiate(landedEffect);
             eff.transform.position = new Vector3(0,-0.65f,0)+transform.position;
-            simpleAudio.Play(landedSound).Forget();
+            simpleAudio.Play(landedSound);
         }
 
         private MoveDirection _roll;

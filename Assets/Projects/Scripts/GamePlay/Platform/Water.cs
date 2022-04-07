@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using GamePlay.Item;
 using Sirenix.OdinInspector;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 using CharacterController = GamePlay.Characters.CharacterController;
 
@@ -15,7 +15,7 @@ namespace GamePlay.Platform
         protected override void TriggerEnter(string triggerTag, Transform triggerObject)
         {
             base.TriggerEnter(triggerTag, triggerObject);
-            simpleAudio.Play().Forget();
+            simpleAudio.Play();
             triggerObject.GetComponent<CharacterController>().SetOnWater(true);
             if(dieTag.Contains(triggerTag))
                 DamageTarget(triggerObject);

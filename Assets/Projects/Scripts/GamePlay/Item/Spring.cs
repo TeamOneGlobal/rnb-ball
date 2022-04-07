@@ -1,9 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using Sirenix.OdinInspector;
-using Spine.Unity;
-using Truongtv.SoundManager;
+using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 using CharacterController = GamePlay.Characters.CharacterController;
 
@@ -22,7 +20,7 @@ namespace GamePlay.Item
             triggerObject.GetComponent<CharacterController>().AddForce(force);
             await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
             obj.DOPunchPosition(new Vector3(0, -0.36f, 0), 1f).SetEase(Ease.OutBounce);
-            audio.Play().Forget();
+            audio.Play();
             
         }
         
