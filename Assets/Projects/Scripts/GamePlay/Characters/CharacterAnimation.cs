@@ -45,7 +45,7 @@ namespace GamePlay.Characters
             }
             animation.Initialize(true);
 
-            if (GamePlayController.Instance.skinData.IsSkinPremium(skin))
+            if (GameDataManager.Instance.skinData.IsSkinPremium(skin))
             {
                 PlayAnim("ingame_premium_"+skin,3,true);
             }

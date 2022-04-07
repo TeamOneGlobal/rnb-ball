@@ -6,6 +6,7 @@ namespace GamePlay.Characters
 {
     public class CharacterController : MonoBehaviour
     {
+        public Character character; 
         [SerializeField] private new CharacterAnimation animation;
         [SerializeField] private CharacterMovement movement;
         [SerializeField] private CharacterMagnetic magnetic;
@@ -161,5 +162,10 @@ namespace GamePlay.Characters
         {
             animation.TrySkin(skinName);
         }
+    }
+    
+    public enum Character
+    {
+        Red,Blue
     }
 }

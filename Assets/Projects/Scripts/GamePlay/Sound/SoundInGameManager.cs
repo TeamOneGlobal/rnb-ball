@@ -10,8 +10,9 @@ namespace Projects.Scripts.GamePlay.Sound
     public class SoundInGameManager : MonoBehaviour
     {
         [SerializeField] private SoundManager soundManager;
-        [SerializeField,FoldoutGroup("UI Sounds")] private AudioClip win,lose;
-
+        [SerializeField,FoldoutGroup("UI Sounds")] private AudioClip win,lose,changeTarget;
+        [SerializeField] private AudioClip[] winSounds;
+        [SerializeField] private AudioClip[] loseSound;
         [SerializeField, FoldoutGroup("UI Sounds")]
         private AudioClip[] bgm,bossFight;
         [FoldoutGroup("Game Play Sounds")]
@@ -37,78 +38,12 @@ namespace Projects.Scripts.GamePlay.Sound
             _instance = this;
         }
 
-        #region Ball
-        public void PlayBallJumpSound()
-        {
-            var r = Random.Range(0, jumpClips.Length);
-            soundManager.PlaySfx(jumpClips[r]);
-        }
-
-        public void PlayBallLandingSound()
-        {
-            soundManager.PlaySfx(ballLanding);
-        }
-
-        public void PlayBallDamagedSound()
-        {
-            soundManager.PlaySfx(ballHurt);
-        }
-
-        public void PlayBallAttackSound()
-        {
-            soundManager.PlaySfx(ballAttack);
-        }
-
-        public void PlayBallDieSound()
-        {
-            soundManager.PlaySfx(ballDie);
-        }
-
-        public void PlayBallCollectCoin()
-        {
-            soundManager.PlaySfx(ballCollectCoin);
-        }
-
-        public void PlayBallCollectStar()
-        {
-            soundManager.PlaySfx(ballCollectStar);
-        }
-        
-        public void PlayBallCollectHeart()
-        {
-            soundManager.PlaySfx(ballCollectHeart);
-        }
-        public void PlayBallCollectMagnet()
-        {
-            soundManager.PlaySfx(ballCollectMagnet);
-        }
-
-        public void PlayBallTrySkin()
-        {
-            soundManager.PlaySfx(ballTrySkin);
-        }
-
-        public void PlayBallWinSound()
-        {
-            soundManager.PlaySfx(ballWin);
-        }
-        public void PlayBallExplode()
-        {
-            soundManager.PlaySfx(ballExplode);
-        }
-        public void PlayBallInCheckPoint()
-        {
-            soundManager.PlaySfx(ballInCheckPoint);
-        }
-        public void PlayBallRevive()
-        {
-            soundManager.PlaySfx(ballRevive);
-        }
-        
-        #endregion
-
         #region UI
 
+        public void PlayChangeTargetSound()
+        {
+            soundManager.PlaySfx(changeTarget);
+        }
         public void PlayBgmSound()
         {
             var r = Random.Range(0, bgm.Length);
@@ -125,13 +60,15 @@ namespace Projects.Scripts.GamePlay.Sound
         public void PlayLoseSound(Action complete)
         {
             Bgm.Instance.Stop();
-            soundManager.PlaySfx(lose,onComplete:complete);
+            var r = Random.Range(0, loseSound.Length);
+            soundManager.PlaySfx(loseSound[r],onComplete:complete);
         }
 
         public void PlayWinSound(Action complete)
         {
             Bgm.Instance.Stop();
-            soundManager.PlaySfx(win,onComplete:complete);
+            var r = Random.Range(0, winSounds.Length);
+            soundManager.PlaySfx(winSounds[r],onComplete:complete);
         }
         
 

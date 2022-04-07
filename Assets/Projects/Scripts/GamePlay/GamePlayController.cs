@@ -5,12 +5,13 @@ using Com.LuisPedroFonseca.ProCamera2D;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using GamePlay.CameraControl;
+using GamePlay.Characters;
 using MEC;
 using Projects.Scripts;
 using Projects.Scripts.Data;
+using Projects.Scripts.GamePlay.Sound;
 using Projects.Scripts.UIController;
 using Sirenix.OdinInspector;
-using Sound;
 using ThirdParties.Truongtv;
 using TMPro;
 using Truongtv.Utilities;
@@ -27,20 +28,17 @@ namespace GamePlay
     {
         public int level;
 
-        [SerializeField] public CharacterController controlCharacter;
-        [SerializeField] public CharacterController red, blue;
+        [HideInInspector] public CharacterController controlCharacter;
+        [HideInInspector] public CharacterController red, blue;
         [SerializeField] private GameObject hand;
 
         [Title("UI")] [SerializeField] private TextMeshProUGUI levelText,lifeText;
         [SerializeField] private Image[] controlObject;
         [SerializeField] private Image imgChangeCharacter;
         [SerializeField] private Sprite redImg, blueImg;
-        [SerializeField] public SkinData skinData;
         [BoxGroup("Button")] [SerializeField] private CustomButton moveLeft, moveRight, jump, changeTarget;
         [BoxGroup("Button"), SerializeField] private Button pauseButton;
         [BoxGroup("Button"), SerializeField] private Joystick joyStick;
-        [SerializeField] private ParticleGold particleGold;
-        [SerializeField] private ParticleGold particleHeart;
         private GameState _gameState;
         private bool _isBlueGateOpen, _isRedGateOpen;
         private bool _changingCharacter;
@@ -51,6 +49,9 @@ namespace GamePlay
             var sceneName = SceneManager.GetActiveScene().name;
             level = int.Parse(sceneName.Replace("Level ", ""));
             levelText.text = sceneName;
+            var chars = FindObjectsOfType<CharacterController>();
+            red = chars.First(a => a.character == Character.Red);
+            blue = chars.First(a => a.character == Character.Blue);
             ProCamera2D.Instance.RemoveAllCameraTargets();
             ProCamera2D.Instance.AddCameraTarget(blue.transform);
         }
@@ -63,11 +64,12 @@ namespace GamePlay
             moveRight.onExit.AddListener(EndMoveRight);
             jump.onClick.AddListener(Jump);
             changeTarget.onClick.AddListener(SwitchCharacter);
-            changeTarget.onClick.AddListener(SoundGamePlayController.Instance.PlayChangeTargetSound);
+            changeTarget.onClick.AddListener(SoundInGameManager.Instance.PlayChangeTargetSound);
             pauseButton.onClick.AddListener(Pause);
             joyStick.onPointDown.AddListener(MoveCamera.Instance.OnPointerDown);
             joyStick.onPointUp.AddListener(MoveCamera.Instance.OnPointerUp);
             joyStick.onDrag.AddListener(MoveCamera.Instance.OnDrag);
+            LifeController.Instance.UpdateLife();
             MoveCamera.Instance.onStartMove = () =>
             {
                 _gameState = GameState.Pause;
@@ -169,14 +171,14 @@ namespace GamePlay
             GameDataManager.Instance.GameResult(GameResult.Win, level, (int)CoinCollector.Instance.total);
             if (level >= 3||GameDataManager.Instance.GetCurrentLevel()>3)
             {
-                SoundGamePlayController.Instance.PlayWinSound(()=>
+                SoundInGameManager.Instance.PlayWinSound(()=>
                 {
                     GameServiceManager.Instance.adManager.ShowInterstitialAd(LoadSceneController.LoadMenu);
                 });
             }
             else
             {
-                SoundGamePlayController.Instance.PlayWinSound(() =>
+                SoundInGameManager.Instance.PlayWinSound(() =>
                 {
                    
                     GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
@@ -213,7 +215,7 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
-            SoundGamePlayController.Instance.PlayLoseSound(() =>
+            SoundInGameManager.Instance.PlayLoseSound(() =>
             {
                 _gameState = GameState.End;
                 controlCharacter.CancelAllMove();
@@ -398,25 +400,6 @@ namespace GamePlay
 
         #endregion
 
-        private Sequence _increaseLife;
-        public void UpdateLife(int value,Transform from = null)
-        {
-            if(value<=0) return;
-            var currentLife = GameDataManager.Instance.GetCurrentLife();
-            GameDataManager.Instance.AddLife(value);
-            var newLifeValue =  GameDataManager.Instance.GetCurrentLife();
-            if(_increaseLife.IsActive())
-                _increaseLife.Kill(true);
-            if (from != null)
-            {
-                particleHeart.transform.position = from.position;
-                particleHeart.gameObject.SetActive(true);
-                particleHeart.Play(value);
-            }
-            _increaseLife = DOTween.Sequence();
-            _increaseLife.Append(DOTween.To(() => currentLife, x => currentLife = x, newLifeValue, 1f).SetEase(Ease.InOutSine));
-            _increaseLife.OnUpdate(() => { lifeText.text = "" + currentLife; });
-            _increaseLife.OnComplete(() => { lifeText.text = "" + newLifeValue; });
-        }
+        
     }
 }

@@ -311,12 +311,12 @@ GameObject:
   - component: {fileID: 2396645912159525617}
   - component: {fileID: 2396645912159525622}
   - component: {fileID: 2396645912159525623}
-  - component: {fileID: 5434010119429282405}
   - component: {fileID: 1496542949}
   - component: {fileID: 6713348387809964849}
   - component: {fileID: 1984924420065830205}
   - component: {fileID: 370850142085112890}
   - component: {fileID: 8106676501461472179}
+  - component: {fileID: 2409488366449108705}
   m_Layer: 8
   m_Name: BlueBall
   m_TagString: Blue
@@ -388,7 +388,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -501,7 +501,7 @@ MonoBehaviour:
   landedEffect: {fileID: 3715023244567546197, guid: 6ece82e7207212544b02c8a7a89ac94b, type: 3}
   moveLeftEffect: {fileID: 8472369606594099028, guid: c488ee1473b478b4c81ae452f8ff7b49, type: 3}
   moveRightEffect: {fileID: 8472369606594099028, guid: be07a9ee02692cc468bd4f44ce0790d8, type: 3}
-  simpleAudio: {fileID: 5434010119429282405}
+  simpleAudio: {fileID: 2409488366449108705}
   jumpSound: {fileID: 8300000, guid: 23c57aca5adb07647b7f3da521deead5, type: 3}
   landedSound: {fileID: 8300000, guid: 57a3c2cbbfbebf04eb2d0201dd1ed020, type: 3}
 --- !u!114 &2396645912159525623
@@ -519,21 +519,6 @@ MonoBehaviour:
   selected: {fileID: 2396645910778496683}
   particle: {fileID: 4736213700090685449}
   audio: {fileID: 1984924420065830205}
---- !u!114 &5434010119429282405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2396645912159525621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 2396645912159525617}
-  uiAudio: 0
-  autoPlay: 0
 --- !u!114 &1496542949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +539,7 @@ MonoBehaviour:
   reviveSounds:
   - {fileID: 8300000, guid: 6a171a135c12dfb4aab39ff12c51eac0, type: 3}
   - {fileID: 8300000, guid: 6da6592f21dcb404591e4cc0c0af4274, type: 3}
-  audio: {fileID: 5434010119429282405}
+  audio: {fileID: 2409488366449108705}
 --- !u!114 &6713348387809964849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,11 +600,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd4e71586b94cbdb48a9a558f8a53cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: 1
   animation: {fileID: 370850142085112890}
   movement: {fileID: 2396645912159525622}
   magnetic: {fileID: 6713348387809964849}
   selected: {fileID: 2396645912159525623}
   healthPoint: {fileID: 1496542949}
+--- !u!114 &2409488366449108705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2396645912159525621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoPlay: 0
+  loop: 0
 --- !u!1 &3765324638444863039
 GameObject:
   m_ObjectHideFlags: 0

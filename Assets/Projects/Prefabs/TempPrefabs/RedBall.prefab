@@ -5168,12 +5168,12 @@ GameObject:
   - component: {fileID: 8977155203150345521}
   - component: {fileID: 8977155203150345520}
   - component: {fileID: 8977155203150345532}
-  - component: {fileID: 3350451975121054201}
   - component: {fileID: 897421561095984371}
   - component: {fileID: 8520515044623303130}
   - component: {fileID: 6422239471122426116}
   - component: {fileID: 8975211178765391776}
   - component: {fileID: 8362127752797406684}
+  - component: {fileID: 6281419290033788307}
   m_Layer: 8
   m_Name: RedBall
   m_TagString: Red
@@ -5245,7 +5245,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -5358,7 +5358,7 @@ MonoBehaviour:
   landedEffect: {fileID: 3715023244567546197, guid: 6ece82e7207212544b02c8a7a89ac94b, type: 3}
   moveLeftEffect: {fileID: 8472369606594099028, guid: c488ee1473b478b4c81ae452f8ff7b49, type: 3}
   moveRightEffect: {fileID: 8472369606594099028, guid: be07a9ee02692cc468bd4f44ce0790d8, type: 3}
-  simpleAudio: {fileID: 3350451975121054201}
+  simpleAudio: {fileID: 6281419290033788307}
   jumpSound: {fileID: 8300000, guid: 23c57aca5adb07647b7f3da521deead5, type: 3}
   landedSound: {fileID: 8300000, guid: 57a3c2cbbfbebf04eb2d0201dd1ed020, type: 3}
 --- !u!114 &8977155203150345532
@@ -5376,21 +5376,6 @@ MonoBehaviour:
   selected: {fileID: 8977155204477906388}
   particle: {fileID: 8887145015865837613}
   audio: {fileID: 6422239471122426116}
---- !u!114 &3350451975121054201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8977155203150345522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 8977155203150345521}
-  uiAudio: 0
-  autoPlay: 0
 --- !u!114 &897421561095984371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5411,7 +5396,7 @@ MonoBehaviour:
   reviveSounds:
   - {fileID: 8300000, guid: 6a171a135c12dfb4aab39ff12c51eac0, type: 3}
   - {fileID: 8300000, guid: 6da6592f21dcb404591e4cc0c0af4274, type: 3}
-  audio: {fileID: 3350451975121054201}
+  audio: {fileID: 6281419290033788307}
 --- !u!114 &8520515044623303130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5477,6 +5462,20 @@ MonoBehaviour:
   magnetic: {fileID: 8520515044623303130}
   selected: {fileID: 8977155203150345532}
   healthPoint: {fileID: 897421561095984371}
+--- !u!114 &6281419290033788307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977155203150345522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoPlay: 0
+  loop: 0
 --- !u!1 &8977155204477906388
 GameObject:
   m_ObjectHideFlags: 0
