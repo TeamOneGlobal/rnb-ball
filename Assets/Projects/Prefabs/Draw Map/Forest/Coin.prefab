@@ -185,7 +185,7 @@ MonoBehaviour:
   - Blue
   - Magnet
   effect: {fileID: 2975963622879864815}
-  simpleAudio: {fileID: 4543509249868197879}
+  simpleAudio: {fileID: 2185046300950589662}
 --- !u!1 &7505807405046171505
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8640407841201537897}
   - component: {fileID: 1464233499}
-  - component: {fileID: 4543509249868197879}
+  - component: {fileID: 2185046300950589662}
   m_Layer: 7
   m_Name: Coin
   m_TagString: Untagged
@@ -229,7 +229,7 @@ AudioSource:
   m_GameObject: {fileID: 7505807405046171505}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 6c342321b8870934dbb82bb8590964e2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -316,7 +316,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4543509249868197879
+--- !u!114 &2185046300950589662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,12 +325,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7505807405046171505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 1464233499}
-  uiAudio: 0
   autoPlay: 0
+  loop: 0
 --- !u!1001 &3586510754662390869
 PrefabInstance:
   m_ObjectHideFlags: 0

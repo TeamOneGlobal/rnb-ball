@@ -52,8 +52,6 @@ namespace Projects.Scripts.UIController.Popup
                     StartCoroutine(AllowClose());
                 }
             };
-            // if(!GameDataManager.Instance.showBannerInGame)
-            //     GameServiceManager.Instance.adManager.ShowBanner();
             ball.initialSkinName = skin;
             ball.Initialize(true);
         }
@@ -71,8 +69,6 @@ namespace Projects.Scripts.UIController.Popup
         }
         void OnClose()
         {
-            // if(!GameDataManager.Instance.showBannerInGame)
-            //     GameServiceManager.Instance.adManager.HideBanner();
             closeCompleteAction = null;
             Close();
             _onClose?.Invoke();

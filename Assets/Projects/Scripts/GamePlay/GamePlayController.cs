@@ -11,8 +11,10 @@ using Projects.Scripts;
 using Projects.Scripts.Data;
 using Projects.Scripts.GamePlay.Sound;
 using Projects.Scripts.UIController;
+using Projects.Scripts.UIController.Popup;
 using Sirenix.OdinInspector;
 using ThirdParties.Truongtv;
+using ThirdParties.Truongtv.SoundManager;
 using TMPro;
 using Truongtv.Utilities;
 using UIController;
@@ -42,7 +44,7 @@ namespace GamePlay
         private GameState _gameState;
         private bool _isBlueGateOpen, _isRedGateOpen;
         private bool _changingCharacter;
-
+        private string _skin;
         public override void Awake()
         {
             base.Awake();
@@ -65,7 +67,11 @@ namespace GamePlay
             jump.onClick.AddListener(Jump);
             changeTarget.onClick.AddListener(SwitchCharacter);
             changeTarget.onClick.AddListener(SoundInGameManager.Instance.PlayChangeTargetSound);
-            pauseButton.onClick.AddListener(Pause);
+            pauseButton.onClick.AddListener(() =>
+            {
+                SoundManager.Instance.PlayButtonSound();
+                PopupInGameController.Instance.OpenPopupPause();
+            });
             joyStick.onPointDown.AddListener(MoveCamera.Instance.OnPointerDown);
             joyStick.onPointUp.AddListener(MoveCamera.Instance.OnPointerUp);
             joyStick.onDrag.AddListener(MoveCamera.Instance.OnDrag);
@@ -78,8 +84,8 @@ namespace GamePlay
             MoveCamera.Instance.onEndMove = () => { _gameState = GameState.Playing; };
             MagneticController.Instance.Init();
             _gameState = GameState.Playing;
+            SoundInGameManager.Instance.PlayBgmSound();
         }
-
         #region Gate state
 
         public Action onOpenRed, onOpenBlue;
@@ -136,14 +142,13 @@ namespace GamePlay
             }
         }
 
-        private void Pause()
+        public void Pause()
         {
             _gameState = GameState.Pause;
             LogicalPause();
-            //GamePlayPopupController.Instance.ShowPausePopup();
         }
 
-        private void Resume()
+        public void Resume()
         {
             _gameState = GameState.Playing;
             LogicalResume();
@@ -220,7 +225,12 @@ namespace GamePlay
                 _gameState = GameState.End;
                 controlCharacter.CancelAllMove();
                 LogicalPause();
-                //GamePlayPopupController.Instance.ShowLosePopup();
+                PopupInGameController.Instance.OpenPopupRevive(SetCharacterRevive, () =>
+                {
+                    GameDataManager.Instance.GameResult(GameResult.Lose, level, (int)CoinCollector.Instance.total);
+                    LogicalResume();
+                    LoadSceneController.LoadMenu();
+                },_skin);
             });
         }
 

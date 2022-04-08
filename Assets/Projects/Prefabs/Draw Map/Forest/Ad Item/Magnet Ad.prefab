@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9160153155719554700}
-  - component: {fileID: 7904340620040462044}
   - component: {fileID: 9195735434202202347}
+  - component: {fileID: 8218354831306671480}
   m_Layer: 0
   m_Name: Magnet Ad
   m_TagString: Untagged
@@ -33,21 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7904340620040462044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877423570690845325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 9195735434202202347}
-  uiAudio: 0
-  autoPlay: 0
 --- !u!82 &9195735434202202347
 AudioSource:
   m_ObjectHideFlags: 0
@@ -57,7 +42,7 @@ AudioSource:
   m_GameObject: {fileID: 877423570690845325}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: c861fe932cf9c354e9947d1326171c54, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -144,6 +129,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8218354831306671480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877423570690845325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoPlay: 0
+  loop: 0
 --- !u!1 &3191358001625059665
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,7 +272,7 @@ MonoBehaviour:
   - Red
   - Blue
   adsItem: 1
-  audio: {fileID: 7904340620040462044}
+  audio: {fileID: 8218354831306671480}
 --- !u!1 &3191358002521648098
 GameObject:
   m_ObjectHideFlags: 0

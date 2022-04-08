@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8382082490101557569}
   - component: {fileID: 8382082490101557570}
   - component: {fileID: 594422549}
-  - component: {fileID: 594422550}
   - component: {fileID: 594422551}
+  - component: {fileID: 3183864627901116604}
   m_Layer: 9
   m_Name: crate box
   m_TagString: Box
@@ -150,7 +150,7 @@ AudioSource:
   m_GameObject: {fileID: 8382082490101557568}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -237,21 +237,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &594422550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8382082490101557568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 594422549}
-  uiAudio: 0
-  autoPlay: 0
 --- !u!114 &594422551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,9 +255,23 @@ MonoBehaviour:
   groundAndPlatformLayers:
     serializedVersion: 2
     m_Bits: 576
-  simpleAudio: {fileID: 594422550}
+  simpleAudio: {fileID: 3183864627901116604}
   move: {fileID: 8300000, guid: b6b6ea50a69b14f4a99997a241efca0f, type: 3}
   drop: {fileID: 8300000, guid: e8094bf3ed42e7b48a496c56f0b9de8b, type: 3}
   rigidbody: {fileID: 8382082490101557569}
   grounded: 0
   baseForce: {x: 1.5, y: 0}
+--- !u!114 &3183864627901116604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8382082490101557568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoPlay: 0
+  loop: 0

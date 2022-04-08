@@ -37,18 +37,7 @@ namespace Projects.Scripts.UIController
             sfxToggle.isOn = SoundManager.IsSfx();
             bgmToggle.isOn = SoundManager.IsBgm();
             vibrateToggle.isOn = PlayerPrefs.GetInt("vibration") == 0;
-            
-            // if (SquidGameController.Instance != null)
-            // {
-            //     SquidGameController.Instance.Pause();
-            //     skipButton.gameObject.SetActive(false);
-            // }
-            // else
-            // {
-            //     GamePlayController.Instance.Pause();
-            // }
-            // if(!GameDataManager.Instance.showBannerInGame)
-            //     GameServiceManager.Instance.adManager.ShowBanner();
+            GamePlayController.Instance.Pause();
         }
         private void OnStart()
         {
@@ -60,16 +49,7 @@ namespace Projects.Scripts.UIController
         private void OnClose()
         {
             SoundManager.Instance.PlayPopupCloseSound();
-            // if (SquidGameController.Instance != null)
-            // {
-            //     SquidGameController.Instance.Resume();
-            // }
-            // else
-            // {
-            //     GamePlayController.Instance.Resume();
-            // }
-            // if(!GameDataManager.Instance.showBannerInGame)
-            //     GameServiceManager.Instance.adManager.HideBanner();
+            GamePlayController.Instance.Resume();
             container.DOScale(0, DURATION).SetUpdate(UpdateType.Normal, true).SetEase(Ease.InBack);
             
         }
@@ -85,22 +65,15 @@ namespace Projects.Scripts.UIController
             
             GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
             {
-                // if (SquidGameController.Instance != null)
-                // {
-                //     SceneLoader.ReloadScene();
-                // }
-                // else
-                // {
-                //     GamePlayController.Instance.Resume();
-                //     SceneLoader.LoadLevel(GamePlayController.Instance.level);
-                // }
+                GamePlayController.Instance.Resume();
+                LoadSceneController.LoadLevel(GamePlayController.Instance.level);
             });
         }
 
         private void OnHomeButtonClick()
         {
             SoundManager.Instance.PlayButtonSound();
-            //GamePlayController.Instance.Resume();
+            GamePlayController.Instance.Resume();
             GameServiceManager.Instance.adManager.ShowInterstitialAd(LoadSceneController.LoadMenu);
             
         }
@@ -108,7 +81,7 @@ namespace Projects.Scripts.UIController
         private void OnSkipButtonClick()
         {
             SoundManager.Instance.PlayButtonSound();
-            //GamePlayController.Instance.Resume();
+            GamePlayController.Instance.Resume();
             GameServiceManager.Instance.logEventManager.LogEvent("count_ad_in_game_click",new Dictionary<string, object>
             {
                 {"level","lv_"+GamePlayController.Instance.level},

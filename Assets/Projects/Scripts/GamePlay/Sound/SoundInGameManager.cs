@@ -14,17 +14,7 @@ namespace Projects.Scripts.GamePlay.Sound
         [SerializeField] private AudioClip[] winSounds;
         [SerializeField] private AudioClip[] loseSound;
         [SerializeField, FoldoutGroup("UI Sounds")]
-        private AudioClip[] bgm,bossFight;
-        [FoldoutGroup("Game Play Sounds")]
-        [SerializeField, FoldoutGroup("Game Play Sounds/Ball")]
-        private AudioClip ballTrySkin, ballLanding, ballHurt, ballAttack, ballDie, ballCollectCoin,ballCollectStar,ballCollectHeart,ballCollectMagnet,ballWin,ballExplode,ballInCheckPoint,ballRevive;
-
-        [SerializeField, FoldoutGroup("Game Play Sounds/Ball")]
-        private AudioClip[] jumpClips;
-        [SerializeField, FoldoutGroup("Game Play Sounds/Item")]
-        private AudioClip spring;
-        [SerializeField, FoldoutGroup("Game Play Sounds/Item")]
-        private AudioClip cageBreakSound,ballRescueSound;
+        private AudioClip[] bgm;
         private static SoundInGameManager _instance;
         public static SoundInGameManager Instance => _instance;
 
@@ -50,13 +40,6 @@ namespace Projects.Scripts.GamePlay.Sound
             if(Bgm.Instance)
                 Bgm.Instance.Play(bgm[r]);
         }
-
-        public void PlayBossFightSound()
-        {
-            var r = Random.Range(0, bossFight.Length);
-            if(Bgm.Instance)
-                Bgm.Instance.Play(bossFight[r]);
-        }
         public void PlayLoseSound(Action complete)
         {
             Bgm.Instance.Stop();
@@ -72,23 +55,6 @@ namespace Projects.Scripts.GamePlay.Sound
         }
         
 
-        #endregion
-
-        #region Item
-
-        public void PlaySpringSound()
-        {
-            soundManager.PlaySfx(spring);
-        }
-        public void PlayCageBreakSound()
-        {
-            soundManager.PlaySfx(cageBreakSound);
-        }
-        public void PlayRescueSound()
-        {
-            soundManager.PlaySfx(ballRescueSound);
-        }
-        
         #endregion
     }
 }

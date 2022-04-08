@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091099977596882414}
   - component: {fileID: 1015823822118269870}
-  - component: {fileID: 8155397107080381795}
+  - component: {fileID: 530435520866309136}
   m_Layer: 0
   m_Name: Magnet Free
   m_TagString: Untagged
@@ -124,7 +124,7 @@ AudioSource:
   m_GameObject: {fileID: 734263587330107191}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: c861fe932cf9c354e9947d1326171c54, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -211,7 +211,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8155397107080381795
+--- !u!114 &530435520866309136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,12 +220,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 734263587330107191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 1015823822118269870}
-  uiAudio: 0
   autoPlay: 0
+  loop: 0
 --- !u!1 &3838320800739235054
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +353,7 @@ MonoBehaviour:
   - Red
   - Blue
   adsItem: 0
-  audio: {fileID: 8155397107080381795}
+  audio: {fileID: 530435520866309136}
 --- !u!1 &8017601890388475816
 GameObject:
   m_ObjectHideFlags: 0

@@ -106,7 +106,7 @@ AudioSource:
   m_GameObject: {fileID: 729277444170426584}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -246,7 +246,7 @@ AudioSource:
   m_GameObject: {fileID: 1753281516660470126}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -386,7 +386,7 @@ AudioSource:
   m_GameObject: {fileID: 5016160454472081641}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -526,7 +526,7 @@ AudioSource:
   m_GameObject: {fileID: 6405397145238378561}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -666,7 +666,7 @@ AudioSource:
   m_GameObject: {fileID: 6680468834004499213}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1158,22 +1158,13 @@ MonoBehaviour:
   soundManager: {fileID: 1316797896967626985}
   win: {fileID: 0}
   lose: {fileID: 0}
+  changeTarget: {fileID: 0}
+  winSounds:
+  - {fileID: 8300000, guid: e8dc92a3261dc964185cfa20655d4483, type: 3}
+  - {fileID: 8300000, guid: cc272ff47737a8145a1c46d6497a82ba, type: 3}
+  - {fileID: 8300000, guid: 70539b242384276439b6d9355f20f8a9, type: 3}
+  loseSound:
+  - {fileID: 8300000, guid: af56d8ce534cbb74e8446ea6bc28f2cd, type: 3}
+  - {fileID: 8300000, guid: dd40238ab1b66714fb7e09049a864101, type: 3}
+  - {fileID: 8300000, guid: 3da74fa216e642840bf299c3f7590cb4, type: 3}
   bgm: []
-  bossFight: []
-  ballTrySkin: {fileID: 0}
-  ballLanding: {fileID: 0}
-  ballHurt: {fileID: 0}
-  ballAttack: {fileID: 0}
-  ballDie: {fileID: 0}
-  ballCollectCoin: {fileID: 0}
-  ballCollectStar: {fileID: 0}
-  ballCollectHeart: {fileID: 0}
-  ballCollectMagnet: {fileID: 0}
-  ballWin: {fileID: 0}
-  ballExplode: {fileID: 0}
-  ballInCheckPoint: {fileID: 0}
-  ballRevive: {fileID: 0}
-  jumpClips: []
-  spring: {fileID: 0}
-  cageBreakSound: {fileID: 0}
-  ballRescueSound: {fileID: 0}

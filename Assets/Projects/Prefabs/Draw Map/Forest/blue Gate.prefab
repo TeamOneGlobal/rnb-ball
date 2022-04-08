@@ -76,8 +76,8 @@ SpriteMask:
   m_MaskAlphaCutoff: 1
   m_FrontSortingLayerID: 10862075
   m_BackSortingLayerID: 10862075
-  m_FrontSortingLayer: 2
-  m_BackSortingLayer: 2
+  m_FrontSortingLayer: 3
+  m_BackSortingLayer: 3
   m_FrontSortingOrder: 100
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 1
@@ -151,7 +151,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10862075
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 4
   m_Sprite: {fileID: 2102624233877968485, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 658620439317648546}
   - component: {fileID: 658620439317648547}
   - component: {fileID: 4871177724492120436}
-  - component: {fileID: 136420696478185731}
+  - component: {fileID: 6465544851582606858}
   m_Layer: 7
   m_Name: blue Gate
   m_TagString: Untagged
@@ -239,7 +239,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10862075
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 5
   m_Sprite: {fileID: 7024015756434699987, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -266,13 +266,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags:
   - Blue
-  gate: {fileID: 658620438646584655}
-  openY: -0.8
-  closeY: -4.5
-  simpleAudio: {fileID: 136420696478185731}
+  simpleAudio: {fileID: 6465544851582606858}
   open: {fileID: 8300000, guid: 2e9656d936ecd4841819e7b03f08f6e0, type: 3}
   close: {fileID: 8300000, guid: 8b3fb440d893d7c4390f4c947b20f690, type: 3}
   setKey: {fileID: 8300000, guid: 58b5928eb4a384648a9dd820efd5a4e0, type: 3}
+  gate: {fileID: 658620438646584655}
+  openY: -0.8
+  closeY: -4.5
 --- !u!61 &658620439317648547
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ AudioSource:
   m_GameObject: {fileID: 658620439317648574}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -395,7 +395,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &136420696478185731
+--- !u!114 &6465544851582606858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -404,12 +404,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 658620439317648574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 4871177724492120436}
-  uiAudio: 0
   autoPlay: 0
+  loop: 0
 --- !u!1 &3672995973855619784
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +479,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10862075
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 4125281110269266093, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -669,7 +668,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10862075
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -7528548212136037065, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -752,7 +751,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10862075
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -2191616981229920762, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
