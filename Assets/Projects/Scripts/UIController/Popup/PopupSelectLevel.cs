@@ -18,10 +18,9 @@ namespace Projects.Scripts.UIController
         [SerializeField] private Button closeButton, nextButton, preButton,playButton;
         [SerializeField] private GameObject pageIconPrefab;
         [SerializeField] private List<GameObject> pageIconList,pageIconDisplay;
-        private int _currentPage;
+        private int _currentPage,_totalPage;
         private bool _isInit;
         private int numberItemOnPage = 15;
-
         public void Initialized()
         {
             RegisterEvent();
@@ -69,7 +68,9 @@ namespace Projects.Scripts.UIController
 
         private void OnNextClick()
         {
-            if (_currentPage == Mathf.CeilToInt(GameDataManager.Instance.maxLevel * 1f / numberItemOnPage))
+            Debug.Log("_currentPage = "+_currentPage);
+            Debug.Log("_totalPage = "+_totalPage);
+            if (_currentPage == _totalPage-1)
             {
                 return;
             }
@@ -79,6 +80,15 @@ namespace Projects.Scripts.UIController
 
         private void InitListItem()
         {
+            
+            if (GameDataManager.Instance.maxLevel % numberItemOnPage == 0)
+            {
+                _totalPage = GameDataManager.Instance.maxLevel / numberItemOnPage;
+            }
+            else
+            {
+                _totalPage = Mathf.CeilToInt(GameDataManager.Instance.maxLevel * 1f / numberItemOnPage);
+            }
             var currentLevel = GameDataManager.Instance.GetCurrentLevel();
             for (var i = 0; i <itemList.Count; i++)
             {
@@ -87,22 +97,22 @@ namespace Projects.Scripts.UIController
                 if (level <= GameDataManager.Instance.maxLevel)
                 {
                     itemList[i].gameObject.SetActive(true);
-                    itemList[i].Init(level,currentLevel,levelStar,level%15==0);
+                    itemList[i].Init(level,currentLevel,levelStar,false);
                 }
                 else
                     itemList[i].gameObject.SetActive(false);
             }
 
-            var totalPage = Mathf.CeilToInt(GameDataManager.Instance.maxLevel * 1f / numberItemOnPage);
+            
             for (var i = 0; i < pageIconList.Count; i++)
             {
-                pageIconList[i].SetActive(i<totalPage);
+                pageIconList[i].SetActive(i<_totalPage);
             }
             for (var i = 0; i < pageIconDisplay.Count; i++)
             {
                 pageIconDisplay[i].SetActive(false);
             }
-            if (totalPage <= pageIconDisplay.Count)
+            if (_totalPage <= pageIconDisplay.Count)
             {
                 pageIconDisplay[_currentPage].SetActive(true);
             }
@@ -114,7 +124,7 @@ namespace Projects.Scripts.UIController
                 }
                 else
                 {
-                    if (_currentPage == totalPage)
+                    if (_currentPage == _totalPage)
                     {
                         pageIconDisplay.Last().SetActive(true);
                     }

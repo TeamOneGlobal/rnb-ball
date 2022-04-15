@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Projects.Scripts;
 using Truongtv.PopUpController;
 using Truongtv.Services.Ad;
 using UnityEngine;
@@ -61,9 +62,7 @@ namespace ThirdParties.Truongtv.AdsManager
 
         private bool IsInterstitialAvailableToShow()
         {
-            // if (DateTime.Now.Subtract(_lastTimeInterstitialShow).TotalSeconds < GameDataManager.BlockAdTime)
-            //     return false;
-            return true;
+            return !GameDataManager.Instance.IsPurchaseBlockAd();
         }
         
         #endregion
@@ -77,11 +76,7 @@ namespace ThirdParties.Truongtv.AdsManager
                 return;
             }
 #endif
-            // if (GameDataManager.Instance.IsPurchaseBlockAd()||GameDataManager.Instance.cheated)
-            // {
-            //     result?.Invoke(false);
-            //     return;
-            // }
+            if(GameDataManager.Instance.IsPurchaseBlockAd()) return;
             _adClient.ShowBannerAd(result);
         }
 
@@ -97,11 +92,6 @@ namespace ThirdParties.Truongtv.AdsManager
                 adResult?.Invoke();
                 return;
             }
-            // if (GameDataManager.Instance.cheated)
-            // {
-            //     adResult?.Invoke();
-            //     return;
-            // }
             if (IsInterstitialLoaded() && IsInterstitialAvailableToShow())
             {
                 ShowInterstitial(result =>
@@ -119,11 +109,6 @@ namespace ThirdParties.Truongtv.AdsManager
         public void ShowRewardedAd(string location, Action adResult = null)
         {
             
-            // if (GameDataManager.Instance.cheated)
-            // {
-            //     adResult?.Invoke();
-            //     return;
-            // }
             GameServiceManager.Instance.logEventManager.LogEvent("ads_reward_click",new Dictionary<string, object>
             {
                 {"reward_for",location}

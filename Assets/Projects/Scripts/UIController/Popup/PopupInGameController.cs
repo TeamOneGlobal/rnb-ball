@@ -10,7 +10,6 @@ namespace Projects.Scripts.UIController.Popup
         [SerializeField] private PopupReceiveSkin popupReceiveSkin;
         [SerializeField] private PopupRevive popupRevive;
         [SerializeField] private PopupPause popupPause;
-        [SerializeField] private PopupWinSquidGame popupWin;
         private static PopupInGameController _instance;
         public static PopupInGameController Instance => _instance;
 
@@ -35,16 +34,6 @@ namespace Projects.Scripts.UIController.Popup
             popupRevive.gameObject.SetActive(true);
             popupRevive.Show(controller);
         }
-
-       
-        
-        public void OpenPopupWin(int rank, int coin, int level, Action onWatchAd, Action onClose)
-        {
-            popupWin.Initialized(rank,coin,level,onWatchAd,onClose);
-            popupWin.gameObject.SetActive(true);
-            popupWin.Show(controller);
-        }
-        
         public void OpenPopupPause()
         {
             popupPause.gameObject.SetActive(true);

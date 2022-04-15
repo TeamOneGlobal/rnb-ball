@@ -15,8 +15,7 @@ namespace GamePlay.Item
         [SerializeField] protected LineRenderer lineRenderer;
         [SerializeField] protected float speed;
         [SerializeField] protected List<Transform> points;
-        [SerializeField] private SimpleAudio simpleAudio;
-        [SerializeField] private AudioClip moving, stop;
+       
         protected int CurrentPoint;
         void OnDrawGizmos()
         {
@@ -86,11 +85,11 @@ namespace GamePlay.Item
 
         public void PlaySoundMoving()
         {
-            simpleAudio.Play(moving, true);
+            //simpleAudio.Play(moving, true);
         }
         public void PlaySoundStop()
         {
-            simpleAudio.Play(stop);
+            //simpleAudio.Play(stop);
         }
 
         protected void ReserveMove(bool ignoreTimeScale = false,Action onComplete = null,Action onUpdate = null)

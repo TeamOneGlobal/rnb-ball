@@ -49,11 +49,11 @@ namespace ThirdParties.Truongtv.SoundManager
             AudioSource.UnPause();
         }
 
-        public void Stop()
+        public virtual void Stop()
         {
             AudioSource.Stop();
             AudioSource.clip = null;
-            AudioSource.gameObject.SetActive(false);
+            //AudioSource.gameObject.SetActive(false);
         }
         private void OnValidate()
         {

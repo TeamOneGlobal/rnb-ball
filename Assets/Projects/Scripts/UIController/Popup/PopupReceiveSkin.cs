@@ -16,7 +16,7 @@ namespace Projects.Scripts.UIController.Popup
     public class PopupReceiveSkin : BasePopup
     {
         [SerializeField] private Transform container;
-        [SerializeField] private SkeletonGraphic ball;
+        [SerializeField] private SkeletonGraphic red,blue;
         [SerializeField] private TextMeshProUGUI title;
         [SerializeField] private Button continueButton,viewAdButton;
         [SerializeField] private GameObject firework;
@@ -31,8 +31,10 @@ namespace Projects.Scripts.UIController.Popup
                 complete?.Invoke();
             };
             RegisterEvent();
-            ball.initialSkinName = skin;
-            ball.Initialize(true);
+            red.initialSkinName = skin+"_1";
+            red.Initialize(true);
+            blue.initialSkinName = skin+"_2";
+            blue.Initialize(true);
             openAction = () =>
             {
                 StartCoroutine(!needWatchAd ? SpawnFireWork() : ShowContinueButton()); 

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Projects.Scripts;
+using Projects.Scripts.Data;
 using Sirenix.OdinInspector;
 using Spine.Unity;
 using ThirdParties.Truongtv.SoundManager;
@@ -21,9 +23,19 @@ namespace GamePlay.Door
         private bool _isPlayRedKey, _isPlayBlueKey, _isRedOpen, _isBlueOpen;
         void Start()
         {
-
-            OnValueChange();
-            // redBall.skeletonDataAsset.GetSkeletonData().Skins.Items
+            var skin = GameDataManager.Instance.skinData.Skins.Find(a =>
+                a.unlockType == UnlockType.Level && a.unlockValue == GamePlayController
+                    .Instance.level);
+            if (skin != null && !string.IsNullOrEmpty(skin.skinName) && GameDataManager.Instance.GetCurrentLevel()== GamePlayController
+                .Instance.level)
+            {
+                trySkinName = skin.skinName;
+                OnValueChange();
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         protected override void TriggerEnter(string triggerTag, Transform triggerObject)

@@ -85,6 +85,10 @@ namespace GamePlay
             MagneticController.Instance.Init();
             _gameState = GameState.Playing;
             SoundInGameManager.Instance.PlayBgmSound();
+            GameServiceManager.Instance.logEventManager.LogEvent("level_start",new Dictionary<string, object>
+            {
+                { "level","lv_"+level}
+            });
         }
         #region Gate state
 
@@ -174,27 +178,61 @@ namespace GamePlay
                 { "level","lv_"+level}
             });
             GameDataManager.Instance.GameResult(GameResult.Win, level, (int)CoinCollector.Instance.total);
+            var skin = GameDataManager.Instance.skinData.Skins.Find(a =>
+                a.unlockType == UnlockType.Level && a.unlockValue == level);
             if (level >= 3||GameDataManager.Instance.GetCurrentLevel()>3)
             {
                 SoundInGameManager.Instance.PlayWinSound(()=>
                 {
-                    GameServiceManager.Instance.adManager.ShowInterstitialAd(LoadSceneController.LoadMenu);
+                    if (skin != null && !string.IsNullOrEmpty(skin.skinName) &&
+                        GameDataManager.Instance.GetCurrentLevel() == level)
+                    {
+                        PopupInGameController.Instance.OpenPopupReceiveSkin(skin.skinName,
+                            () =>
+                            {
+                                GameServiceManager.Instance.adManager.ShowInterstitialAd(LoadSceneController.LoadMenu);
+                            });
+                    }
+                    else
+                    {
+                        GameServiceManager.Instance.adManager.ShowInterstitialAd(LoadSceneController.LoadMenu);
+                    }
                 });
             }
             else
             {
                 SoundInGameManager.Instance.PlayWinSound(() =>
                 {
-                   
-                    GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
+                    if (skin != null && !string.IsNullOrEmpty(skin.skinName) &&
+                        GameDataManager.Instance.GetCurrentLevel() == level)
                     {
-                        var lastLevelData = GameDataManager.Instance.GetLastLevelData();
-                        GameDataManager.Instance.UpdateCoin((int)CoinCollector.Instance.total);
-                        GameDataManager.Instance.UpdateCoin(lastLevelData.coins);
-                        GameDataManager.Instance.UpdateLastLevel();
-                        var newLevel = GameDataManager.Instance.GetCurrentLevel();
-                        LoadSceneController.LoadLevel(newLevel);
-                    });
+                        PopupInGameController.Instance.OpenPopupReceiveSkin(skin.skinName,
+                            () =>
+                            {
+                                GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
+                                {
+                                    var lastLevelData = GameDataManager.Instance.GetLastLevelData();
+                                    GameDataManager.Instance.UpdateCoin((int)CoinCollector.Instance.total);
+                                    GameDataManager.Instance.UpdateCoin(lastLevelData.coins);
+                                    GameDataManager.Instance.UpdateLastLevel();
+                                    var newLevel = GameDataManager.Instance.GetCurrentLevel();
+                                    LoadSceneController.LoadLevel(newLevel);
+                                });
+                            });
+                    }
+                    else
+                    {
+                        GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
+                        {
+                            var lastLevelData = GameDataManager.Instance.GetLastLevelData();
+                            GameDataManager.Instance.UpdateCoin((int)CoinCollector.Instance.total);
+                            GameDataManager.Instance.UpdateCoin(lastLevelData.coins);
+                            GameDataManager.Instance.UpdateLastLevel();
+                            var newLevel = GameDataManager.Instance.GetCurrentLevel();
+                            LoadSceneController.LoadLevel(newLevel);
+                        });
+                    }
+                    
                 });
             }
         }
@@ -238,6 +276,10 @@ namespace GamePlay
         {
             _gameState = GameState.Pause;
             controlCharacter.CancelAllMove();
+            GameServiceManager.Instance.logEventManager.LogEvent("die",new Dictionary<string, object>
+            {
+                { "level","lv_"+level}
+            });
             await UniTask.Delay(TimeSpan.FromSeconds(2.5f));
             var totalLife = GameDataManager.Instance.GetCurrentLife();
             if (totalLife > 1)

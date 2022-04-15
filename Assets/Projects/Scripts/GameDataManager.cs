@@ -16,16 +16,15 @@ namespace Projects.Scripts
         [FoldoutGroup("Constant Value")]
         [SerializeField,FoldoutGroup("Constant Value/InGame")]public int coinValueInGame = 100;
         [SerializeField,FoldoutGroup("Constant Value/InGame")]public int maxLevel = 1;
-        [SerializeField, FoldoutGroup("Constant Value/InGame")]public int maxHpInGame = 3;
-        [SerializeField, FoldoutGroup("Constant Value/InGame")]public bool showBannerInGame =false;
+        [SerializeField, FoldoutGroup("Constant Value/InGame")]public bool showBannerInGame;
         [SerializeField, FoldoutGroup("Constant Value/InGame")]public float squidDifficulty = 1f;
         [SerializeField, FoldoutGroup("Constant Value/InGame")]public int magnetDuration = 15;
         [SerializeField, FoldoutGroup("Constant Value/Ad")]public int blockAdTime = 30;
         [SerializeField, FoldoutGroup("Constant Value/Ad")]public int minLevelShowInterstitial = 2;
         [SerializeField, FoldoutGroup("Constant Value/Ad")]public int showInterstitialPerLevel = 1;
         [SerializeField, FoldoutGroup("Constant Value/Ad")]public int adCoin = 1000;
-        [SerializeField, FoldoutGroup("Constant Value/Ad")]public int adLife = 1000;
-        [SerializeField, FoldoutGroup("Constant Value/Ad")]public int checkInternetPerLevel = 10;
+        [SerializeField, FoldoutGroup("Constant Value/Ad")]public int adLife = 1;
+        [SerializeField, FoldoutGroup("Constant Value/Ad")]public int checkInternetPerLevel = 3;
         [SerializeField, FoldoutGroup("Constant Value/Ad")]
         public string versionReview = "0.2.5";
         [SerializeField, FoldoutGroup("Constant Value/Menu")] public int freeSpinCooldownHours = 8;

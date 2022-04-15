@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6673069849012862201}
   - component: {fileID: 6058069581917697451}
-  - component: {fileID: 3254362799474206390}
+  - component: {fileID: 4848005545469215369}
   m_Layer: 7
   m_Name: stand up switch
   m_TagString: Untagged
@@ -43,7 +43,7 @@ AudioSource:
   m_GameObject: {fileID: 6673069849012862200}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 2d4916b53a58d5c46a53e06f71ace389, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -130,7 +130,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3254362799474206390
+--- !u!114 &4848005545469215369
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,12 +139,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6673069849012862200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 6058069581917697451}
-  uiAudio: 0
   autoPlay: 0
+  loop: 0
 --- !u!1 &6673069849170765569
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +213,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -88090781
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -296,7 +295,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -88090781
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -380,7 +379,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10862075
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -387348556840360693, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -408,12 +407,18 @@ MonoBehaviour:
   collisionTags:
   - Red
   - Blue
+  triggerPlatform: {fileID: 0}
   switchObj: {fileID: 6673069850320001763}
   actionDuration: 0.5
-  _isOn: 0
+  switchOn:
+    m_PersistentCalls:
+      m_Calls: []
+  switchOff:
+    m_PersistentCalls:
+      m_Calls: []
   off: {fileID: 6673069849170765574}
   on: {fileID: 6673069849781394035}
-  simpleAudio: {fileID: 3254362799474206390}
+  simpleAudio: {fileID: 4848005545469215369}
 --- !u!61 &719522463541223073
 BoxCollider2D:
   m_ObjectHideFlags: 0

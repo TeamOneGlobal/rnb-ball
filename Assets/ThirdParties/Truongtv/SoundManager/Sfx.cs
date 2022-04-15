@@ -14,5 +14,11 @@ namespace ThirdParties.Truongtv.SoundManager
             }
             PlayOnceShot(clip,delay,complete);
         }
+
+        public override void Stop()
+        {
+            base.Stop();
+            gameObject.SetActive(false);
+        }
     }
 }

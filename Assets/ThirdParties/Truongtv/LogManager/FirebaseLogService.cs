@@ -40,8 +40,6 @@ namespace ThirdParties.Truongtv.LogManager
                 FirebaseAnalytics.LogEvent(eventName,paramList.ToArray());
             }
         }
-
-        
         public void LogUserProperties(string property, string value)
         {
             FirebaseAnalytics.SetUserProperty(property,value);

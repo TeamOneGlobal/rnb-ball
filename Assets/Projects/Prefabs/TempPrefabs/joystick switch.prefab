@@ -100,7 +100,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10862075
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -9073335660490483827, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10862075
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -387348556840360693, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -239,13 +239,19 @@ MonoBehaviour:
   collisionTags:
   - Red
   - Blue
+  triggerPlatform: {fileID: 0}
   switchObj: {fileID: 3104057817543988255}
   actionDuration: 0.5
-  _isOn: 0
+  switchOn:
+    m_PersistentCalls:
+      m_Calls: []
+  switchOff:
+    m_PersistentCalls:
+      m_Calls: []
   offAngle: 30
   onAngle: -30
   oneTime: 0
-  simpleAudio: {fileID: 2153683472244835924}
+  simpleAudio: {fileID: 3971810480104907758}
 --- !u!1 &8115377813507709011
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,8 +261,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8115377813507709010}
-  - component: {fileID: 2153683472244835924}
   - component: {fileID: 2808408063762593876}
+  - component: {fileID: 3971810480104907758}
   m_Layer: 7
   m_Name: joystick switch
   m_TagString: Untagged
@@ -279,21 +285,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2153683472244835924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8115377813507709011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 2808408063762593876}
-  uiAudio: 0
-  autoPlay: 0
 --- !u!82 &2808408063762593876
 AudioSource:
   m_ObjectHideFlags: 0
@@ -303,7 +294,7 @@ AudioSource:
   m_GameObject: {fileID: 8115377813507709011}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 339a9c8015c7b4b4c9f133ac00099183, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -390,3 +381,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3971810480104907758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8115377813507709011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoPlay: 0
+  loop: 0

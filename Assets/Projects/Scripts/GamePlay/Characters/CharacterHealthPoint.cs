@@ -56,6 +56,7 @@ namespace GamePlay.Characters
                 _controller.HideBall(true);
             });
             GamePlayController.Instance.CharacterDie();
+            
         }
 
         public bool IsDie()

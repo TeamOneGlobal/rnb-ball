@@ -89,9 +89,9 @@ GameObject:
   - component: {fileID: 2819223130771166945}
   - component: {fileID: 2819223130771166946}
   - component: {fileID: 2819223130771166947}
-  - component: {fileID: 2819223130771166956}
   - component: {fileID: 2819223130771166957}
   - component: {fileID: 2819223130771166958}
+  - component: {fileID: 7363204095077880945}
   m_Layer: 9
   m_Name: day chun tren khong
   m_TagString: Untagged
@@ -160,7 +160,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -88090781
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &2819223130771166945
@@ -243,22 +243,7 @@ MonoBehaviour:
   - Red
   force: {x: 0, y: 22}
   obj: {fileID: 2819223130194043074}
-  audio: {fileID: 2819223130771166956}
---- !u!114 &2819223130771166956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2819223130771166959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 2819223130771166957}
-  uiAudio: 0
-  autoPlay: 0
+  audio: {fileID: 7363204095077880945}
 --- !u!82 &2819223130771166957
 AudioSource:
   m_ObjectHideFlags: 0
@@ -268,7 +253,7 @@ AudioSource:
   m_GameObject: {fileID: 2819223130771166959}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 77db1e2053f4d1c458763f0e69d50a4b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -374,3 +359,17 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &7363204095077880945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819223130771166959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoPlay: 0
+  loop: 0
