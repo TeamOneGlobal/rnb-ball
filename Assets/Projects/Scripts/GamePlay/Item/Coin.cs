@@ -42,10 +42,11 @@ namespace GamePlay.Item
 
         private void OnCollect()
         {
-            CoinCollector.Instance.Collect(GameDataManager.Instance.coinValueInGame,transform.position);
+            
             simpleAudio.Play();
             effect.SetActive(true);
             gameObject.SetActive(false);
+            CoinCollector.Instance.Collect(GameDataManager.Instance.coinValueInGame,transform.position);
         }
     }
 }

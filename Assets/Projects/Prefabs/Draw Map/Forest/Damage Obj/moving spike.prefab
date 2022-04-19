@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1719464500973450941}
   - component: {fileID: 1719464500973450942}
-  - component: {fileID: 4378398260080411266}
   - component: {fileID: 8463700139085325805}
+  - component: {fileID: 5284769483176301829}
   m_Layer: 7
   m_Name: moving spike
   m_TagString: Untagged
@@ -56,22 +56,7 @@ MonoBehaviour:
   timeDown: 1
   delayUp: 1
   delayDown: 1
-  simpleAudio: {fileID: 4378398260080411266}
---- !u!114 &4378398260080411266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719464500973450943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 8463700139085325805}
-  uiAudio: 0
-  autoPlay: 0
+  simpleAudio: {fileID: 5284769483176301829}
 --- !u!82 &8463700139085325805
 AudioSource:
   m_ObjectHideFlags: 0
@@ -81,7 +66,7 @@ AudioSource:
   m_GameObject: {fileID: 1719464500973450943}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 134e4e915cb02ee46ac22c3ccd89c745, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -168,6 +153,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5284769483176301829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719464500973450943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoPlay: 0
+  loop: 0
 --- !u!1 &1719464501719581079
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +236,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -88090781
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 3333967470306039257, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -319,7 +318,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -88090781
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 3333967470306039257, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -465,7 +464,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -88090781
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 3333967470306039257, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -520,6 +519,7 @@ MonoBehaviour:
   - Red
   - Blue
   checkPoint: {fileID: 2413311049510235499}
+  addForce: {x: 0, y: 0}
 --- !u!1001 &5192578974739688484
 PrefabInstance:
   m_ObjectHideFlags: 0

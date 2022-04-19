@@ -48,6 +48,8 @@ namespace UIController
 
         public bool IsActiveMagnetic()
         {
+            if (GameDataManager.Instance == null)
+                return false;
             var duration = GameDataManager.Instance.GetMagnetDuration();
             return duration > 0;
         }

@@ -23,14 +23,18 @@ namespace GamePlay.Characters
         {
             _controller = controller;
         }
+
         private void Start()
         {
-            var skin = GameDataManager.Instance.GetCurrentSkin();
-            GameServiceManager.Instance.logEventManager.LogEvent("skin_used",new Dictionary<string, object>
+            if (GameDataManager.Instance != null)
             {
-                { "skin",skin}
-            });
-            TrySkin(skin);
+                var skin = GameDataManager.Instance.GetCurrentSkin();
+                GameServiceManager.Instance.logEventManager.LogEvent("skin_used",new Dictionary<string, object>
+                {
+                    { "skin",skin}
+                });
+                TrySkin(skin);
+            }
         }
 
         public void TrySkin(string skin)
