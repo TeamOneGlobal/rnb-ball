@@ -5348,12 +5348,12 @@ MonoBehaviour:
   groundAndPlatformLayers:
     serializedVersion: 2
     m_Bits: 1616
-  moveMaxSpeed: 6
-  moveSpeedIncrease: 40
-  moveSpeedDecrease: 27
-  jumpSpeed: 17
-  jumpSpeedUp: 20
-  jumpSpeedDown: 22
+  moveMaxSpeed: 5.5
+  moveSpeedIncrease: 60
+  moveSpeedDecrease: 10
+  jumpSpeed: 16
+  jumpSpeedUp: 30
+  jumpSpeedDown: 5
   jumpSpeedRange: {x: -25, y: 100}
   landedEffect: {fileID: 3715023244567546197, guid: 6ece82e7207212544b02c8a7a89ac94b, type: 3}
   moveLeftEffect: {fileID: 8472369606594099028, guid: c488ee1473b478b4c81ae452f8ff7b49, type: 3}
@@ -5457,6 +5457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd4e71586b94cbdb48a9a558f8a53cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: 0
   animation: {fileID: 8975211178765391776}
   movement: {fileID: 8977155203150345520}
   magnetic: {fileID: 8520515044623303130}
