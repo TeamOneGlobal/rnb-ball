@@ -183,7 +183,7 @@ namespace GamePlay.Characters
                 if (_roll != MoveDirection.Left)
                 {
                     _roll = MoveDirection.Left;
-                    icon.DORotate(new Vector3(0,0,360f), 0.5f).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1,LoopType.Incremental);
+                    icon.DOLocalRotate(new Vector3(0,0,180f), 1.75f).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1,LoopType.Incremental);
                 }
             }
             else if (moveDirection == MoveDirection.Right)
@@ -191,7 +191,7 @@ namespace GamePlay.Characters
                 if (_roll != MoveDirection.Right)
                 {
                     _roll = MoveDirection.Right;
-                    icon.DORotate(new Vector3(0,0,-360f), 0.5f).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1,LoopType.Incremental);
+                    icon.DOLocalRotate(new Vector3(0,0,-180f), 1.75f).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1,LoopType.Incremental);
                 }
             }
             else
