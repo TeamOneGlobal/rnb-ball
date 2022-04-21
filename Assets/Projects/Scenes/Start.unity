@@ -281,7 +281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &523507670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1022,6 +1022,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 103767474513616641, guid: 4478afd1bd9191546a795605821e273d, type: 3}
+      propertyPath: startData.currentSkin
+      value: Base
+      objectReference: {fileID: 0}
     - target: {fileID: 103767474513616642, guid: 4478afd1bd9191546a795605821e273d, type: 3}
       propertyPath: m_RootOrder
       value: 6

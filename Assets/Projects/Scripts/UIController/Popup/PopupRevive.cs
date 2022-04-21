@@ -19,7 +19,7 @@ namespace Projects.Scripts.UIController.Popup
         [SerializeField] private Transform container;
         [SerializeField] private GameObject adIcon;
         [SerializeField] private Sprite greenButtonSprite;
-        [SerializeField] private SkeletonGraphic ball;
+        [SerializeField] private SkeletonGraphic red,blue;
         [SerializeField] private Button watchAdButton,closeButton;
         [SerializeField] private bool isWatchAd = true;
         private Action _onClose, _onWatchAd;
@@ -52,8 +52,10 @@ namespace Projects.Scripts.UIController.Popup
                     StartCoroutine(AllowClose());
                 }
             };
-            ball.initialSkinName = skin;
-            ball.Initialize(true);
+            red.initialSkinName = skin+"_1";
+            red.Initialize(true);
+            blue.initialSkinName = skin+"_2";
+            red.Initialize(true);
         }
 
         IEnumerator AllowClose()

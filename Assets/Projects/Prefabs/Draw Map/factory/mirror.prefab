@@ -79,8 +79,8 @@ GameObject:
   - component: {fileID: 6416997844459686631}
   - component: {fileID: 7024458847487751159}
   - component: {fileID: 2082411497}
-  - component: {fileID: 2082411496}
   - component: {fileID: 2082411495}
+  - component: {fileID: 8297317943287224214}
   m_Layer: 10
   m_Name: mirror
   m_TagString: Untagged
@@ -142,7 +142,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -88090781
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4415877451813804467, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -220,27 +220,12 @@ MonoBehaviour:
   groundAndPlatformLayers:
     serializedVersion: 2
     m_Bits: 576
-  simpleAudio: {fileID: 2082411496}
+  simpleAudio: {fileID: 8297317943287224214}
   move: {fileID: 8300000, guid: b6b6ea50a69b14f4a99997a241efca0f, type: 3}
   drop: {fileID: 8300000, guid: e8094bf3ed42e7b48a496c56f0b9de8b, type: 3}
   rigidbody: {fileID: 7024458847487751159}
   grounded: 0
   baseForce: {x: 1.5, y: 0}
---- !u!114 &2082411496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6416997844459686627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a41e0cd618c184da5191f0abb555c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 2082411495}
-  uiAudio: 0
-  autoPlay: 0
 --- !u!82 &2082411495
 AudioSource:
   m_ObjectHideFlags: 0
@@ -250,9 +235,9 @@ AudioSource:
   m_GameObject: {fileID: 6416997844459686627}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4566298310696162521, guid: f674713ff81f8594a8f315efef4371ec, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -337,6 +322,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8297317943287224214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6416997844459686627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoPlay: 0
+  loop: 0
 --- !u!1 &8271758472274651063
 GameObject:
   m_ObjectHideFlags: 0

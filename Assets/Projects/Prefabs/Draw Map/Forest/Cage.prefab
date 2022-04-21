@@ -89,8 +89,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5443533528869492519}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.44000006, y: -0.679, z: -100}
-  m_LocalScale: {x: 0.666, y: 0.666, z: 1}
+  m_LocalPosition: {x: 0.645, y: -0.679, z: -100}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 5911309493212948872}
   m_RootOrder: 3
@@ -122,7 +122,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9f2573cdbea17e144a29f7a204856933, type: 2}
+  - {fileID: 2100000, guid: df98ab780fef1ba43ba75ba188ae9f8f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 2c4cde40176988842a5d37819c41f65d, type: 2}
-  initialSkinName: 1_1
+  skeletonDataAsset: {fileID: 11400000, guid: 725f46d09b5cedb49b17dea5d9dd3805, type: 2}
+  initialSkinName: Impostor_1
   initialFlipX: 0
   initialFlipY: 0
   updateWhenInvisible: 3
@@ -178,7 +178,7 @@ MonoBehaviour:
     materialsInsideMask: []
     materialsOutsideMask: []
   disableRenderingOnOverride: 1
-  _animationName: ingame_1
+  _animationName: crying
   loop: 1
   timeScale: 1
 --- !u!1 &5911309492710483391
@@ -781,7 +781,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10862075
   m_SortingLayer: 3
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 3187775590312497064, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1068,8 +1068,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8980899444386244034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.40999985, y: -0.6590001, z: -100}
-  m_LocalScale: {x: 0.666, y: 0.666, z: 1}
+  m_LocalPosition: {x: -0.627, y: -0.6590001, z: -100}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 5911309493212948872}
   m_RootOrder: 4
@@ -1101,7 +1101,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9f2573cdbea17e144a29f7a204856933, type: 2}
+  - {fileID: 2100000, guid: df98ab780fef1ba43ba75ba188ae9f8f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1135,8 +1135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 2c4cde40176988842a5d37819c41f65d, type: 2}
-  initialSkinName: 1_2
+  skeletonDataAsset: {fileID: 11400000, guid: 725f46d09b5cedb49b17dea5d9dd3805, type: 2}
+  initialSkinName: Impostor_1
   initialFlipX: 0
   initialFlipY: 0
   updateWhenInvisible: 3
@@ -1157,6 +1157,6 @@ MonoBehaviour:
     materialsInsideMask: []
     materialsOutsideMask: []
   disableRenderingOnOverride: 1
-  _animationName: ingame_1
+  _animationName: crying
   loop: 1
   timeScale: 1

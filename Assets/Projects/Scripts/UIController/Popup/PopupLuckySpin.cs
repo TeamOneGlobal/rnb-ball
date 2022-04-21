@@ -31,11 +31,7 @@ namespace Projects.Scripts.UIController.Popup
         [SerializeField] private Transform rollObj;
         [SerializeField] private TextMeshProUGUI timeRemain;
         private bool _isInit;
-        private void Start()
-        {
-           
-        }
-
+      
         public void Initialized()
         {
             RegisterEvent();
@@ -58,7 +54,9 @@ namespace Projects.Scripts.UIController.Popup
                     }
                     else
                     {
-                        itemData.itemData.coinValue = 2000;
+                        var temp = new SpinItemData {itemData = new ItemData {coinValue = 2000}, isSkin = true};
+                        itemData = temp;
+                        //itemData.itemData.coinValue = 2000;
                     }
                 }
 

@@ -17,12 +17,12 @@ namespace Projects.Scripts.UIController.Menu
 
         public void PlayRandomMix()
         {
-            // var r = Random.Range(0, mix.Length);
-            // var entry = ball.AnimationState.SetAnimation(0, mix[r], false);
-            // entry.Complete += trackEntry =>
-            // {
-            //     PlayRandomMix();
-            // };
+            var r = Random.Range(0, mix.Length);
+            var entry = ball.AnimationState.SetAnimation(0, mix[r], false);
+            entry.Complete += trackEntry =>
+            {
+                PlayRandomMix();
+            };
         }
 
         public void PlayLose()
