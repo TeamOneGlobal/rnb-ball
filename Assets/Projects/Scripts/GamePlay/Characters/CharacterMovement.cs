@@ -17,6 +17,7 @@ namespace GamePlay.Characters
         private float moveMaxSpeed = 10f;
         [SerializeField] private float moveSpeedIncrease = 30f;
         [SerializeField] private float moveSpeedDecrease = 30f;
+        [SerializeField] private float deccelTime = 1f;
         [Title("JUMP CONFIG")] [SerializeField]
         private float jumpSpeed = 22f;
 
@@ -36,6 +37,7 @@ namespace GamePlay.Characters
         private bool _isGrounded,_isWater;
         private MoveDirection _moveEffect = MoveDirection.None;
         private CharacterController _controller;
+        private float countDeccelTime;
         public void Init(CharacterController controller)
         {
             _controller = controller;
@@ -61,9 +63,20 @@ namespace GamePlay.Characters
         private void ComputeVelocity()
         {
             _velocity = rigidbody2D.velocity;
-            switch (moveDirection)
+            if (moveDirection != MoveDirection.None)
             {
-                case MoveDirection.None:
+                countDeccelTime = deccelTime;
+                if (_velocity.x * (int) moveDirection < moveMaxSpeed)
+                {
+                    _velocity.x +=  (int) moveDirection*moveSpeedIncrease*Time.deltaTime;
+                       
+                }
+            }
+            else
+            {
+                countDeccelTime -= Time.deltaTime;
+                if (countDeccelTime > 0)
+                {
                     if (_velocity.x < 0)
                     {
                         _velocity.x += moveSpeedDecrease * Time.deltaTime;
@@ -74,17 +87,7 @@ namespace GamePlay.Characters
                         _velocity.x -= moveSpeedDecrease * Time.deltaTime;
                         if (_velocity.x < 0) _velocity.x = 0;
                     }
-                    break;
-                case MoveDirection.Left:
-                    _velocity.x -= moveSpeedIncrease*Time.deltaTime;
-                    if (_velocity.x <= -moveMaxSpeed)
-                        _velocity.x = -moveMaxSpeed;
-                    break;
-                case MoveDirection.Right:
-                    _velocity.x += moveSpeedIncrease*Time.deltaTime;
-                    if (_velocity.x >= moveMaxSpeed)
-                        _velocity.x = moveMaxSpeed;
-                    break;
+                }
             }
 
             if (!_isGrounded)
@@ -146,9 +149,9 @@ namespace GamePlay.Characters
         private bool CheckIsGrounded()
         {
             Vector2 boundSize = gameObject.GetComponent<CircleCollider2D>().bounds.size;
-            boundSize = new Vector2(boundSize.x - 0.1f, boundSize.y);
+            boundSize = new Vector2(0.1f, boundSize.y);
             RaycastHit2D hit2D = Physics2D.BoxCast(gameObject.GetComponent<CircleCollider2D>().bounds.center, boundSize,
-                0, Vector2.down, 0.1f, groundAndPlatformLayers);
+                180, Vector2.down, 0.1f, groundAndPlatformLayers);
 
             return hit2D.collider != null;
         }
@@ -275,5 +278,6 @@ namespace GamePlay.Characters
         {
             rigidbody2D.velocity = velo;
         }
+       
     }
 }
