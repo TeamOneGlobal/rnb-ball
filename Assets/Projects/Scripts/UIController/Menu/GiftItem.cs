@@ -22,7 +22,7 @@ namespace Projects.Scripts.UIController.Menu
         [SerializeField] private Button watchAdButton, claimButton;
         private PopupGift _controller;
         private string _item;
-        private int unlockValue = 6;
+        private int unlockValue = 2;
         public void Init(string skin,PopupGift controller,bool firstOpen = false)
         {
             _controller = controller;

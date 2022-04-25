@@ -553,6 +553,22 @@ namespace Projects.Scripts
             return _userData.giftData.adProgress;
         }
 
+        public int GetAdUnlockSkin(string skin)
+        {
+            if (!_userData.currency.ContainsKey(skin))
+            {
+                _userData.currency.Add(skin,0);
+                SaveData();
+            }
+
+            return _userData.currency[skin];
+        }
+
+        public void SetAdUnlockSkin(string skin)
+        {
+            _userData.currency[skin]++;
+            SaveData();
+        }
         public void SetAdProgressCount(int val)
         {
             _userData.giftData.adProgress = val;

@@ -46,16 +46,16 @@ MonoBehaviour:
   _pc2D: {fileID: 7133230930923725634}
   UseNumericBoundaries: 1
   UseTopBoundary: 1
-  TopBoundary: 18.2
+  TopBoundary: 15.99
   TargetTopBoundary: 0
   UseBottomBoundary: 1
-  BottomBoundary: -14.76
+  BottomBoundary: -18.29
   TargetBottomBoundary: 0
   UseLeftBoundary: 1
-  LeftBoundary: -41.5
+  LeftBoundary: -31.9
   TargetLeftBoundary: 0
   UseRightBoundary: 1
-  RightBoundary: 31.6
+  RightBoundary: 70
   TargetRightBoundary: 0
   IsCameraPositionHorizontallyBounded: 0
   IsCameraPositionVerticallyBounded: 0
@@ -984,7 +984,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1012,14 +1012,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b8c96e2cdc154e848a3d9fe62464d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraTargets: []
+  CameraTargets:
+  - TargetTransform: {fileID: 0}
+    TargetInfluenceH: 1
+    TargetInfluenceV: 1
+    TargetOffset: {x: 0, y: 0}
   CenterTargetOnStart: 1
   Axis: 0
   UpdateType: 1
   FollowHorizontal: 1
   HorizontalFollowSmoothness: 0.05
   FollowVertical: 1
-  VerticalFollowSmoothness: 0
+  VerticalFollowSmoothness: 0.15
   OffsetX: 0
   OffsetY: 0
   IsRelativeOffset: 1
@@ -1049,7 +1053,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 0.2
-    height: 0.5
+    height: 0.3
   IsRelativeSizeAndPosition: 1
 --- !u!1 &7133230931014131432
 GameObject:

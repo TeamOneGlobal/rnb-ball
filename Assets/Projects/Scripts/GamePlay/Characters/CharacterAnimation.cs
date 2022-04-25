@@ -13,8 +13,8 @@ namespace GamePlay.Characters
     {
         [SerializeField] private Transform target;
         [SerializeField] private new SkeletonAnimation animation;
-        [SerializeField, SpineAnimation] private string[] idles,callAnims, winAnims;
-        [SerializeField, SpineAnimation] private string dieAnim;
+        [SerializeField, SpineAnimation] private string[] idles;
+        [SerializeField, SpineAnimation] private string dieAnim,callAnim,winAnim;
         private Action _callback;
         private bool _forceStay;
 
@@ -83,19 +83,13 @@ namespace GamePlay.Characters
         public void PlayWinAnim()
         {
             _forceStay = true;
-            for (var i = 0; i < winAnims.Length; i++)
-            {
-                PlayAnim(winAnims[i],i,true);
-            }
+            PlayAnim(winAnim,0,true);
         }
 
         public void PlayCallAnim()
         {
             _forceStay = true;
-            for (var i = 0; i < callAnims.Length; i++)
-            {
-                PlayAnim(callAnims[i],i,true);
-            }
+            PlayAnim(callAnim,0,true);
         }
 
         private void Update()

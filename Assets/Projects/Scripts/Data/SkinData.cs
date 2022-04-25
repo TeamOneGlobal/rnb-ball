@@ -81,6 +81,17 @@ namespace Projects.Scripts.Data
             var totalsSkin = GetAllSkinName();
             return totalsSkin.IndexOf(skinName);
         }
+
+        [Button]
+        private void Init()
+        {
+            var item = GetAllSkinName();
+            foreach (var i in item)
+            {
+                skinList.Add(new SkinInfo{skinName = i});
+
+            }
+        }
     }
     [Serializable]
     public class SkinInfo
