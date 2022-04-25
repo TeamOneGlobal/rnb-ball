@@ -455,7 +455,7 @@ Transform:
   m_GameObject: {fileID: 5911309493212948875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.99, y: -1.59, z: 100}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5911309493667921112}
   - {fileID: 5911309493030803037}
@@ -507,6 +507,16 @@ MonoBehaviour:
   collisionTags:
   - Red
   - Blue
+  useDirectly: 0
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
   simpleAudio: {fileID: 3483380142735925986}
   open: {fileID: 8300000, guid: 2e9656d936ecd4841819e7b03f08f6e0, type: 3}
   setKey: {fileID: 8300000, guid: 58b5928eb4a384648a9dd820efd5a4e0, type: 3}
