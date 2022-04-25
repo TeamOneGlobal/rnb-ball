@@ -271,6 +271,16 @@ MonoBehaviour:
   collisionTags:
   - Red
   - Blue
+  useDirectly: 0
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
   adsItem: 1
   audio: {fileID: 8218354831306671480}
 --- !u!1 &3191358002521648098
@@ -344,7 +354,7 @@ SpriteRenderer:
   m_SortingLayerID: -88090781
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: -8394627376045461164, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
+  m_Sprite: {fileID: -8059159815462793799, guid: d00923c11cc17c94bb07aec3629cc8be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

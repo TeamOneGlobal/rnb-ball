@@ -30,8 +30,8 @@ namespace GamePlay
     {
         public int level;
 
-        [HideInInspector] public CharacterController controlCharacter;
-        [HideInInspector] public CharacterController red, blue;
+        public CharacterController controlCharacter;
+        public CharacterController red, blue;
         [SerializeField] private GameObject hand;
 
         [Title("UI")] [SerializeField] private TextMeshProUGUI levelText,lifeText;
@@ -400,11 +400,15 @@ namespace GamePlay
             }
 
             controlCharacter.OnCharacterSelected(true);
+            
             _changingCharacter = true;
-            imgChangeCharacter.transform.DORotate(new Vector3(0, 0, 180), 0.35f)
+            imgChangeCharacter.transform.DOLocalRotate(new Vector3(0, 0, 180), 0.35f,RotateMode.FastBeyond360)
                 .SetRelative(true)
                 .SetUpdate(UpdateType.Normal, true)
-                .OnComplete(() => { _changingCharacter = false; });
+                .OnComplete(() =>
+                {
+                   _changingCharacter  = false;
+                });
 
             if (ProCamera2D.Instance.CameraTargets[0].TargetTransform == red.transform)
             {

@@ -86,9 +86,6 @@ MonoBehaviour:
   points:
   - {fileID: 553465308180395045}
   - {fileID: 553465307894363899}
-  simpleAudio: {fileID: 0}
-  moving: {fileID: 8300000, guid: f439e65580774504398e932115b60379, type: 3}
-  stop: {fileID: 8300000, guid: db8294285954c8c4d99025c460b443c2, type: 3}
 --- !u!1 &553465307894363898
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,11 +183,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7780989155227997632, guid: af53bac74f9d6824aa68d0d90c1af61b, type: 3}
       propertyPath: m_Positions.Array.data[0].x
-      value: -3.69
+      value: -8.68
       objectReference: {fileID: 0}
     - target: {fileID: 7780989155227997632, guid: af53bac74f9d6824aa68d0d90c1af61b, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: 9.190719
+      value: -8.66
       objectReference: {fileID: 0}
     - target: {fileID: 7780989155227997632, guid: af53bac74f9d6824aa68d0d90c1af61b, type: 3}
       propertyPath: m_Positions.Array.data[0].z
@@ -198,11 +195,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7780989155227997632, guid: af53bac74f9d6824aa68d0d90c1af61b, type: 3}
       propertyPath: m_Positions.Array.data[1].x
-      value: -13.22
+      value: -18.21
       objectReference: {fileID: 0}
     - target: {fileID: 7780989155227997632, guid: af53bac74f9d6824aa68d0d90c1af61b, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: 9.190719
+      value: -8.66
       objectReference: {fileID: 0}
     - target: {fileID: 7780989155227997632, guid: af53bac74f9d6824aa68d0d90c1af61b, type: 3}
       propertyPath: m_Positions.Array.data[1].z
@@ -264,6 +261,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7780989155227997638, guid: af53bac74f9d6824aa68d0d90c1af61b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af53bac74f9d6824aa68d0d90c1af61b, type: 3}
 --- !u!4 &7806406846044808632 stripped
@@ -285,7 +286,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5570082903385277571, guid: 682facfcc7d9d764da337230e180818a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000009536743
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781419657101258337, guid: 682facfcc7d9d764da337230e180818a, type: 3}
       propertyPath: checkPoint

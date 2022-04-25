@@ -102,7 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: 10862075
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9073335660490483827, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
+  m_Sprite: {fileID: 2341824404993155438, guid: 89a0bb09876519a478e8fd976c079094, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,7 +187,7 @@ SpriteRenderer:
   m_SortingLayerID: 10862075
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: -387348556840360693, guid: 8481ebfa4c699c944b27b4757400cb4d, type: 3}
+  m_Sprite: {fileID: -5427862474347049335, guid: 89a0bb09876519a478e8fd976c079094, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -215,7 +215,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.41, y: 0.51}
+    oldSize: {x: 1.58, y: 0.6}
     newSize: {x: 1.41, y: 0.51}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -239,6 +239,16 @@ MonoBehaviour:
   collisionTags:
   - Red
   - Blue
+  useDirectly: 0
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
   triggerPlatform: {fileID: 0}
   switchObj: {fileID: 3104057817543988255}
   actionDuration: 0.5

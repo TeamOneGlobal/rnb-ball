@@ -286,7 +286,7 @@ SpriteRenderer:
   m_SortingLayerID: 1137977551
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7feda2a073666fd46b398f47cf39090b, type: 3}
+  m_Sprite: {fileID: 251588152889460124, guid: d00923c11cc17c94bb07aec3629cc8be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5494,7 +5494,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df98ab780fef1ba43ba75ba188ae9f8f, type: 2}
+  - {fileID: 2100000, guid: 48cc3123780b77b4e871f9c53238b9e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5546,9 +5546,11 @@ MonoBehaviour:
   calculateTangents: 0
   maskInteraction: 2
   maskMaterials:
-    materialsMaskDisabled: []
+    materialsMaskDisabled:
+    - {fileID: 2100000, guid: df98ab780fef1ba43ba75ba188ae9f8f, type: 2}
     materialsInsideMask: []
-    materialsOutsideMask: []
+    materialsOutsideMask:
+    - {fileID: 2100000, guid: 48cc3123780b77b4e871f9c53238b9e7, type: 2}
   disableRenderingOnOverride: 1
   _animationName: ingame_1
   loop: 0

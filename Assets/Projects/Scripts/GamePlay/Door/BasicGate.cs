@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using Spine;
+using Spine.Unity;
 using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 using CharacterController = GamePlay.Characters.CharacterController;
@@ -9,16 +11,12 @@ namespace GamePlay.Door
 {
     public class BasicGate : ObjectTrigger
     {
+        [SerializeField] private SkeletonAnimation gatenAnim;
+        [SerializeField,SpineAnimation] private string idleAnim, openAnim, openedIdleAnim;
         [SerializeField] private SimpleAudio simpleAudio;
         [SerializeField] private AudioClip open, close,setKey;
-        [SerializeField] private Transform gate;
-        [SerializeField] private float openY, closeY=-4f;
 
         private bool _isPlayKey;
-        void Start()
-        {
-            gate.transform.localPosition = new Vector3(0,closeY,0);
-        }
 
         protected override void TriggerEnter(string triggerTag, Transform triggerObject)
         {
@@ -62,20 +60,17 @@ namespace GamePlay.Door
         }
         protected void OpenGate(Action onStart = null, Action onComplete = null)
         {
-            gate.DOLocalMoveY(openY, 1f)
-                .SetEase(Ease.Linear)
-                .OnStart(() => { onStart?.Invoke();})
-                .OnComplete(() => { onComplete?.Invoke();});
+            var entry = gatenAnim.state.SetAnimation(0, openAnim, false);
+            entry.Complete+= delegate(TrackEntry trackEntry)
+            {
+                gatenAnim.state.SetAnimation(0, openedIdleAnim, true);
+            };
             GamePlayController.Instance.OpenGate(collisionTags[0]);
         }
         
 
         protected void CloseGate(Action onStart = null, Action onComplete = null)
         {
-            gate.DOLocalMoveY(closeY, 1f)
-                .SetEase(Ease.OutBounce)
-                .OnStart(() => { onStart?.Invoke();})
-                .OnComplete(() => { onComplete?.Invoke();});
              GamePlayController.Instance.CloseGate(collisionTags[0]);
         }
     }
