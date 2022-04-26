@@ -79,7 +79,7 @@ SpriteRenderer:
   m_Size: {x: 0.93, y: 0.93}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5333235770245370980
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_Size: {x: 0.93, y: 0.93}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5333235770698746191
@@ -345,6 +345,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6673069850320001760, guid: 030ce2ab601b8094a824925f0cdf55df, type: 3}
+      propertyPath: triggerPlatform
+      value: 
+      objectReference: {fileID: 5333235771377612233}
     - target: {fileID: 6673069850320001766, guid: 030ce2ab601b8094a824925f0cdf55df, type: 3}
       propertyPath: m_Sprite
       value: 

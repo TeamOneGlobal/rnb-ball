@@ -79,7 +79,7 @@ SpriteRenderer:
   m_Size: {x: 0.76, y: 0.74}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4352789008966988413
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_Size: {x: 0.76, y: 0.74}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4352789009386549078
@@ -385,6 +385,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4352789009386549079}
     m_Modifications:
+    - target: {fileID: 1974936849791802880, guid: 4506161d760f0ab49bdbb90b11cd59e0, type: 3}
+      propertyPath: triggerPlatform
+      value: 
+      objectReference: {fileID: 4352789010096853968}
     - target: {fileID: 2736039498654202378, guid: 4506161d760f0ab49bdbb90b11cd59e0, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.61

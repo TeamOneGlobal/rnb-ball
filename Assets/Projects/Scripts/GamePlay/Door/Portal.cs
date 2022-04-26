@@ -8,7 +8,7 @@ namespace GamePlay.Door
     [ExecuteAlways]
     public class Portal : ObjectTrigger
     {
-        [SerializeField] private Transform checkMark;
+        [SerializeField] private Transform checkMark,eff;
         [SerializeField] private Direction direction;
         [SerializeField] private Portal other;
         [SerializeField] private Vector2 force;
@@ -26,15 +26,18 @@ namespace GamePlay.Door
             switch (direction)
             {
                 case Direction.Left:
+                    
                     if(triggerObject.transform.position.x> checkMark.position.x) return;
                     break;
                 case Direction.Right:
                     if(triggerObject.transform.position.x< checkMark.position.x) return;
+                    
                     break;
                 case Direction.Top:
                     if(triggerObject.transform.position.y< checkMark.position.y) return;
                     break;
                 case Direction.Bottom:
+                    
                     if(triggerObject.transform.position.y> checkMark.position.y) return;
                     break;
             }
@@ -65,15 +68,19 @@ namespace GamePlay.Door
             switch (direction)
             {
                 case Direction.Left:
+                    eff.localScale = new Vector3(1,2,1);
                     transform.localEulerAngles = new Vector3(0,0,90);
                     break;
                 case Direction.Right:
+                    eff.localScale = new Vector3(1,2,1);
                     transform.localEulerAngles = new Vector3(0,0,-90);
                     break;
                 case Direction.Top:
+                    eff.localScale = new Vector3(2,1,1);
                     transform.localEulerAngles = new Vector3(0,0,0);
                     break;
                 case Direction.Bottom:
+                    eff.localScale = new Vector3(2,1,1);
                     transform.localEulerAngles = new Vector3(0,0,180);
                     break;
             }
