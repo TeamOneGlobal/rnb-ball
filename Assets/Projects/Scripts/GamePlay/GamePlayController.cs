@@ -54,6 +54,7 @@ namespace GamePlay
             var chars = FindObjectsOfType<CharacterController>();
             red = chars.First(a => a.character == Character.Red);
             blue = chars.First(a => a.character == Character.Blue);
+            controlCharacter = blue;
             ProCamera2D.Instance.RemoveAllCameraTargets();
             ProCamera2D.Instance.AddCameraTarget(blue.transform);
         }

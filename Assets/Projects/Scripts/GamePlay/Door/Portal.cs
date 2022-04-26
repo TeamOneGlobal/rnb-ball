@@ -12,7 +12,7 @@ namespace GamePlay.Door
         [SerializeField] private Direction direction;
         [SerializeField] private Portal other;
         [SerializeField] private Vector2 force;
-        [SerializeField] private bool _secondPortal;
+        private bool _secondPortal;
         protected override void TriggerEnter(string triggerTag, Transform triggerObject)
         {
             Debug.Log("triggerOBj : "+triggerObject.transform.position);

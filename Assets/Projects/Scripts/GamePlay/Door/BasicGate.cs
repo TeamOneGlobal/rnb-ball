@@ -15,8 +15,8 @@ namespace GamePlay.Door
         [SerializeField,SpineAnimation] private string idleAnim, openAnim, openedIdleAnim;
         [SerializeField] private SimpleAudio simpleAudio;
         [SerializeField] private AudioClip open, close,setKey;
-
-        private bool _isPlayKey;
+    
+        private bool _isPlayKey,_isOpen;
 
         protected override void TriggerEnter(string triggerTag, Transform triggerObject)
         {
@@ -60,6 +60,8 @@ namespace GamePlay.Door
         }
         protected void OpenGate(Action onStart = null, Action onComplete = null)
         {
+            if(_isOpen) return;
+            _isOpen = true;
             var entry = gatenAnim.state.SetAnimation(0, openAnim, false);
             entry.Complete+= delegate(TrackEntry trackEntry)
             {
