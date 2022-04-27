@@ -13,7 +13,7 @@ namespace GamePlay.Switches
         private void Start()
         {
             var angle = !IsOn ? offAngle : onAngle;
-            switchObj.transform.localEulerAngles = new Vector3(0,0,angle);
+            switchObj.transform.localEulerAngles = oneTime ? new Vector3(0,0,0) : new Vector3(0,0,angle);
         }
         protected override void TriggerEnter(string triggerTag, Transform triggerObject)
         {
@@ -21,7 +21,7 @@ namespace GamePlay.Switches
             _trigger = true;
             base.TriggerEnter(triggerTag, triggerObject);
             
-            var angle = !IsOn ?  onAngle:offAngle;
+            
 
             if (!oneTime)
             {
@@ -41,8 +41,10 @@ namespace GamePlay.Switches
                 GamePlayController.Instance.PauseForCinematic(true);
             }
             simpleAudio.Play();
-
-            if (triggerObject.transform.position.x < transform.position.x && oneTime)
+            var angle = !IsOn ?  onAngle:offAngle;
+            if (oneTime)
+                angle = 90;
+            if (triggerObject.position.x < transform.position.x && oneTime)
             {
                 angle *= -1;
             }

@@ -27,6 +27,7 @@ namespace GamePlay.Item
 
         public void Open()
         {
+            collider.enabled = true;
             var sequence = DOTween.Sequence();
             sequence.Append(cover.DOLocalMoveY(openY, 0.5f).OnComplete(() =>
             {
@@ -34,11 +35,12 @@ namespace GamePlay.Item
                 audio.Play();
             }));
             sequence.Append(line.DOFade(1, 1f));
-            sequence.OnComplete(() => { collider.enabled = true; });
+            sequence.OnComplete(() => {  });
             sequence.Play();
         }
         public void Close()
         {
+            collider.enabled = false;
             var sequence = DOTween.Sequence();
             sequence.Append(cover.DOLocalMoveY(closeY, 0.5f).OnComplete(() =>
             {
@@ -46,7 +48,7 @@ namespace GamePlay.Item
                 audio.Play();
             }));
             sequence.Append(line.DOFade(0, 1f));
-            sequence.OnComplete(() => { collider.enabled = false; });
+            sequence.OnComplete(() => {  });
             sequence.Play();
         }
     }
