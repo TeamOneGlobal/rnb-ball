@@ -159,8 +159,8 @@ BuoyancyEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_SurfaceLevel: 2.6742594
-  m_Density: 4
+  m_SurfaceLevel: 1.8742595
+  m_Density: 8
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   collider2D: {fileID: 2569995091047278201}
   effect: {fileID: 6221538142332004771}
   deltaCollider: {x: 0, y: 0.3}
-  deltaSurface: -0.6
+  deltaSurface: 0.2
   speed: 2
   delta: 0
 --- !u!114 &8965903377329016019
@@ -201,6 +201,16 @@ MonoBehaviour:
   collisionTags:
   - Blue
   - Red
+  useDirectly: 0
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
   checkPoint: {fileID: 9037769700091770138}
   addForce: {x: 0, y: 0}
   dieTag:
