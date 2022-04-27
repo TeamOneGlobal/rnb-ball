@@ -49,7 +49,7 @@ namespace GamePlay
         {
             base.Awake();
             var sceneName = SceneManager.GetActiveScene().name;
-            level = int.Parse(sceneName.Replace("Level ", ""));
+            int.TryParse(sceneName.Replace("Level ", ""),out level);
             levelText.text = sceneName;
             var chars = FindObjectsOfType<CharacterController>();
             red = chars.First(a => a.character == Character.Red);
