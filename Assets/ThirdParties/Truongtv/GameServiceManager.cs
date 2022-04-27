@@ -6,11 +6,12 @@ using ThirdParties.Truongtv.LogManager;
 using ThirdParties.Truongtv.Notification;
 using ThirdParties.Truongtv.Rating;
 using ThirdParties.Truongtv.RemoteConfig;
-using ThirdParties.Truongtv.Utilities;
+
 using UnityEngine;
 #if UNITY_EDITOR
 using System.IO;
 using System.Xml;
+using ThirdParties.Truongtv.Utilities;
 #endif
 #if USING_LOG_FIREBASE||USING_REMOTE_FIREBASE
 using Firebase;
@@ -26,6 +27,7 @@ namespace ThirdParties.Truongtv
     [RequireComponent(typeof(IapManager.IapManager))]
     public class GameServiceManager : MonoBehaviour
     {
+    #if UNITY_EDITOR
         [SerializeField, OnValueChanged(nameof(OnAdServiceChange))]
         private AdService adService;
         [SerializeField, OnValueChanged(nameof(OnLogServiceChange))]
@@ -38,6 +40,7 @@ namespace ThirdParties.Truongtv
         private CloudMessagingService cloudMessagingService;
         [SerializeField, OnValueChanged(nameof(OnIapServiceChange))]
         private IapService iapService;
+#endif
         [HideInInspector] public AdManager adManager;
         [HideInInspector] public LogEventManager logEventManager;
         [HideInInspector] public RatingHelper ratingHelper;

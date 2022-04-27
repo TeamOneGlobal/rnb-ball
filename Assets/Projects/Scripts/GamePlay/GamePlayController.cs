@@ -98,6 +98,7 @@ namespace GamePlay
         public Action onOpenRed, onOpenBlue;
         public void OpenGate(string playerTag)
         {
+            controlCharacter.CancelAllMove();
             if (playerTag.Equals(TagManager.RED_TAG))
             {
                 _isRedGateOpen = true;
