@@ -39,12 +39,10 @@ namespace GamePlay.Platform
                 useCinematic = false;
                 CinematicView.Instance.StartCinematic(platform.transform, () =>
                 {
-                    PlaySoundMoving();
                     //CinematicView.Instance.ChangeTarget(platform.transform,UpdateType.FixedUpdate);
                     Move(true,() =>
                     {
                         
-                        PlaySoundStop();
                         CinematicView.Instance.MoveBack(target, () =>
                         {
                             onTriggerEnd.Invoke();
@@ -54,8 +52,7 @@ namespace GamePlay.Platform
             }
             else
             {
-                PlaySoundMoving();
-                Move(true,PlaySoundStop);
+                Move(true);
             }
         }
 
@@ -77,11 +74,9 @@ namespace GamePlay.Platform
                 
                 CinematicView.Instance.StartCinematic(platform.transform, () =>
                 {
-                    PlaySoundMoving();
                    
                     ReserveMove(true,() =>
                     {
-                        PlaySoundStop();
                         CinematicView.Instance.MoveBack(target, () =>
                         {
                            // CinematicView.Instance.ChangeTarget(GamePlayController.Instance.controlCharacter.transform,UpdateType.FixedUpdate);
@@ -91,8 +86,7 @@ namespace GamePlay.Platform
             }
             else
             {
-                PlaySoundMoving();
-                ReserveMove(true,PlaySoundStop);
+                ReserveMove(true);
             }
         }
     }

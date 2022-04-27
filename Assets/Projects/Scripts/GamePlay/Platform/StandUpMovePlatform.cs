@@ -9,13 +9,12 @@ namespace GamePlay.Platform
             platform.onCharacterEnter += () =>
             {
                 platform.transform.DOKill();
-                PlaySoundMoving();
                 Move();
             };
             platform.onCharacterExit += () =>
             {
                 platform.transform.DOKill();
-                ReserveMove(false,PlaySoundStop);
+                ReserveMove();
             };
         }
     }

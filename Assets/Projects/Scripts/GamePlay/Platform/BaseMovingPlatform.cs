@@ -14,8 +14,6 @@ namespace GamePlay.Platform
         [SerializeField] protected LineRenderer lineRenderer;
         [SerializeField] protected float speed;
         [SerializeField] protected List<Transform> points;
-        [SerializeField] private SimpleAudio simpleAudio;
-        [SerializeField] private AudioClip moving, stop;
         protected int CurrentPoint;
 
         
@@ -49,14 +47,6 @@ namespace GamePlay.Platform
 
         }
 
-        public void PlaySoundMoving()
-        {
-            simpleAudio.Play(moving, true);
-        }
-        public void PlaySoundStop()
-        {
-            simpleAudio.Play(stop);
-        }
 
         protected void ReserveMove(bool ignoreTimeScale = false,Action onComplete = null,Action onUpdate = null)
         {

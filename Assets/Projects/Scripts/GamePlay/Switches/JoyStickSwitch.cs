@@ -23,6 +23,19 @@ namespace GamePlay.Switches
             
             var angle = !IsOn ?  onAngle:offAngle;
 
+            if (!oneTime)
+            {
+                if (!IsOn)
+                {
+                    if(onAngle * transform.lossyScale.x>0 && triggerObject.position.x< transform.position.x) return;    
+                    if(onAngle * transform.lossyScale.x<0 && triggerObject.position.x> transform.position.x) return;    
+                }
+                else
+                {
+                    if(offAngle * transform.lossyScale.x>0 && triggerObject.position.x< transform.position.x) return;    
+                    if(offAngle * transform.lossyScale.x<0 && triggerObject.position.x> transform.position.x) return;    
+                }
+            }
             if (triggerPlatform!=null&&triggerPlatform.CanSwitchByCinematic(!IsOn))
             {
                 GamePlayController.Instance.PauseForCinematic(true);
