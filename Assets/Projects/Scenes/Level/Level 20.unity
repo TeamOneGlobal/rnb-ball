@@ -649,6 +649,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3600815073147470849, guid: a19e25ccefd67b3478795850a9256f42, type: 3}
+      propertyPath: m_Size.x
+      value: 12.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3600815073147470849, guid: a19e25ccefd67b3478795850a9256f42, type: 3}
+      propertyPath: m_Size.y
+      value: 17.9
+      objectReference: {fileID: 0}
     - target: {fileID: 3600815073147470852, guid: a19e25ccefd67b3478795850a9256f42, type: 3}
       propertyPath: m_Name
       value: hiddenMap
@@ -656,6 +664,10 @@ PrefabInstance:
     - target: {fileID: 3600815073147470852, guid: a19e25ccefd67b3478795850a9256f42, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3600815073249062992, guid: a19e25ccefd67b3478795850a9256f42, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3600815074609928696, guid: a19e25ccefd67b3478795850a9256f42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1515,17 +1527,18 @@ EdgeCollider2D:
   - {x: -6.6364985, y: -8.518155}
   - {x: -6.2128315, y: -8.687342}
   - {x: -5.9718246, y: -8.741129}
-  - {x: -0.015511699, y: -8.740063}
-  - {x: 0.159178, y: -8.719687}
-  - {x: 0.35875165, y: -8.658405}
-  - {x: 0.59146816, y: -8.557172}
-  - {x: 1.1233294, y: -8.259374}
-  - {x: 2.306738, y: -7.4852457}
-  - {x: 2.8976953, y: -7.123427}
-  - {x: 3.1834683, y: -6.9731708}
-  - {x: 3.4615664, y: -6.852774}
-  - {x: 3.733696, y: -6.7706504}
-  - {x: 3.984488, y: -6.7400627}
+  - {x: -1.0146438, y: -8.740013}
+  - {x: -0.8224885, y: -8.7185755}
+  - {x: -0.57983047, y: -8.654065}
+  - {x: -0.28582594, y: -8.549091}
+  - {x: 0.046702437, y: -8.410505}
+  - {x: 0.88882375, y: -8.012943}
+  - {x: 1.9817724, y: -7.4699907}
+  - {x: 2.7450728, y: -7.1121335}
+  - {x: 3.098174, y: -6.9650903}
+  - {x: 3.4257994, y: -6.8484344}
+  - {x: 3.726548, y: -6.7695384}
+  - {x: 3.9853563, y: -6.740012}
   - {x: 9, y: -6.7395997}
   - {x: 9.022401, y: -7.218667}
   - {x: 9.0224, y: -11.2396}
@@ -1738,7 +1751,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 0, y: -9, z: 0}
+    - position: {x: -1, y: -9, z: 0}
       leftTangent: {x: -1.9999994, y: -0, z: -0}
       rightTangent: {x: 1, y: 0, z: 0}
       mode: 1
