@@ -319,7 +319,7 @@ namespace Projects.Scripts.UIController
                 nextButton.gameObject.SetActive(false);
                 doubleValueButton.gameObject.SetActive(false);
                 continueButton.gameObject.SetActive(false);
-                StartCoroutine(ShowContinueButton());
+                StartCoroutine(ShowPlayButton());
                 red.PlayLose();
                 blue.PlayLose();
                 GameServiceManager.Instance.adManager.ShowBanner();
@@ -391,12 +391,14 @@ namespace Projects.Scripts.UIController
                         return;
                     }
 
-                    if (currentLevel >= GameDataManager.Instance.levelShowLottery &&
-                        (currentLevel - GameDataManager.Instance.levelShowLottery) %
-                        GameDataManager.Instance.showLotteryPerLevel == 0)
+                    if (currentLevel == GameDataManager.Instance.showSpinLevel)
                     {
-                        PopupMenuController.Instance.OpenLottery();
-                        GameServiceManager.Instance.adManager.HideBanner();
+                        PopupMenuController.Instance.OpenPopupSpin();
+                        return;
+                    }
+                    if (currentLevel == GameDataManager.Instance.showGiftLevel)
+                    {
+                        PopupMenuController.Instance.OpenPopupGift();
                         return;
                     }
                 }
@@ -418,6 +420,11 @@ namespace Projects.Scripts.UIController
         {
             yield return new WaitForSeconds(2f);
             continueButton.gameObject.SetActive(true);
+        }
+        private IEnumerator ShowPlayButton()
+        {
+            yield return new WaitForSeconds(2f);
+            playButton.gameObject.SetActive(true);
         }
         #endregion
         

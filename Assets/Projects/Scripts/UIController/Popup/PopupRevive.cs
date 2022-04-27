@@ -17,7 +17,6 @@ namespace Projects.Scripts.UIController.Popup
     public class PopupRevive : BasePopup
     {
         [SerializeField] private Transform container;
-        [SerializeField] private GameObject adIcon;
         [SerializeField] private Sprite greenButtonSprite;
         [SerializeField] private SkeletonGraphic red,blue;
         [SerializeField] private Button watchAdButton,closeButton;
@@ -34,12 +33,10 @@ namespace Projects.Scripts.UIController.Popup
             {
                 if (isWatchAd)
                 {
-                    adIcon.SetActive(true);
                     closeButton.gameObject.SetActive(false);
                 }
                 else
                 {
-                    adIcon.SetActive(false);
                     closeButton.gameObject.SetActive(true);
                     watchAdButton.GetComponentInChildren<Image>().sprite = greenButtonSprite;
                 }

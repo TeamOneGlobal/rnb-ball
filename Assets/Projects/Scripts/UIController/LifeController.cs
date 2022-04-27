@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using Projects.Scripts;
 using TMPro;
@@ -11,6 +12,11 @@ namespace UIController
         [SerializeField] private TextMeshProUGUI totalLifeText;
         [SerializeField] private CanvasGroup addLife;
         [SerializeField] private TextMeshProUGUI addLifeText;
+
+        private void Start()
+        {
+            UpdateLife();
+        }
 
         public void UpdateLife()
         {
@@ -51,8 +57,7 @@ namespace UIController
 
         private void UpdateLifeText()
         {
-            if (GameDataManager.Instance != null)
-                totalLifeText.text = $"{GameDataManager.Instance.GetCurrentLife()}";
+            totalLifeText.text = $"{GameDataManager.Instance.GetCurrentLife()}";
         }
     }
 }

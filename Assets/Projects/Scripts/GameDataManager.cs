@@ -17,7 +17,6 @@ namespace Projects.Scripts
         [SerializeField,FoldoutGroup("Constant Value/InGame")]public int coinValueInGame = 100;
         [SerializeField,FoldoutGroup("Constant Value/InGame")]public int maxLevel = 1;
         [SerializeField, FoldoutGroup("Constant Value/InGame")]public bool showBannerInGame;
-        [SerializeField, FoldoutGroup("Constant Value/InGame")]public float squidDifficulty = 1f;
         [SerializeField, FoldoutGroup("Constant Value/InGame")]public int magnetDuration = 15;
         [SerializeField, FoldoutGroup("Constant Value/Ad")]public int blockAdTime = 30;
         [SerializeField, FoldoutGroup("Constant Value/Ad")]public int minLevelShowInterstitial = 2;
@@ -28,13 +27,13 @@ namespace Projects.Scripts
         [SerializeField, FoldoutGroup("Constant Value/Ad")]
         public string versionReview = "0.2.5";
         [SerializeField, FoldoutGroup("Constant Value/Menu")] public int freeSpinCooldownHours = 8;
+        [SerializeField, FoldoutGroup("Constant Value/Menu")] public int levelShowDailyReward = 3;
+        [SerializeField, FoldoutGroup("Constant Value/Menu")] public int showSpinLevel = 5;
+        [SerializeField, FoldoutGroup("Constant Value/Menu")] public int showGiftLevel = 7;
         [SerializeField, FoldoutGroup("Constant Value/Menu")] public int levelShowSpecialOffer = 11;
         [SerializeField, FoldoutGroup("Constant Value/Menu")] public int showOfferPerLevel = 10;
-        [SerializeField, FoldoutGroup("Constant Value/Menu")] public int levelShowDailyReward = 3;
         [SerializeField, FoldoutGroup("Constant Value/Menu")] public int levelShowRating = 14;
         [SerializeField, FoldoutGroup("Constant Value/Menu")] public int showRatingPerLevel = 10;
-        [SerializeField, FoldoutGroup("Constant Value/Menu")] public int levelShowLottery = 9;
-        [SerializeField, FoldoutGroup("Constant Value/Menu")] public int showLotteryPerLevel = 10;
         [SerializeField, FoldoutGroup("Constant Value/Menu")] public int showContinueAfterLevel = 10;
         [SerializeField, FoldoutGroup("Constant Value/Menu")] public int multipleCoinInMenu = 5;
         [SerializeField, FoldoutGroup("Game Data")] public StartData startData;
@@ -75,14 +74,6 @@ namespace Projects.Scripts
         }
 
         #region GameData
-
-        public float GetSquidLevelDifficulty()
-        {
-            float difficulty = squidDifficulty * (1 + _userData.squidLevel / 10f) / 100f;
-            Debug.Log("remote squid difficulty: " + squidDifficulty);
-            Debug.Log("squid game level difficulty: " + difficulty);
-            return difficulty;
-        }
         
         #endregion
         

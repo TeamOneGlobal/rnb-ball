@@ -10,14 +10,14 @@ namespace Projects.Scripts.UIController
         {
             GameDataManager.Instance.LoadUserData();
             var currentLevel = GameDataManager.Instance.GetCurrentLevel();
-            // if(currentLevel> GameDataManager.Instance.maxLevel)
-            //     LoadSceneController.LoadMenu();
-            // else
-            // {
-            //     LoadSceneController.LoadLevel(currentLevel);
-            // }
-            await Task.Delay(TimeSpan.FromMilliseconds(1000));
-            LoadSceneController.LoadMenu();
+            if(currentLevel> GameDataManager.Instance.maxLevel)
+                LoadSceneController.LoadMenu();
+            else
+            {
+                LoadSceneController.LoadLevel(currentLevel);
+            }
+            //await Task.Delay(TimeSpan.FromMilliseconds(200));
+            //LoadSceneController.LoadMenu();
         }
     }
 }

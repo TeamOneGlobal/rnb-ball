@@ -34,14 +34,14 @@ namespace GamePlay
         public CharacterController red, blue;
         [SerializeField] private GameObject hand;
 
-        [Title("UI")] [SerializeField] private TextMeshProUGUI levelText,lifeText;
+        [Title("UI")] [SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private Image[] controlObject;
         [SerializeField] private Image imgChangeCharacter;
         [SerializeField] private Sprite redImg, blueImg;
         [BoxGroup("Button")] [SerializeField] private CustomButton moveLeft, moveRight, jump, changeTarget;
         [BoxGroup("Button"), SerializeField] private Button pauseButton;
         [BoxGroup("Button"), SerializeField] private Joystick joyStick;
-        private GameState _gameState;
+        public GameState gameState;
         private bool _isBlueGateOpen, _isRedGateOpen;
         private bool _changingCharacter;
         private string _skin;
@@ -76,16 +76,18 @@ namespace GamePlay
             joyStick.onPointDown.AddListener(MoveCamera.Instance.OnPointerDown);
             joyStick.onPointUp.AddListener(MoveCamera.Instance.OnPointerUp);
             joyStick.onDrag.AddListener(MoveCamera.Instance.OnDrag);
-            LifeController.Instance.UpdateLife();
+            
             MoveCamera.Instance.onStartMove = () =>
             {
-                _gameState = GameState.Pause;
+                gameState = GameState.Pause;
                 controlCharacter.CancelAllMove();
             };
-            MoveCamera.Instance.onEndMove = () => { _gameState = GameState.Playing; };
+            MoveCamera.Instance.onEndMove = () => { gameState = GameState.Playing; };
             MagneticController.Instance.Init();
-            _gameState = GameState.Playing;
+            gameState = GameState.Playing;
             SoundInGameManager.Instance.PlayBgmSound();
+            LifeController.Instance.UpdateLife();
+            _skin = GameDataManager.Instance.GetCurrentSkin();
             GameServiceManager.Instance.logEventManager.LogEvent("level_start",new Dictionary<string, object>
             {
                 { "level","lv_"+level}
@@ -137,7 +139,7 @@ namespace GamePlay
 
         public void TogglePause()
         {
-            if (_gameState == GameState.Pause)
+            if (gameState == GameState.Pause)
             {
                 Resume();
             }
@@ -149,19 +151,19 @@ namespace GamePlay
 
         public void Pause()
         {
-            _gameState = GameState.Pause;
+            gameState = GameState.Pause;
             LogicalPause();
         }
 
         public void Resume()
         {
-            _gameState = GameState.Playing;
+            gameState = GameState.Playing;
             LogicalResume();
         }
 
         public async UniTaskVoid Win()
         {
-            _gameState = GameState.End;
+            gameState = GameState.End;
             controlCharacter.CancelAllMove();
            
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
@@ -170,7 +172,7 @@ namespace GamePlay
 
         private void ForceWin()
         {
-            _gameState = GameState.End;
+            gameState = GameState.End;
             controlCharacter.CancelAllMove();
             red.PlayWinAnim();
             blue.PlayWinAnim();
@@ -252,7 +254,6 @@ namespace GamePlay
             Timing.PauseCoroutines();
         }
 
-        [Button]
         public void Lose()
         {
             GameServiceManager.Instance.logEventManager.LogEvent("level_fail",new Dictionary<string, object>
@@ -261,9 +262,10 @@ namespace GamePlay
             });
             SoundInGameManager.Instance.PlayLoseSound(() =>
             {
-                _gameState = GameState.End;
+                gameState = GameState.End;
                 controlCharacter.CancelAllMove();
-                LogicalPause();
+                DOTween.PauseAll();
+                Timing.PauseCoroutines();
                 PopupInGameController.Instance.OpenPopupRevive(SetCharacterRevive, () =>
                 {
                     GameDataManager.Instance.GameResult(GameResult.Lose, level, (int)CoinCollector.Instance.total);
@@ -275,7 +277,7 @@ namespace GamePlay
 
         public async void CharacterDie()
         {
-            _gameState = GameState.Pause;
+            gameState = GameState.Pause;
             controlCharacter.CancelAllMove();
             GameServiceManager.Instance.logEventManager.LogEvent("die",new Dictionary<string, object>
             {
@@ -294,7 +296,7 @@ namespace GamePlay
 
         public void SetCharacterRevive()
         {
-            controlCharacter.Revive(() => { _gameState = GameState.Playing; });
+            controlCharacter.Revive(() => { gameState = GameState.Playing; });
         }
 
         #endregion
@@ -305,7 +307,7 @@ namespace GamePlay
 #if UNITY_EDITOR
         private void Update()
         {
-            if (_gameState != GameState.Playing) return;
+            if (gameState != GameState.Playing) return;
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 MoveLeft();
@@ -344,13 +346,13 @@ namespace GamePlay
 
         private void MoveLeft()
         {
-            if (controlCharacter != null && _gameState == GameState.Playing)
+            if (controlCharacter != null && gameState == GameState.Playing)
                 controlCharacter.MoveLeft(true);
         }
 
         private void MoveRight()
         {
-            if (controlCharacter != null && _gameState == GameState.Playing)
+            if (controlCharacter != null && gameState == GameState.Playing)
                 controlCharacter.MoveRight(true);
         }
 
@@ -366,7 +368,7 @@ namespace GamePlay
 
         private void Jump()
         {
-            if (controlCharacter != null && _gameState == GameState.Playing)
+            if (controlCharacter != null && gameState == GameState.Playing)
                 controlCharacter.Jump();
         }
 
@@ -374,9 +376,9 @@ namespace GamePlay
         {
             hand.SetActive(false);
             if (controlCharacter.IsJumping()) return;
-            if (_gameState != GameState.Playing) return;
+            if (gameState != GameState.Playing) return;
             if (_changingCharacter) return;
-            if (controlCharacter != null && _gameState == GameState.Playing)
+            if (controlCharacter != null && gameState == GameState.Playing)
                 controlCharacter.CancelAllMove();
             controlCharacter.OnCharacterSelected(false);
             if (controlCharacter == red)
@@ -444,13 +446,13 @@ namespace GamePlay
         {
             if (isPause)
             {
-                _gameState = GameState.Pause;
+                gameState = GameState.Pause;
                 controlCharacter.CancelAllMove();
                 LogicalPause();
             }
             else
             {
-                _gameState = GameState.Playing;
+                gameState = GameState.Playing;
                 LogicalResume();
             }
         }
