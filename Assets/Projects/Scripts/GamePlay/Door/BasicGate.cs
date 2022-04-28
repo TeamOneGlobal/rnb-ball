@@ -60,6 +60,7 @@ namespace GamePlay.Door
         }
         protected void OpenGate(Action onStart = null, Action onComplete = null)
         {
+            GamePlayController.Instance.OpenGate(collisionTags[0]);
             if(_isOpen) return;
             _isOpen = true;
             var entry = gatenAnim.state.SetAnimation(0, openAnim, false);
@@ -67,7 +68,7 @@ namespace GamePlay.Door
             {
                 gatenAnim.state.SetAnimation(0, openedIdleAnim, true);
             };
-            GamePlayController.Instance.OpenGate(collisionTags[0]);
+            
         }
         
 
