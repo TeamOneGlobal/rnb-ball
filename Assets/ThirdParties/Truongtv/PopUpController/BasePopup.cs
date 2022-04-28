@@ -29,6 +29,7 @@ namespace Truongtv.PopUpController
         {
             _popupController = controller;
             var sortingOrder =_popupController.CalculatingSortingOrder(this);
+            Debug.Log("sortingOrder = "+sortingOrder);
             SetSortingOrder(sortingOrder);
 
             if (displayType == PopupDisplayType.Random)

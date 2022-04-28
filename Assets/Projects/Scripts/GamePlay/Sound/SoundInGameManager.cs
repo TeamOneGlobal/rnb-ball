@@ -28,6 +28,12 @@ namespace Projects.Scripts.GamePlay.Sound
             _instance = this;
         }
 
+        private void Start()
+        {
+            var r = Random.Range(0, bgm.Length);
+            Bgm.Instance.Play(bgm[r]);
+        }
+
         #region UI
 
         public void PlayChangeTargetSound()

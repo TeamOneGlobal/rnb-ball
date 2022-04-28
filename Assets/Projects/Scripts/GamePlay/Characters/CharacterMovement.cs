@@ -149,7 +149,7 @@ namespace GamePlay.Characters
         private bool CheckIsGrounded()
         {
             Vector2 boundSize = gameObject.GetComponent<CircleCollider2D>().bounds.size;
-            boundSize = new Vector2(0.1f, boundSize.y);
+            boundSize = new Vector2(boundSize.x/2, boundSize.y);
             RaycastHit2D hit2D = Physics2D.BoxCast(gameObject.GetComponent<CircleCollider2D>().bounds.center, boundSize,
                 180, Vector2.down, 0.1f, groundAndPlatformLayers);
 

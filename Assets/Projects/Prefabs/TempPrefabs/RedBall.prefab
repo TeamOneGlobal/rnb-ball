@@ -5350,7 +5350,7 @@ MonoBehaviour:
     m_Bits: 1616
   moveMaxSpeed: 5.5
   moveSpeedIncrease: 60
-  moveSpeedDecrease: 10
+  moveSpeedDecrease: 20
   deccelTime: 1
   jumpSpeed: 16
   jumpSpeedUp: 30
@@ -5436,6 +5436,12 @@ MonoBehaviour:
   animation: {fileID: 5138274023637868577}
   idles:
   - base_idle
+  - base_idle2
+  - laugh
+  - looking
+  - smile
+  - suprise
+  - suprise2
   dieAnim: die
   callAnim: waiting
   winAnim: base_idle3

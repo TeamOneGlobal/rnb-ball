@@ -118,7 +118,7 @@ namespace GamePlay
             }
             else
             {
-                if (level > 1 && level <= 5)
+                if (level <= 5)
                 {
                     hand.SetActive(true);
                 }
@@ -265,8 +265,6 @@ namespace GamePlay
             {
                 gameState = GameState.End;
                 controlCharacter.CancelAllMove();
-                DOTween.PauseAll();
-                Timing.PauseCoroutines();
                 PopupInGameController.Instance.OpenPopupRevive(SetCharacterRevive, () =>
                 {
                     GameDataManager.Instance.GameResult(GameResult.Lose, level, (int)CoinCollector.Instance.total);

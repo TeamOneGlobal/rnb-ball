@@ -19,7 +19,8 @@ namespace GamePlay.Door
         [SerializeField] private float openY;
         [SerializeField] private GameObject redKeyObj,blueKeyObj;
         [SerializeField] private SkeletonAnimation skeletonRed,skeletonBlue;
-        [SerializeField,OnValueChanged(nameof(OnValueChange)),ValueDropdown(nameof(GetAllSkinName))] private string trySkinName;
+        private string trySkinName;
+        [SerializeField] private string rescueAnim;
         private bool _isPlayRedKey, _isPlayBlueKey, _isRedOpen, _isBlueOpen;
         void Start()
         {
@@ -75,18 +76,18 @@ namespace GamePlay.Door
         }
         protected override void TriggerExit(string triggerTag, Transform triggerObject)
         {
-            if (triggerTag.Equals(TagManager.RED_TAG))
-            {
-                redKeyObj.SetActive(false);
-                _isRedOpen = false;
-                GamePlayController.Instance.CloseGate(TagManager.RED_TAG);
-            }
-            if (triggerTag.Equals(TagManager.BLUE_TAG))
-            {
-                blueKeyObj.SetActive(false);
-                _isBlueOpen = false;
-                GamePlayController.Instance.CloseGate(TagManager.BLUE_TAG);
-            }
+            // if (triggerTag.Equals(TagManager.RED_TAG))
+            // {
+            //     redKeyObj.SetActive(false);
+            //     _isRedOpen = false;
+            //     GamePlayController.Instance.CloseGate(TagManager.RED_TAG);
+            // }
+            // if (triggerTag.Equals(TagManager.BLUE_TAG))
+            // {
+            //     blueKeyObj.SetActive(false);
+            //     _isBlueOpen = false;
+            //     GamePlayController.Instance.CloseGate(TagManager.BLUE_TAG);
+            // }
             triggerObject.GetComponent<CharacterController>().PlayIdle();
         }
         private void PlayKeySound(string characterTag)
@@ -128,7 +129,12 @@ namespace GamePlay.Door
             gate.DOLocalMoveY(openY, 1f)
                 .SetEase(Ease.Linear)
                 .OnStart(() => { onStart?.Invoke();})
-                .OnComplete(() => { onComplete?.Invoke();});
+                .OnComplete(() =>
+                {
+                    onComplete?.Invoke();
+                    skeletonBlue.state.SetAnimation(0, rescueAnim, true);
+                    skeletonRed.state.SetAnimation(0, rescueAnim, true);
+                });
         }
     }
 }

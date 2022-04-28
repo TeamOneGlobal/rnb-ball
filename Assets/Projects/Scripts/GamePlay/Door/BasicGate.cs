@@ -74,7 +74,7 @@ namespace GamePlay.Door
 
         protected void CloseGate(Action onStart = null, Action onComplete = null)
         {
-             GamePlayController.Instance.CloseGate(collisionTags[0]);
+             //GamePlayController.Instance.CloseGate(collisionTags[0]);
         }
     }
 }
