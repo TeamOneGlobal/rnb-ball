@@ -1621,7 +1621,9 @@ EdgeCollider2D:
   - {x: -23.022402, y: -6.7395997}
   - {x: -23.0224, y: -2.999999}
   - {x: -23, y: -2.7396002}
-  - {x: -16.022402, y: -2.7396002}
+  - {x: -19, y: -2.7396002}
+  - {x: -18.985271, y: -3.2396002}
+  - {x: -16.022402, y: -3.2396002}
   - {x: -16.0224, y: 1}
   - {x: -16, y: 1.2604}
   - {x: -10, y: 1.2604}
@@ -2392,7 +2394,27 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -16, y: -3, z: 0}
+    - position: {x: -19, y: -3, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      bevelCutoff: 0
+      bevelSize: 0
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: -19, y: -3.5, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      bevelCutoff: 0
+      bevelSize: 0
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: -16, y: -3.5, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -3048,8 +3070,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: abeaaa9d42dce764482608fefbbe4713, type: 3}
   - {fileID: 21300000, guid: 18a8fa61d9b6d0c4195d3e1e5d161e04, type: 3}
   m_LocalAABB:
-    m_Center: {x: 29.725002, y: 5.8510227, z: -0.0019999999}
-    m_Extent: {x: 70.855, y: 24.891975, z: 0.0019999999}
+    m_Center: {x: 29.725002, y: 5.8510227, z: -0.0021}
+    m_Extent: {x: 70.855, y: 24.891975, z: 0.0021}
 --- !u!4 &1174860586
 Transform:
   m_ObjectHideFlags: 0

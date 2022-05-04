@@ -226,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5333235770698746190, guid: bdb1f93295c6d67439f218671fdf0119, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.59
+      value: -6.947
       objectReference: {fileID: 0}
     - target: {fileID: 5333235771266740118, guid: bdb1f93295c6d67439f218671fdf0119, type: 3}
       propertyPath: m_LocalPosition.x
@@ -235,6 +235,10 @@ PrefabInstance:
     - target: {fileID: 5333235771266740118, guid: bdb1f93295c6d67439f218671fdf0119, type: 3}
       propertyPath: m_LocalPosition.y
       value: 4.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5333235771266740119, guid: bdb1f93295c6d67439f218671fdf0119, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5333235771377612230, guid: bdb1f93295c6d67439f218671fdf0119, type: 3}
       propertyPath: m_Name
@@ -1210,12 +1214,9 @@ EdgeCollider2D:
   - {x: -10.0224, y: -1}
   - {x: -10, y: -0.73959994}
   - {x: -6, y: -0.73959994}
-  - {x: -5.9776, y: -1.218667}
-  - {x: -5.9776, y: -5.239599}
-  - {x: -3.5, y: -5.2395997}
-  - {x: -3.5224, y: -5}
-  - {x: -3.5, y: -4.7395997}
-  - {x: 2.9776008, y: -4.7395997}
+  - {x: -5.9776, y: -1.1943705}
+  - {x: -5.9776, y: -4.7395997}
+  - {x: 2.9776003, y: -4.7395997}
   - {x: 2.9776146, y: 0.49919003}
   - {x: 2.8741903, y: 0.7640848}
   - {x: 2.634237, y: 0.9498109}
@@ -1612,27 +1613,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -6, y: -5.5, z: 0}
-      leftTangent: {x: 0, y: 0, z: 0}
-      rightTangent: {x: 0, y: 0, z: 0}
-      mode: 0
-      height: 1
-      bevelCutoff: 0
-      bevelSize: 0
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: -3.5, y: -5.5, z: 0}
-      leftTangent: {x: 0, y: 0, z: 0}
-      rightTangent: {x: 0, y: 0, z: 0}
-      mode: 0
-      height: 1
-      bevelCutoff: 0
-      bevelSize: 0
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: -3.5, y: -5, z: 0}
+    - position: {x: -6, y: -5, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -1938,8 +1919,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: abeaaa9d42dce764482608fefbbe4713, type: 3}
   - {fileID: 21300000, guid: 18a8fa61d9b6d0c4195d3e1e5d161e04, type: 3}
   m_LocalAABB:
-    m_Center: {x: 29.80912, y: -3.261652, z: -0.0015499999}
-    m_Extent: {x: 70.77089, y: 15.779301, z: 0.0015499999}
+    m_Center: {x: 29.80912, y: -3.261652, z: -0.00145}
+    m_Extent: {x: 70.77089, y: 15.779301, z: 0.00145}
 --- !u!4 &1174860586
 Transform:
   m_ObjectHideFlags: 0
