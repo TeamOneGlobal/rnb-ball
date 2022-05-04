@@ -208,12 +208,7 @@ namespace ThirdParties.Truongtv.AdsManager
         private void RequestBanner()
         {
             bannerView?.Destroy();
-            var adaptiveSize =
-                AdSize.GetLandscapeAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
-#if !UNITY_EDITOR
-            adaptiveSize = new AdSize(adaptiveSize.Width, 40);
-#endif
-            bannerView = new BannerView(BannerAdId(), adaptiveSize, AdPosition.Bottom);
+            bannerView = new BannerView(BannerAdId(), AdSize.Banner, AdPosition.Bottom);
             bannerView.OnAdLoaded += HandleOnAdLoaded;
             bannerView.OnAdFailedToLoad += HandleOnAdFailedToLoad;
             bannerView.LoadAd(CreateAdRequest());

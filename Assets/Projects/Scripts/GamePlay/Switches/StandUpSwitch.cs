@@ -23,14 +23,17 @@ namespace GamePlay.Switches
         {
             base.TriggerEnter(triggerTag, triggerObject);
             _countTrigger++;
-            if (triggerPlatform.CanSwitchByCinematic(true))
-            {
-                Debug.Log("can switch");
-                GamePlayController.Instance.PauseForCinematic(true);
-            }
+            
             switchObj.transform.DOMove(on.position, actionDuration).SetEase(Ease.Linear)
                 .SetUpdate(UpdateType.Normal,true)
-                .OnComplete(()=>SwitchOn(triggerObject));
+                .OnComplete(()=>
+                {
+                    if (triggerPlatform.CanSwitchByCinematic(true))
+                    {
+                        GamePlayController.Instance.PauseForCinematic(true);
+                    }
+                    SwitchOn(triggerObject);
+                });
             simpleAudio.Play();
         }
 
@@ -41,14 +44,15 @@ namespace GamePlay.Switches
             if (_countTrigger <= 0)
             {
                 _countTrigger = 0;
-                if (triggerPlatform.CanSwitchByCinematic(false))
-                {
-                    GamePlayController.Instance.PauseForCinematic(true);
-                }
+                
                 switchObj.transform.DOMove(off.position, actionDuration) 
                     .SetUpdate(UpdateType.Normal,true)
                     .SetEase(Ease.Linear).OnComplete(()=>
                 {
+                    if (triggerPlatform.CanSwitchByCinematic(false))
+                    {
+                        GamePlayController.Instance.PauseForCinematic(true);
+                    }
                     SwitchOff(triggerObject);
                     
                     simpleAudio.Play();
