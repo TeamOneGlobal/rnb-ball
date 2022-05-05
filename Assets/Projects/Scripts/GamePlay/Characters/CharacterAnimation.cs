@@ -35,6 +35,7 @@ namespace GamePlay.Characters
                 });
                 TrySkin(skin);
             }
+            PlayIdle();
         }
 
         public void TrySkin(string skin)
