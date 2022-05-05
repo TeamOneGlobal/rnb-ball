@@ -1287,6 +1287,7 @@ GameObject:
   - component: {fileID: 361595158265632144}
   - component: {fileID: 361595158265632150}
   - component: {fileID: 361595158265632145}
+  - component: {fileID: 2591893724635733141}
   m_Layer: 0
   m_Name: SkeletonGraphic (ball)
   m_TagString: Untagged
@@ -1345,7 +1346,7 @@ MonoBehaviour:
   initialSkinName: Hockey_1
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: win_menu_2_red
+  startingAnimation: win
   startingLoop: 1
   timeScale: 1
   freeze: 0
@@ -1367,6 +1368,27 @@ MonoBehaviour:
       calculateTangents: 0
       addNormals: 0
       immutableTriangles: 0
+--- !u!114 &2591893724635733141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361595158265632147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025e1e9027314247af772b29f37eb620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 361595158265632145}
+  mix:
+  - haha
+  - laugh
+  - looking
+  - smile
+  - suprise
+  - uwu
+  loseAnim: crying
 --- !u!1 &361595158290588023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,6 +1577,8 @@ MonoBehaviour:
   freeSpinButton: {fileID: 361595157008721762}
   rollObj: {fileID: 361595156587507013}
   timeRemain: {fileID: 361595158443889010}
+  red: {fileID: 2591893724635733141}
+  blue: {fileID: 4775504204324354489}
 --- !u!1 &361595158443889020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +1978,7 @@ GameObject:
   - component: {fileID: 6434404609935923540}
   - component: {fileID: 6840804055160396845}
   - component: {fileID: 4641576102220781311}
+  - component: {fileID: 4775504204324354489}
   m_Layer: 0
   m_Name: SkeletonGraphic (ball)
   m_TagString: Untagged
@@ -2012,7 +2037,7 @@ MonoBehaviour:
   initialSkinName: Hockey_2
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: win_menu_2_blue
+  startingAnimation: win
   startingLoop: 1
   timeScale: 1
   freeze: 0
@@ -2034,3 +2059,24 @@ MonoBehaviour:
       calculateTangents: 0
       addNormals: 0
       immutableTriangles: 0
+--- !u!114 &4775504204324354489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160084703954598656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025e1e9027314247af772b29f37eb620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 4641576102220781311}
+  mix:
+  - haha
+  - laugh
+  - looking
+  - smile
+  - suprise
+  - uwu
+  loseAnim: crying

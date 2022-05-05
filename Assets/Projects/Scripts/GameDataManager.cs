@@ -59,8 +59,8 @@ namespace Projects.Scripts
         private const string SubscriptionKey = "subscription";
         private const string InfinityLifeKey = "infinityLife";
         private const string SpecialOfferKey = "special_offer";
-        public static bool FirstOpen = true;
         private static GameDataManager _instance;
+        private int countLevel;
         public static GameDataManager Instance => _instance;
         public void Awake()
         {
@@ -388,7 +388,7 @@ namespace Projects.Scripts
             SaveData();
         }
 
-        public bool CanShowInterstitialAd(int countLevel)
+        public bool CanShowInterstitialAd()
         {
             if (IsPurchaseBlockAd()) return false;
             if (GetCurrentLevel() < minLevelShowInterstitial) return false;

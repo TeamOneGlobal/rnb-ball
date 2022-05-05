@@ -30,11 +30,13 @@ namespace Projects.Scripts.UIController.Popup
         [SerializeField] private Button closeButton, adSpinButton, freeSpinButton;
         [SerializeField] private Transform rollObj;
         [SerializeField] private TextMeshProUGUI timeRemain;
+        [SerializeField] private BallMenuController red, blue;
         private bool _isInit;
       
         public void Initialized()
         {
             RegisterEvent();
+            
             rollObj.RemoveAllChild();
             itemList = new List<SpinItem>();
             
@@ -220,6 +222,8 @@ namespace Projects.Scripts.UIController.Popup
             container.localScale = Vector3.zero;
             SoundManager.Instance.PlayPopupOpenSound();
             container.DOScale(1, DURATION).SetUpdate(UpdateType.Normal, true).SetEase(Ease.OutBack);
+            red.PlayRandomMix();
+            blue.PlayRandomMix();
         }
 
         private void OnClose()

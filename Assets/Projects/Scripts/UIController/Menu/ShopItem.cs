@@ -109,10 +109,10 @@ namespace Projects.Scripts.UIController.Menu
                 purchased.SetActive(true);
                 buyButton.interactable = false;
             }
-            else if (shopItem.id == ShopId.life)
-            {
-                GameDataManager.Instance.SetInfinityLife();
-            }
+            // else if (shopItem.id == ShopId.life)
+            // {
+            //     GameDataManager.Instance.SetInfinityLife();
+            // }
             MenuController.Instance.UpdateCoin(shopItem.reward.coinValue,transform);
             MenuController.Instance.UpdateLife(shopItem.reward.lifeValue,transform);
             complete?.Invoke();

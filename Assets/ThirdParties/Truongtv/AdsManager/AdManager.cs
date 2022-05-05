@@ -62,7 +62,7 @@ namespace ThirdParties.Truongtv.AdsManager
 
         private bool IsInterstitialAvailableToShow()
         {
-            return !GameDataManager.Instance.IsPurchaseBlockAd();
+            return !GameDataManager.Instance.IsPurchaseBlockAd() && GameDataManager.Instance.CanShowInterstitialAd();
         }
         
         #endregion

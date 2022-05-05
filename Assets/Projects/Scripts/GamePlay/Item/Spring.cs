@@ -17,7 +17,7 @@ namespace GamePlay.Item
         {
             base.CollisionEnter(triggerTag, triggerObject);
             obj.DOKill(true);
-            triggerObject.GetComponent<CharacterController>().AddForce(force);
+            triggerObject.GetComponent<CharacterController>().SetVelocity(force);
             await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
             obj.DOPunchPosition(new Vector3(0, -0.36f, 0), 1f).SetEase(Ease.OutBounce);
             audio.Play();

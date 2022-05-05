@@ -10,8 +10,8 @@ public class BrokenPlatform2 : MonoBehaviour
     [SerializeField, SpineAnimation] private string idleAnim, impactAnim, stayInAnim, appearAnim, disappearAnim;
     [SerializeField] private float stayDuration, hideDuration;
     [SerializeField] private Collider2D collider2D;
-        
-    private bool stay,isBreak,iStart;
+
+    private bool stay, isBreak, iStart;
 
     private void Start()
     {
@@ -21,14 +21,11 @@ public class BrokenPlatform2 : MonoBehaviour
 
     public void OnImpact()
     {
-        if(isBreak) return;
+        if (isBreak) return;
         stay = true;
-        if(iStart) return;
+        if (iStart) return;
         var trackEntry = skeleton.state.SetAnimation(0, impactAnim, false);
-        trackEntry.Complete += entry =>
-        {
-            skeleton.state.SetAnimation(0, stayInAnim, true);
-        }; 
+        trackEntry.Complete += entry => { skeleton.state.SetAnimation(0, stayInAnim, true); };
         StartCoroutine(Break());
     }
 
@@ -59,8 +56,7 @@ public class BrokenPlatform2 : MonoBehaviour
         {
             isBreak = false;
             collider2D.isTrigger = false;
-            if(!stay)
-                skeleton.state.SetAnimation(0, idleAnim, true);
+            skeleton.state.SetAnimation(0, idleAnim, true);
         };
         iStart = false;
     }

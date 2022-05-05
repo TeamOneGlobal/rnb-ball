@@ -32,12 +32,10 @@ namespace GamePlay.Characters
 
         public void Jump()
         {
-            if(GamePlayController.Instance.gameState != GameState.Playing) return;
             movement.Jump().Forget();
         }
         public void MoveLeft(bool isMove)
         {
-            if(GamePlayController.Instance.gameState != GameState.Playing) return;
             if(isMove)
                 movement.MoveLeft();
             else 
@@ -45,7 +43,6 @@ namespace GamePlay.Characters
         }
         public void MoveRight(bool isMove)
         {
-            if(GamePlayController.Instance.gameState != GameState.Playing) return;
             if(isMove)
                 movement.MoveRight();
             else 
