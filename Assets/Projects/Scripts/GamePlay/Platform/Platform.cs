@@ -40,7 +40,6 @@ namespace GamePlay.Platform
             base.CollisionExit(triggerTag, triggerObject);
             _countPlayer--;
             triggerObject.SetParent(null);
-            triggerObject.transform.localScale = new Vector3(1,1,1);
             if (_countPlayer <= 0)
             {
                 _countPlayer = 0;

@@ -46,17 +46,17 @@ namespace GamePlay.Item
             }
             if(!_isCollisionBall) return;
             if(GamePlayController.Instance.controlCharacter.transform.position.y-transform.position.y<1f) return;
-            if(!GamePlayController.Instance.controlCharacter.CollisionWithGround()) return;
-            var charVelocity = GamePlayController.Instance.controlCharacter.GetVelocity();
-            //if(Mathf.Abs(charVelocity.y)>1f) return;
-            if (charVelocity.x<0)
-            {
-                rigidbody.velocity = baseForce;
-            }
-            else if (charVelocity.x>0)
-            {
-                rigidbody.velocity = new Vector2(-baseForce.x,baseForce.y);
-            }
+            // if(!GamePlayController.Instance.controlCharacter.CollisionWithGround()) return;
+            // var charVelocity = GamePlayController.Instance.controlCharacter.GetVelocity();
+            // //if(Mathf.Abs(charVelocity.y)>1f) return;
+            // if (charVelocity.x<0)
+            // {
+            //     rigidbody.velocity = baseForce;
+            // }
+            // else if (charVelocity.x>0)
+            // {
+            //     rigidbody.velocity = new Vector2(-baseForce.x,baseForce.y);
+            // }
         }
 
         protected override void CollisionEnter(string triggerTag, Transform triggerObject)

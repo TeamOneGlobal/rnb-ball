@@ -13,6 +13,8 @@ namespace ThirdParties.Truongtv.IapManager
         private IPaymentService _paymentService;
         private Action<bool, string> _purchaseCallback;
         [SerializeField]private IAPData iapData;
+        [SerializeField] private bool fakeIap;
+        
         #region Private Function
         public void Init()
         {
@@ -43,6 +45,11 @@ namespace ThirdParties.Truongtv.IapManager
             pAction?.Invoke(true,sku);
             return;
             #endif
+            if (fakeIap)
+            {
+                pAction?.Invoke(true,sku);
+                return;
+            }
             if (Application.internetReachability == NetworkReachability.NotReachable)
             {
                 //PopupController.Instance.ShowToast("No internet connection. Make sure to turn on your Wifi/Mobile data.");
@@ -73,6 +80,13 @@ namespace ThirdParties.Truongtv.IapManager
             var list2 = iapData.GetSkuItems().ToList();
             return list2.Find(a => a.skuId.Equals(sku)).defaultValue;
             #endif
+            
+            if (fakeIap)
+            {
+                var list3 = iapData.GetSkuItems().ToList();
+                return list3.Find(a => a.skuId.Equals(sku)).defaultValue;
+            }
+            
             if (!IsInitialized()|| Application.internetReachability == NetworkReachability.NotReachable)
             {
                 Init();

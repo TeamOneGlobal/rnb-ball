@@ -166,7 +166,7 @@ namespace GamePlay
         {
             gameState = GameState.End;
             controlCharacter.CancelAllMove();
-           
+            pauseButton.gameObject.SetActive(false);
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
             ForceWin();
         }
@@ -264,7 +264,10 @@ namespace GamePlay
             SoundInGameManager.Instance.PlayLoseSound(() =>
             {
                 gameState = GameState.End;
-                controlCharacter.CancelAllMove();
+                red.CancelAllMove();
+                red.SetVelocity(Vector2.zero);
+                blue.CancelAllMove();
+                blue.SetVelocity(Vector2.zero);
                 PopupInGameController.Instance.OpenPopupRevive(SetCharacterRevive, () =>
                 {
                     GameDataManager.Instance.GameResult(GameResult.Lose, level, (int)CoinCollector.Instance.total);
@@ -282,10 +285,11 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
-            await UniTask.Delay(TimeSpan.FromSeconds(2.5f));
+            
             var totalLife = GameDataManager.Instance.GetCurrentLife();
             if (totalLife > 1)
             {
+                await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
                 LifeController.Instance.Addlife(-1);
                 SetCharacterRevive();
             }
@@ -446,8 +450,10 @@ namespace GamePlay
             if (isPause)
             {
                 gameState = GameState.Pause;
-                controlCharacter.CancelAllMove();
-                LogicalPause();
+                red.CancelAllMove();
+                blue.CancelAllMove();
+                DOTween.PauseAll();
+                Timing.PauseCoroutines();
             }
             else
             {
