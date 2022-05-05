@@ -35,6 +35,10 @@ public class BrokenPlatform2 : MonoBehaviour
     public void OnStay()
     {
         stay = true;
+        if (!iStart && !collider2D.isTrigger)
+        {
+            StartCoroutine(Break());
+        }
     }
 
     public void OnExit()

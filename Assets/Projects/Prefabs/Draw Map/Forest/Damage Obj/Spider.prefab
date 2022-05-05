@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 00699a9c7a06c6048a26ed60ca1d9e41, type: 2}
+  - {fileID: 2100000, guid: 12130278f2ed747419497ba512e3cc29, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -178,8 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 44612fd84687c7f44803e3a59da0ba47, type: 2}
-  initialSkinName: 1
+  skeletonDataAsset: {fileID: 11400000, guid: 8cbef206aacd31b4880c09ae3fbd8d89, type: 2}
+  initialSkinName: 
   initialFlipX: 0
   initialFlipY: 0
   updateWhenInvisible: 3
@@ -234,6 +234,16 @@ MonoBehaviour:
   collisionTags:
   - Red
   - Blue
+  useDirectly: 0
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8481652451935257998
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8481652452375232538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16999817, y: 6.12, z: 100}
+  m_LocalPosition: {x: 0.060001373, y: 1.4000001, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8481652451515162852}
@@ -428,6 +438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c761ad0335e4a4a92fcfe579ae7e326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 8481652451515162855}
+  idle: idle
+  move: down
   target: {fileID: 8481652452375232541}
   points:
   - {fileID: 8481652451463723920}
@@ -610,11 +623,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9096710852741481912, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Positions.Array.data[1].x
-      value: -41.960003
+      value: -42.07
       objectReference: {fileID: 0}
     - target: {fileID: 9096710852741481912, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: 2.52
+      value: -2.1999998
       objectReference: {fileID: 0}
     - target: {fileID: 9096710852741481912, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Positions.Array.data[1].z

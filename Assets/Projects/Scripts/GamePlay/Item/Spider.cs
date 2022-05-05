@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using Spine.Unity;
 using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 using CharacterController = GamePlay.Characters.CharacterController;
@@ -9,6 +10,8 @@ namespace GamePlay.Item
     [ExecuteAlways]
     public class Spider : MonoBehaviour
     {
+        [SerializeField] private SkeletonAnimation anim;
+        [SerializeField, SpineAnimation] private string idle, move;
         [SerializeField] private Transform target;
         [SerializeField] private List<Transform> points;
         [SerializeField] private LineRenderer lineRenderer;
@@ -42,22 +45,32 @@ namespace GamePlay.Item
 
         private void MoveDown()
         {
+            anim.state.SetAnimation(0, idle, true);
             audio.Stop();
             target.DOMove(points[1].position, moveTime)
                 .SetEase(Ease.Linear)
                 .SetDelay(delayTime)
-                .OnStart(()=>audio.Play())
+                .OnStart(()=>
+                {
+                    anim.state.SetAnimation(0, move, true);
+                    audio.Play();
+                })
                 .OnUpdate(() => { lineRenderer.SetPosition(1, target.position); })
                 .OnComplete(MoveUp);
         }
 
         private void MoveUp()
         {
+            anim.state.SetAnimation(0, idle, true);
             audio.Stop();
             target.DOMove(points[0].position, moveTime)
                 .SetEase(Ease.Linear)
                 .SetDelay(delayTime)
-                .OnStart(()=>audio.Play())
+                .OnStart(()=>
+                {
+                    anim.state.SetAnimation(0, move, true);
+                    audio.Play();
+                })
                 .OnUpdate(() => { lineRenderer.SetPosition(1, target.position); })
                 .OnComplete(MoveDown);
         }

@@ -479,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8481652451463723920, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.78
+      value: 6.13
       objectReference: {fileID: 0}
     - target: {fileID: 8481652451515162841, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_Mesh
@@ -551,7 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8613197414688811094, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: -0.057468414
+      value: -1.7074685
       objectReference: {fileID: 0}
     - target: {fileID: 8613197414688811094, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_Positions.Array.data[1].x
@@ -1660,8 +1660,12 @@ EdgeCollider2D:
   - {x: 1.2863605, y: 7.069198}
   - {x: 1.9704055, y: 6.787811}
   - {x: 3.1206264, y: 6.230776}
-  - {x: 3.0224, y: 6}
-  - {x: 3.0224, y: -12.739602}
+  - {x: 3.0223997, y: 5.9617777}
+  - {x: 3.0224, y: 3}
+  - {x: 3.16267, y: 3.2033386}
+  - {x: 4.41267, y: 2.2033386}
+  - {x: 4.2724, y: 2}
+  - {x: 4.2724, y: -12.7396}
   - {x: 9.9776, y: -12.7396}
   - {x: 9.9776, y: -5}
   - {x: 10, y: -4.7395997}
@@ -2388,7 +2392,27 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 3, y: -13, z: 0}
+    - position: {x: 3, y: 3, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      bevelCutoff: 0
+      bevelSize: 0
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 4.25, y: 2, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      bevelCutoff: 0
+      bevelSize: 0
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 4.25, y: -13, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -2704,8 +2728,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: abeaaa9d42dce764482608fefbbe4713, type: 3}
   - {fileID: 21300000, guid: 18a8fa61d9b6d0c4195d3e1e5d161e04, type: 3}
   m_LocalAABB:
-    m_Center: {x: 29.83009, y: 30.712023, z: -0.0023}
-    m_Extent: {x: 70.749916, y: 49.752975, z: 0.0023}
+    m_Center: {x: 29.83009, y: 30.712023, z: -0.0023999999}
+    m_Extent: {x: 70.749916, y: 49.752975, z: 0.0023999999}
 --- !u!4 &1174860586
 Transform:
   m_ObjectHideFlags: 0
@@ -3034,7 +3058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8481652451463723920, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.21
+      value: 2.13
       objectReference: {fileID: 0}
     - target: {fileID: 8481652451515162841, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_Mesh
@@ -3042,7 +3066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8481652452301980257, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.01
+      value: -0.68
       objectReference: {fileID: 0}
     - target: {fileID: 8481652452375232541, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3050,7 +3074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8481652452375232541, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00999999
+      value: -0.68000007
       objectReference: {fileID: 0}
     - target: {fileID: 8481652452898337880, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: moveTime
@@ -3114,7 +3138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8613197414688811094, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: 0.94000006
+      value: -1.1399999
       objectReference: {fileID: 0}
     - target: {fileID: 8613197414688811094, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_Positions.Array.data[1].x
@@ -3122,7 +3146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8613197414688811094, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: -3.26
+      value: -3.95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b47307c5476a548a92cdd20cb6d294, type: 3}

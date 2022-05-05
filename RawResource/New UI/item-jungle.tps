@@ -226,6 +226,216 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">object-jungle/Object_trang_tri/flower1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,37,22,74</rect>
+                <key>scale9Paddings</key>
+                <rect>11,37,22,74</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/flower2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,36,21,71</rect>
+                <key>scale9Paddings</key>
+                <rect>11,36,21,71</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/flower3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>12,37,24,73</rect>
+                <key>scale9Paddings</key>
+                <rect>12,37,24,73</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/grass1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>83,33,166,65</rect>
+                <key>scale9Paddings</key>
+                <rect>83,33,166,65</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/grass2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>46,32,93,65</rect>
+                <key>scale9Paddings</key>
+                <rect>46,32,93,65</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/grass3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>42,17,83,33</rect>
+                <key>scale9Paddings</key>
+                <rect>42,17,83,33</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/grass4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>103,61,205,121</rect>
+                <key>scale9Paddings</key>
+                <rect>103,61,205,121</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/grass5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,21,100,41</rect>
+                <key>scale9Paddings</key>
+                <rect>50,21,100,41</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/grass6.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>14,6,29,11</rect>
+                <key>scale9Paddings</key>
+                <rect>14,6,29,11</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/grass7.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,7,17,13</rect>
+                <key>scale9Paddings</key>
+                <rect>9,7,17,13</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/stone1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>62,36,123,73</rect>
+                <key>scale9Paddings</key>
+                <rect>62,36,123,73</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/stone2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,54,149,107</rect>
+                <key>scale9Paddings</key>
+                <rect>75,54,149,107</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/stone3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>70,45,141,91</rect>
+                <key>scale9Paddings</key>
+                <rect>70,45,141,91</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">object-jungle/Object_trang_tri/stone4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>51,48,103,95</rect>
+                <key>scale9Paddings</key>
+                <rect>51,48,103,95</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">object-jungle/Object_trang_tri/stone_pillar_1.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -362,53 +572,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">object-jungle/cage/cage_1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>123,98,245,197</rect>
-                <key>scale9Paddings</key>
-                <rect>123,98,245,197</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">object-jungle/cage/cage_2.png</key>
-            <key type="filename">object-jungle/cage/cage_3.png</key>
-            <key type="filename">object-jungle/cage/cage_4.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>10,73,21,147</rect>
-                <key>scale9Paddings</key>
-                <rect>10,73,21,147</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">object-jungle/cage/cage_5.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>96,78,191,155</rect>
-                <key>scale9Paddings</key>
-                <rect>96,78,191,155</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">object-jungle/car/car_body.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -451,21 +614,6 @@
                 <rect>30,31,61,63</rect>
                 <key>scale9Paddings</key>
                 <rect>30,31,61,63</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">object-jungle/dan.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>18,18,35,35</rect>
-                <key>scale9Paddings</key>
-                <rect>18,18,35,35</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -888,51 +1036,6 @@
                 <rect>20,20,41,39</rect>
                 <key>scale9Paddings</key>
                 <rect>20,20,41,39</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">object-jungle/star.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>26,25,51,49</rect>
-                <key>scale9Paddings</key>
-                <rect>26,25,51,49</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">object-jungle/swimming buoy.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>110,60,221,120</rect>
-                <key>scale9Paddings</key>
-                <rect>110,60,221,120</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">object-jungle/tutorial_board.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>154,135,307,269</rect>
-                <key>scale9Paddings</key>
-                <rect>154,135,307,269</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
