@@ -259,6 +259,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">object-jungle-2/button/button_1.png</key>
             <key type="filename">object-jungle-2/button/button_iron_1.png</key>
             <key type="filename">object-jungle-2/button/button_tone_2.png</key>
             <key type="filename">object-jungle-2/button/button_wood_1.png</key>
@@ -276,6 +277,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">object-jungle-2/button/button_2.png</key>
             <key type="filename">object-jungle-2/button/button_iron_2.png</key>
             <key type="filename">object-jungle-2/button/button_tone_1.png</key>
             <key type="filename">object-jungle-2/button/button_wood_2.png</key>

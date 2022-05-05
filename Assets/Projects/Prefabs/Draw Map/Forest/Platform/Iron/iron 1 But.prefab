@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5333235770067040404
 Transform:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5333235770245370983
 Transform:
   m_ObjectHideFlags: 0
@@ -281,9 +281,6 @@ MonoBehaviour:
   points:
   - {fileID: 5333235770245370983}
   - {fileID: 5333235770067040404}
-  simpleAudio: {fileID: 4212566919472715875}
-  moving: {fileID: 8300000, guid: f439e65580774504398e932115b60379, type: 3}
-  stop: {fileID: 8300000, guid: db8294285954c8c4d99025c460b443c2, type: 3}
   onTriggerEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -545,16 +542,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6492b2c8ee034c078d33059bd25caafa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4212566919472715875 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6065713044194641425, guid: 45fa3c557e1e80947b003a9959271d7a, type: 3}
-  m_PrefabInstance: {fileID: 7952150412727377522}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c07710f15fc0f9b49b87fbd407630f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
