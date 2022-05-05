@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8481652451463723921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 6.12, z: 0}
+  m_LocalPosition: {x: 0.03, y: 3.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8481652451935257985}
@@ -301,7 +301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8481652452301980270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: 1.4, z: 0}
+  m_LocalPosition: {x: 0.06, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8481652451935257985}
@@ -382,7 +382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8481652452375232538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.060001373, y: 1.4000001, z: 100}
+  m_LocalPosition: {x: 0.059999466, y: -0.22000003, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8481652451515162852}
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 1332801387}
   - component: {fileID: 158851050457571163}
   m_Layer: 7
-  m_Name: Spider
+  m_Name: E3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,7 +440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 8481652451515162855}
   idle: idle
-  move: down
+  moveup: up
+  moveDown: down
   target: {fileID: 8481652452375232541}
   points:
   - {fileID: 8481652451463723920}
@@ -611,11 +612,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9096710852741481912, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Positions.Array.data[0].x
-      value: -41.960003
+      value: -19.779999
       objectReference: {fileID: 0}
     - target: {fileID: 9096710852741481912, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: 2.52
+      value: 0.85000014
       objectReference: {fileID: 0}
     - target: {fileID: 9096710852741481912, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Positions.Array.data[0].z
@@ -623,11 +624,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9096710852741481912, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Positions.Array.data[1].x
-      value: -42.07
+      value: -19.75
       objectReference: {fileID: 0}
     - target: {fileID: 9096710852741481912, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: -2.1999998
+      value: -3.08
       objectReference: {fileID: 0}
     - target: {fileID: 9096710852741481912, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Positions.Array.data[1].z
@@ -635,7 +636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9096710852741481912, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 0.2
+      value: 0.37516946
       objectReference: {fileID: 0}
     - target: {fileID: 9096710852741481912, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Parameters.numCornerVertices
@@ -688,6 +689,10 @@ PrefabInstance:
     - target: {fileID: 9096710852741481918, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
       propertyPath: m_Name
       value: spiderSilk
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096710852741481918, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fae7094dcaa82c4eb904377f4ea4b07, type: 3}

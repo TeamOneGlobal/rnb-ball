@@ -40,7 +40,7 @@ namespace GamePlay.Platform
             platform.transform
                 .DOMove(points[CurrentPoint + 1].position, time)
                 .SetEase(Ease.Linear)
-                .SetUpdate(UpdateType.Normal,ignoreTimeScale)
+                .SetUpdate(UpdateType.Fixed,ignoreTimeScale)
                 .OnUpdate(()=>onUpdate?.Invoke())
                 .OnComplete(() => { Move(ignoreTimeScale,onComplete); });
             CurrentPoint++;
@@ -62,7 +62,7 @@ namespace GamePlay.Platform
             platform.transform
                 .DOMove(points[CurrentPoint - 1].position, time)
                 .SetEase(Ease.Linear)
-                .SetUpdate(UpdateType.Normal,ignoreTimeScale)
+                .SetUpdate(UpdateType.Fixed,ignoreTimeScale)
                 .OnUpdate(()=>onUpdate?.Invoke())
                 .OnComplete(() => { ReserveMove(ignoreTimeScale,onComplete); });
             CurrentPoint--;
