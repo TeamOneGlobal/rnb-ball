@@ -17,6 +17,11 @@ namespace ThirdParties.Truongtv.LogManager
         }
         public void LogEvent(string eventName, Dictionary<string,object> parameters)
         {
+            Debug.Log(eventName);
+            foreach (var keyValue in parameters)
+            {
+                Debug.Log(keyValue.Key+": "+keyValue.Value);
+            }
             _logService.LogEvent(eventName,parameters);
         }
     

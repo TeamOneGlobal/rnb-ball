@@ -8,7 +8,9 @@ namespace Projects.Scripts.UIController
     {
         private async void Start()
         {
+            
             GameDataManager.Instance.LoadUserData();
+            await Task.Delay(TimeSpan.FromMilliseconds(200));
             var currentLevel = GameDataManager.Instance.GetCurrentLevel();
             if(currentLevel> GameDataManager.Instance.maxLevel)
                 LoadSceneController.LoadMenu();
@@ -16,7 +18,7 @@ namespace Projects.Scripts.UIController
             {
                 LoadSceneController.LoadLevel(currentLevel);
             }
-            //await Task.Delay(TimeSpan.FromMilliseconds(200));
+            //
             //LoadSceneController.LoadMenu();
         }
     }
