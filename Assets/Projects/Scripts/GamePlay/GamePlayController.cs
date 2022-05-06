@@ -13,6 +13,7 @@ using Projects.Scripts.GamePlay.Sound;
 using Projects.Scripts.UIController;
 using Projects.Scripts.UIController.Popup;
 using Sirenix.OdinInspector;
+using Spine.Unity;
 using ThirdParties.Truongtv;
 using ThirdParties.Truongtv.SoundManager;
 using TMPro;
@@ -29,9 +30,9 @@ namespace GamePlay
     public class GamePlayController : SingletonMonoBehavior<GamePlayController>
     {
         public int level;
-
-        public CharacterController controlCharacter;
-        public CharacterController red, blue;
+        [SerializeField] private SkeletonGraphic ball;
+        [HideInInspector]public CharacterController controlCharacter;
+        [HideInInspector]public CharacterController red, blue;
         [SerializeField] private GameObject hand;
 
         [Title("UI")] [SerializeField] private TextMeshProUGUI levelText;
@@ -55,6 +56,8 @@ namespace GamePlay
             red = chars.First(a => a.character == Character.Red);
             blue = chars.First(a => a.character == Character.Blue);
             controlCharacter = blue;
+            ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_2";
+            ball.Initialize(true);
             ProCamera2D.Instance.RemoveAllCameraTargets();
             ProCamera2D.Instance.AddCameraTarget(blue.transform);
         }
@@ -419,11 +422,15 @@ namespace GamePlay
             if (ProCamera2D.Instance.CameraTargets[0].TargetTransform == red.transform)
             {
                 ProCamera2D.Instance.CameraTargets[0].TargetTransform = blue.transform;
+                ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_2";
+                ball.Initialize(true);
             }
 
             else if (ProCamera2D.Instance.CameraTargets[0].TargetTransform == blue.transform)
             {
                 ProCamera2D.Instance.CameraTargets[0].TargetTransform = red.transform;
+                ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_1";
+                ball.Initialize(true);
             }
         }
 

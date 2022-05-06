@@ -70,6 +70,7 @@ namespace ThirdParties.Truongtv
         {
             remoteConfigManager.fetchComplete += FetchComplete;
             adManager.Init();
+            iapManager.Init();
             #if USING_LOG_FIREBASE||USING_REMOTE_FIREBASE
              FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
             {
