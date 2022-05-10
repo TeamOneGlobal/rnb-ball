@@ -169,6 +169,7 @@ namespace GamePlay
         {
             gameState = GameState.End;
             controlCharacter.CancelAllMove();
+            controlCharacter.SetVelocity(Vector2.zero);
             pauseButton.gameObject.SetActive(false);
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
             ForceWin();
