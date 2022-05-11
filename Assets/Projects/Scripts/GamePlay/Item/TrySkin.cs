@@ -75,11 +75,15 @@ namespace GamePlay.Item
             var totalSkin = skeletonRed.SkeletonDataAsset.GetSkeletonData(true).Skins.Items;
             foreach (var skin in totalSkin)
             {
-                result.Add(skin.Name.Split('_')[0]);
+                if (skin.Name.Contains("Power_ranger"))
+                {
+                    result.Add("Power_ranger");
+                }
+                else
+                    result.Add(skin.Name.Split('_')[0]);
             }
-
+            result.Remove("Base");
             result.Remove("default");
-            result.Remove("0");
             return result;
         }
 

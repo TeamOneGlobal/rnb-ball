@@ -56,8 +56,7 @@ namespace GamePlay
             red = chars.First(a => a.character == Character.Red);
             blue = chars.First(a => a.character == Character.Blue);
             controlCharacter = blue;
-            ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_2";
-            ball.Initialize(true);
+            
             ProCamera2D.Instance.RemoveAllCameraTargets();
             ProCamera2D.Instance.AddCameraTarget(blue.transform);
         }
@@ -91,6 +90,8 @@ namespace GamePlay
             SoundInGameManager.Instance.PlayBgmSound();
             LifeController.Instance.UpdateLife();
             _skin = GameDataManager.Instance.GetCurrentSkin();
+            ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_2";
+            ball.Initialize(true);
             GameServiceManager.Instance.logEventManager.LogEvent("level_start",new Dictionary<string, object>
             {
                 { "level","lv_"+level}

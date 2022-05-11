@@ -35,8 +35,9 @@ namespace GamePlay.Platform
                 return;
             }
 
-            var distance = Vector2.Distance(points[CurrentPoint].position, points[CurrentPoint + 1].position);
+            var distance = Vector2.Distance(platform.transform.position, points[CurrentPoint + 1].position);
             var time = distance / speed;
+            Debug.Log("Move time = "+time);
             platform.transform
                 .DOMove(points[CurrentPoint + 1].position, time)
                 .SetEase(Ease.Linear)
@@ -57,8 +58,10 @@ namespace GamePlay.Platform
                 return;
             }
 
-            var distance = Vector2.Distance(points[CurrentPoint].position, points[CurrentPoint - 1].position);
+            var distance = Vector2.Distance(platform.transform.position, points[CurrentPoint - 1].position);
             var time = distance / speed;
+            Debug.Log("ReserveMove time = "+time);
+            
             platform.transform
                 .DOMove(points[CurrentPoint - 1].position, time)
                 .SetEase(Ease.Linear)

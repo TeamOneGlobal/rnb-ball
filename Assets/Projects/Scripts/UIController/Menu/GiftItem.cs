@@ -33,14 +33,14 @@ namespace Projects.Scripts.UIController.Menu
                 bg.sprite = specialBg;
                 door.sprite = specialDoor;
                 specialEffect.SetActive(true);
-                unlockValue = 12;
+                unlockValue = 3;
             }
             else
             {
                 bg.sprite = normalBg;
                 door.sprite = normalDoor;
                 specialEffect.SetActive(false);
-                unlockValue = 6;
+                unlockValue = 1;
             }
             if (firstOpen)
             {
