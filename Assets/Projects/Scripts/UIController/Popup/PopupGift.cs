@@ -114,7 +114,7 @@ namespace Projects.Scripts.UIController.Popup
 
         private void Refresh()
         {
-            var rnd = Random.Range(1, 3);
+            var rnd = Random.Range(2, 3);
             var random = new System.Random();
             List<string> saveData = new List<string>();
             var premiumSkins = _skinData.GetAllPremiumSkin();

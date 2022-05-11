@@ -13,7 +13,7 @@ namespace Projects.Scripts.UIController.Menu
         [SerializeField] private Button trySkinButton,unlockByAdButton;
         [SerializeField] private TextMeshProUGUI priceText;
         private bool forceOpen;
-        private int AdUnlock = 3;
+        private int AdUnlock = 5;
         private void Awake()
         {
             trySkinButton.onClick.AddListener(TrySkin);

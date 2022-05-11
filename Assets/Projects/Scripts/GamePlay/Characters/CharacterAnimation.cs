@@ -26,14 +26,17 @@ namespace GamePlay.Characters
 
         private void Start()
         {
+            
+            PlayIdle();
             if (GameDataManager.Instance != null)
             {
                 var skin = GameDataManager.Instance.GetCurrentSkin();
+                TrySkin(skin);
                 GameServiceManager.Instance.logEventManager.LogEvent("skin_used",new Dictionary<string, object>
                 {
                     { "skin",skin}
                 });
-                TrySkin(skin);
+                
             }
         }
 
@@ -49,11 +52,11 @@ namespace GamePlay.Characters
             }
             animation.Initialize(true);
 
-            if (GameDataManager.Instance.skinData.IsSkinPremium(skin))
-            {
-                PlayAnim("ingame_premium_"+skin,3,true);
-            }
-            animation.AnimationState.Complete += OnAnimationComplete;
+            // if (GameDataManager.Instance.skinData.IsSkinPremium(skin))
+            // {
+            //     PlayAnim(skin,3,true);
+            // }
+            //animation.AnimationState.Complete += OnAnimationComplete;
         }
         private void OnAnimationComplete(TrackEntry trackEntry)
         {

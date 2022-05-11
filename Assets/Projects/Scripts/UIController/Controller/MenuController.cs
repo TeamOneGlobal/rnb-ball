@@ -30,7 +30,7 @@ namespace Projects.Scripts.UIController
             adCoinButton,
             addMoreLifeButton,
             addMoreCoinButton;
-        [SerializeField] private Button playButton, selectLevelButton, buySkinButton, trySkinButton,nextButton,doubleValueButton,continueButton;
+        [SerializeField] private Button playButton, selectLevelButton, buySkinButton, trySkinButton,selectSkinButton,nextButton,doubleValueButton,continueButton;
         [SerializeField] private Transform levelWinBanner, levelLoseBanner;
         [SerializeField] private GameObject wheelNotiObj, giftNotiObj,firework;
         [SerializeField] private TextMeshProUGUI specialOfferTimeText, adLifeValueText, adCoinValueText;
@@ -71,6 +71,7 @@ namespace Projects.Scripts.UIController
             prevSkinButton.onClick.AddListener(OnPrevSkinButtonClick);
             buySkinButton.onClick.AddListener(OnBuySkinButtonClick);
             trySkinButton.onClick.AddListener(OnTrySkinButtonClick);
+            selectSkinButton.onClick.AddListener(OnSelectSkinButtonClick);
             adLifeButton.onClick.AddListener(OnAdLifeButtonClick);
             adCoinButton.onClick.AddListener(OnAdCoinButtonClick);
             addMoreLifeButton.onClick.AddListener(OnAddMoreLifeButtonClick);
@@ -148,6 +149,12 @@ namespace Projects.Scripts.UIController
                 GameDataManager.Instance.SetTrySkin(_allSkinNames[_currentSkinIndex]);
                 StartLevel();
             });
+        }
+        private void OnSelectSkinButtonClick()
+        {
+            SoundManager.Instance.PlayButtonSound();
+            GameDataManager.Instance.SetSkin(_allSkinNames[_currentSkinIndex]);
+            UpdateSkin(_allSkinNames[_currentSkinIndex]);
         }
         private void OnNextSkinButtonClick()
         {
@@ -266,9 +273,11 @@ namespace Projects.Scripts.UIController
             {
                 trySkinButton.gameObject.SetActive(false);
                 buySkinButton.gameObject.SetActive(false);
+                selectSkinButton.gameObject.SetActive(!GameDataManager.Instance.GetCurrentSkin().Equals(skin));
             }
             else
             {
+                selectSkinButton.gameObject.SetActive(false);
                 var canBuySkins = GameDataManager.Instance.skinData.GetSkinNameCanBuyDirectly();
                 if (canBuySkins.Contains(skin))
                 {

@@ -10,7 +10,7 @@ namespace Projects.Scripts.GamePlay.Sound
     public class SoundInGameManager : MonoBehaviour
     {
         [SerializeField] private SoundManager soundManager;
-        [SerializeField,FoldoutGroup("UI Sounds")] private AudioClip win,lose,changeTarget;
+        [SerializeField,FoldoutGroup("UI Sounds")] private AudioClip changeTarget;
         [SerializeField] private AudioClip[] winSounds;
         [SerializeField] private AudioClip[] loseSound;
         [SerializeField, FoldoutGroup("UI Sounds")]

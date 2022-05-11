@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Projects.Scripts.Data;
 using Sirenix.OdinInspector;
+using ThirdParties.Truongtv;
+using ThirdParties.Truongtv.RemoteConfig;
 using UnityEngine;
 using GiftData = Projects.Scripts.Data.GiftData;
 
@@ -40,7 +42,6 @@ namespace Projects.Scripts
         [SerializeField, FoldoutGroup("Game Data")] public SkinData skinData;
         [SerializeField, FoldoutGroup("Game Data")] public ShopData shopData;
         [SerializeField, FoldoutGroup("Game Data")] public string termOfUseUrl, privacyPolicyUrl;
-        [HideInInspector] public bool firstCreate;
         [HideInInspector] public string defaultSkin;
         private UserData _userData;
 
@@ -71,6 +72,7 @@ namespace Projects.Scripts
         private void Start()
         {
             Application.targetFrameRate = 300;
+            GameServiceManager.FetchComplete += RemoteConfigLoaded;
         }
 
         #region GameData
@@ -81,11 +83,23 @@ namespace Projects.Scripts
 
         #region Load and Save
 
-        public void RemoteConfigLoaded()
+        private void RemoteConfigLoaded(RemoteConfigManager remoteConfig)
         {
-            _userData.unlockSkin.Remove("Base");
-            UnlockSkin(defaultSkin);
-            SaveData();
+            blockAdTime = remoteConfig.GetIntValue("blockAdTime");
+            checkInternetPerLevel = remoteConfig.GetIntValue("checkInternetPerLevel");
+            coinValueInGame = remoteConfig.GetIntValue("coinValueInGame");
+            levelShowDailyReward = remoteConfig.GetIntValue("levelShowDailyReward");
+            levelShowRating = remoteConfig.GetIntValue("levelShowRating");
+            levelShowSpecialOffer = remoteConfig.GetIntValue("levelShowSpecialOffer");
+            magnetDuration = remoteConfig.GetIntValue("magnetDuration");
+            multipleCoinInMenu = remoteConfig.GetIntValue("multipleCoinInMenu");
+            showBannerInGame = remoteConfig.GetBoolValue("showBannerInGame");
+            showContinueAfterLevel = remoteConfig.GetIntValue("showContinueAfterLevel");
+            showGiftLevel = remoteConfig.GetIntValue("showGiftLevel");
+            showOfferPerLevel = remoteConfig.GetIntValue("showOfferPerLevel");
+            showRatingPerLevel = remoteConfig.GetIntValue("showRatingPerLevel");
+            showSpinLevel = remoteConfig.GetIntValue("showSpinLevel");
+            versionReview = remoteConfig.GetStringValue("versionReview");
         }
         public void LoadUserData()
         {
@@ -94,11 +108,9 @@ namespace Projects.Scripts
                 _userData = new UserData();
                 _userData.SetBaseData(startData);
                 SaveData();
-                firstCreate = true;
                 return;
             }
             _userData = ES3.Load<UserData>(DataKey);
-            firstCreate = false;
 
         }
 

@@ -68,9 +68,13 @@ namespace Projects.Scripts.UIController.Popup
         }
         void OnClose()
         {
-            closeCompleteAction = null;
-            Close();
-            _onClose?.Invoke();
+            GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
+            {
+                closeCompleteAction = null;
+                Close();
+                _onClose?.Invoke();
+            });
+            
         }
         
         void OnWatchAd()
