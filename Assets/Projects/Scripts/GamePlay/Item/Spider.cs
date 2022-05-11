@@ -40,7 +40,7 @@ namespace GamePlay.Item
         private void Init()
         {
             lineRenderer.positionCount = 2;
-            lineRenderer.SetPosition(0,points[0].position);
+            lineRenderer.SetPosition(0,points[0].position+new Vector3(0,1f));
             lineRenderer.SetPosition(1, target.position);
         }
 

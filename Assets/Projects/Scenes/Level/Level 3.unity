@@ -1250,11 +1250,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8382082490101557572, guid: a53fe27e8721c3c4f8cfbd70eeb4b5a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.03
+      value: 8.91
       objectReference: {fileID: 0}
     - target: {fileID: 8382082490101557572, guid: a53fe27e8721c3c4f8cfbd70eeb4b5a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.45
+      value: -6.438
       objectReference: {fileID: 0}
     - target: {fileID: 8382082490101557572, guid: a53fe27e8721c3c4f8cfbd70eeb4b5a9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1262,7 +1262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8382082490101557572, guid: a53fe27e8721c3c4f8cfbd70eeb4b5a9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9887172
+      value: 0.99539626
       objectReference: {fileID: 0}
     - target: {fileID: 8382082490101557572, guid: a53fe27e8721c3c4f8cfbd70eeb4b5a9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1274,7 +1274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8382082490101557572, guid: a53fe27e8721c3c4f8cfbd70eeb4b5a9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.14979416
+      value: -0.095845714
       objectReference: {fileID: 0}
     - target: {fileID: 8382082490101557572, guid: a53fe27e8721c3c4f8cfbd70eeb4b5a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1286,7 +1286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8382082490101557572, guid: a53fe27e8721c3c4f8cfbd70eeb4b5a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -17.23
+      value: -11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53fe27e8721c3c4f8cfbd70eeb4b5a9, type: 3}
@@ -1516,21 +1516,20 @@ EdgeCollider2D:
   - {x: -2.3157275, y: -5.681592}
   - {x: -2.5209646, y: -5.007889}
   - {x: -2.5, y: -4.7395997}
-  - {x: 0.0077942666, y: -4.7397165}
-  - {x: 0.66512907, y: -4.7792788}
-  - {x: 1.388738, y: -4.8897843}
-  - {x: 2.157997, y: -5.0590887}
-  - {x: 2.9606729, y: -5.276083}
-  - {x: 3.7837307, y: -5.5299788}
-  - {x: 4.613663, y: -5.8100944}
-  - {x: 5.4366717, y: -6.1057625}
-  - {x: 6.238763, y: -6.4063196}
-  - {x: 8.376874, y: -7.23011}
-  - {x: 8.951147, y: -7.442615}
-  - {x: 9.429449, y: -7.6055145}
-  - {x: 9.789619, y: -7.7070208}
-  - {x: 10.018684, y: -7.740271}
-  - {x: 14.977601, y: -7.7396026}
+  - {x: 0.5, y: -4.7395997}
+  - {x: 0.54433155, y: -5.038575}
+  - {x: 1.0200353, y: -5.9899826}
+  - {x: 1.062452, y: -5.7472}
+  - {x: 3.1885462, y: -6.2653494}
+  - {x: 4.7878337, y: -6.646695}
+  - {x: 6.4899125, y: -7.0421076}
+  - {x: 7.31161, y: -7.2272635}
+  - {x: 8.077381, y: -7.394518}
+  - {x: 8.759655, y: -7.536674}
+  - {x: 9.330085, y: -7.646433}
+  - {x: 9.756996, y: -7.716212}
+  - {x: 10.011984, y: -7.739876}
+  - {x: 14.977601, y: -7.739601}
   - {x: 14.9776, y: -4}
   - {x: 15, y: -3.7396002}
   - {x: 19.885614, y: -3.7396002}
@@ -2142,10 +2141,20 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 0, y: -5, z: 0}
-      leftTangent: {x: -0.75, y: 0, z: 0}
-      rightTangent: {x: 3, y: 0, z: 0}
-      mode: 1
+    - position: {x: 0.5, y: -5, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      bevelCutoff: 0
+      bevelSize: 0
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 1, y: -6, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
       height: 1
       bevelCutoff: 0
       bevelSize: 0
@@ -2153,7 +2162,7 @@ MonoBehaviour:
       corner: 1
       m_CornerMode: 1
     - position: {x: 10, y: -8, z: 0}
-      leftTangent: {x: -1, y: 0, z: 0}
+      leftTangent: {x: -0.9257841, y: 0, z: 0}
       rightTangent: {x: 1.75, y: 0, z: 0}
       mode: 1
       height: 1
@@ -2378,8 +2387,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: abeaaa9d42dce764482608fefbbe4713, type: 3}
   - {fileID: 21300000, guid: 18a8fa61d9b6d0c4195d3e1e5d161e04, type: 3}
   m_LocalAABB:
-    m_Center: {x: 29.826546, y: -3.2879744, z: -0.00195}
-    m_Extent: {x: 70.75345, y: 15.752978, z: 0.00195}
+    m_Center: {x: 29.826546, y: -3.2879744, z: -0.00205}
+    m_Extent: {x: 70.75345, y: 15.752978, z: 0.00205}
 --- !u!4 &1174860586
 Transform:
   m_ObjectHideFlags: 0

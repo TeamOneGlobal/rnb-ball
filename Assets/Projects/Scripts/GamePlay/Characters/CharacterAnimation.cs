@@ -26,16 +26,18 @@ namespace GamePlay.Characters
 
         private void Start()
         {
+            
+            PlayIdle();
             if (GameDataManager.Instance != null)
             {
                 var skin = GameDataManager.Instance.GetCurrentSkin();
+                TrySkin(skin);
                 GameServiceManager.Instance.logEventManager.LogEvent("skin_used",new Dictionary<string, object>
                 {
                     { "skin",skin}
                 });
-                TrySkin(skin);
+                
             }
-            PlayIdle();
         }
 
         public void TrySkin(string skin)
