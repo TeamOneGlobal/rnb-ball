@@ -21,7 +21,8 @@ namespace GamePlay
             var sequence = DOTween.Sequence();
             if (collisionTag.Equals(TagManager.BLUE_TAG))
             {
-                blueKey.transform.position = collectPosition;
+                
+                blueKey.transform.position = new Vector3(collectPosition.x,collectPosition.y,blueKey.transform.position.z);
                 blueKey.SetActive(true);
                 
                 sequence.Append(blueKey.transform.DOLocalMoveX(0,0.75f).SetEase(Ease.OutBack));
@@ -31,7 +32,7 @@ namespace GamePlay
             }
             else if (collisionTag.Equals(TagManager.RED_TAG))
             {
-                redKey.transform.position = collectPosition;
+                redKey.transform.position = new Vector3(collectPosition.x,collectPosition.y,redKey.transform.position.z);;
                 redKey.SetActive(true);
                 _isRedKeyCollected = true;
                 sequence.Append(redKey.transform.DOLocalMoveX(0,0.75f).SetEase(Ease.OutBack));

@@ -56,7 +56,7 @@ namespace GamePlay.Characters
             // {
             //     PlayAnim(skin,3,true);
             // }
-            //animation.AnimationState.Complete += OnAnimationComplete;
+            animation.AnimationState.Complete += OnAnimationComplete;
         }
         private void OnAnimationComplete(TrackEntry trackEntry)
         {
