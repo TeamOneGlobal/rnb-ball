@@ -96,6 +96,14 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
+            if (!GameDataManager.Instance.IsPurchaseBlockAd())
+            {
+                GameServiceManager.Instance.adManager.ShowBanner();
+            }
+            else
+            {
+                GameServiceManager.Instance.adManager.HideBanner();
+            }
         }
         #region Gate state
 
