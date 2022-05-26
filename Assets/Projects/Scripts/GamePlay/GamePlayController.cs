@@ -42,7 +42,10 @@ namespace GamePlay
         [BoxGroup("Button")] [SerializeField] private CustomButton moveLeft, moveRight, jump, changeTarget;
         [BoxGroup("Button"), SerializeField] private Button pauseButton;
         [BoxGroup("Button"), SerializeField] private Joystick joyStick;
-        public GameState gameState;
+        [SerializeField,BoxGroup("Cheat")] private Toggle toggleShowUI;
+        [SerializeField, BoxGroup("Cheat")] private Image[] imgList;
+        [SerializeField, BoxGroup("Cheat")] private GameObject[] objList;
+        [HideInInspector]public GameState gameState;
         private bool _isBlueGateOpen, _isRedGateOpen;
         private bool _changingCharacter;
         private string _skin;
@@ -63,6 +66,28 @@ namespace GamePlay
 
         private void Start()
         {
+            if (GameDataManager.Instance.cheated)
+            {
+                toggleShowUI.gameObject.SetActive(true);
+                toggleShowUI.onValueChanged.AddListener(value =>
+                {
+                    foreach (var img in imgList)
+                    {
+                        var color = img.color;
+                        color.a = value ? 1 : 0;
+                        img.color = color;
+                    }
+
+                    foreach (var obj in objList)
+                    {
+                        obj.SetActive(value);
+                    }
+                });
+            }
+            else
+            {
+                toggleShowUI.gameObject.SetActive(false);
+            }
             moveLeft.onEnter.AddListener(MoveLeft);
             moveLeft.onExit.AddListener(EndMoveLeft);
             moveRight.onEnter.AddListener(MoveRight);
