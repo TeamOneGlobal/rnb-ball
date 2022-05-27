@@ -190,10 +190,7 @@ namespace GamePlay
             controlCharacter.CancelAllMove();
             red.PlayWinAnim();
             blue.PlayWinAnim();
-            GameServiceManager.Instance.logEventManager.LogEvent("level_complete",new Dictionary<string, object>
-            {
-                { "level","lv_"+level}
-            });
+            
             GameDataManager.Instance.GameResult(GameResult.Win, level, (int)CoinCollector.Instance.total);
             var skin = GameDataManager.Instance.skinData.Skins.Find(a =>
                 a.unlockType == UnlockType.Level && a.unlockValue == level);
@@ -252,6 +249,10 @@ namespace GamePlay
                     
                 });
             }
+            GameServiceManager.Instance.logEventManager.LogEvent("level_complete", new Dictionary<string, object>
+            {
+                { "level","lv_"+level}
+            });
         }
 
         public void LogicalResume()

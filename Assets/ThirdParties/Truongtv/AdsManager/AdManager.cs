@@ -115,7 +115,7 @@ namespace ThirdParties.Truongtv.AdsManager
             });
             if (Application.internetReachability == NetworkReachability.NotReachable)
             {
-                //PopupController.Instance.ShowNoInternet();
+                PopupController.Instance.ShowNoInternet();
                 GameServiceManager.Instance.logEventManager.LogEvent("ads_reward_fail",new Dictionary<string, object>
                 {
                     {"cause","no_internet"}
@@ -125,7 +125,7 @@ namespace ThirdParties.Truongtv.AdsManager
             }
             if (!IsRewardVideoLoaded())
             {
-                //PopupController.Instance.ShowToast("Ads is still coming. Please try again later.");
+                PopupController.Instance.ShowToast("Ads is still coming. Please try again later.");
                 GameServiceManager.Instance.logEventManager.LogEvent("ads_reward_fail",new Dictionary<string, object>
                 {
                     {"cause","no_ad"}

@@ -72,6 +72,7 @@ namespace ThirdParties.Truongtv
             adManager.Init();
             iapManager.Init();
             #if USING_LOG_FIREBASE||USING_REMOTE_FIREBASE
+            Debug.Log("co vao service firebase");
              FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
             {
                 remoteConfigManager.Init();

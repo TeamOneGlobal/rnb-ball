@@ -51,10 +51,10 @@ namespace MoreMountains.NiceVibrations
             try
             {
 
-                if (EditorUserBuildSettings.symlinkSources)
-                {
-                    Debug.LogError("[MMNVBuildPostProcessor] Please make sure you set 'Symlink Unity Libraries' to false in your build settings before building.");
-                }
+                //if (EditorUserBuildSettings.symlinkSources)
+                //{
+                 //   Debug.LogError("[MMNVBuildPostProcessor] Please make sure you set 'Symlink Unity Libraries' to false in your build settings before building.");
+                //}settings
 
                 if (report.summary.platform == BuildTarget.iOS)
                 {

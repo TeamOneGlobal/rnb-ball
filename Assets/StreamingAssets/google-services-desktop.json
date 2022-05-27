@@ -1,39 +1,36 @@
 {
-  "project_info": {
-    "project_number": "958357538240",
-    "project_id": "t1-ballrb",
-    "storage_bucket": "t1-ballrb.appspot.com"
-  },
   "client": [
     {
+      "services": {
+        "appinvite_service": {
+          "status": 1
+        }, 
+        "analytics_service": {
+          "status": 0
+        }
+      }, 
+      "oauth_client": [
+        {
+          "client_id": "958357538240-05c0hmctngodrmq92htkul5tsakquidj.apps.googleusercontent.com"
+        }
+      ], 
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTnbOgoej6kR-fDcP-zv2nbpFspIg6uW0"
+        }
+      ], 
       "client_info": {
-        "mobilesdk_app_id": "1:958357538240:android:2eb0155b286a1c7886b425",
+        "mobilesdk_app_id": "1:958357538240:ios:f1bc0d579f8b634686b425", 
         "android_client_info": {
           "package_name": "com.teamone.red.blue.ball"
         }
-      },
-      "oauth_client": [
-        {
-          "client_id": "958357538240-5mpp2l6t62vukimtrbcd1em3p60n19ci.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyApsZWaMWuUboFwTMswoGH72_pGte2k8I0"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "958357538240-5mpp2l6t62vukimtrbcd1em3p60n19ci.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
       }
     }
-  ],
-  "configuration_version": "1"
+  ], 
+  "configuration_version": "1", 
+  "project_info": {
+    "storage_bucket": "t1-ballrb.appspot.com", 
+    "project_id": "t1-ballrb", 
+    "project_number": "958357538240"
+  }
 }

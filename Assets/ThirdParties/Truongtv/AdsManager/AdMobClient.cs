@@ -52,7 +52,7 @@ namespace ThirdParties.Truongtv.AdsManager
                 ATTrackingStatusBinding.RequestAuthorizationTracking();
             }
             #region Facebook Audience
-            AudienceNetwork.AdSettings.SetAdvertiserTrackingEnabled(false);
+            //AudienceNetwork.AdSettings.SetAdvertiserTrackingEnabled(false);
             #endregion
             #endif
             MobileAds.SetiOSAppPauseOnBackground(true);

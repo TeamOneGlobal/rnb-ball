@@ -586,7 +586,7 @@ namespace BuildReportTool
 		settings.iOSTargetOSVersion = PlayerSettings.iOS.targetOSVersion.ToString();
 #endif
 
-			settings.iOSSymlinkLibraries = EditorUserBuildSettings.symlinkSources;
+			//settings.iOSSymlinkLibraries = EditorUserBuildSettings.symlinkSources;
 			settings.iOSAppDisplayName = PlayerSettings.iOS.applicationDisplayName;
 			settings.iOSScriptCallOptimizationUsed = PlayerSettings.iOS.scriptCallOptimization.ToString();
 			settings.iOSSDKVersionUsed = PlayerSettings.iOS.sdkVersion.ToString();
