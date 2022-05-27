@@ -74,13 +74,6 @@ namespace ThirdParties.Truongtv.AdsManager
                 result?.Invoke(false);
                 return;
             }
-#if UNITY_IOS|| UNITY_IPHONE
-            if (GameDataManager.Instance.versionReview.Equals(Application.version))
-            {
-                result?.Invoke(false);
-                return;
-            }
-#endif
             if(GameDataManager.Instance.IsPurchaseBlockAd()) return;
             _adClient.ShowBannerAd(result);
         }

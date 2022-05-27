@@ -71,7 +71,7 @@ namespace ThirdParties.Truongtv.RemoteConfig
 //#if !UNITY_EDITOR
             timeSpan = TimeSpan.FromHours(12);
 //#endif
-            FirebaseRemoteConfig.DefaultInstance.FetchAsync(timeSpan).ContinueWithOnMainThread(FetchComplete);
+            FirebaseRemoteConfig.DefaultInstance.FetchAsync().ContinueWithOnMainThread(FetchComplete);
         }
         private void FetchComplete(Task fetchTask) {
             if (fetchTask.IsCanceled) {
