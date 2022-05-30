@@ -27,7 +27,7 @@ namespace GamePlay.Door
             var skin = GameDataManager.Instance.skinData.Skins.Find(a =>
                 a.unlockType == UnlockType.Level && a.unlockValue == GamePlayController
                     .Instance.level);
-            if (skin != null && !string.IsNullOrEmpty(skin.skinName) && GameDataManager.Instance.GetCurrentLevel()== GamePlayController
+            if (skin != null && !string.IsNullOrEmpty(skin.skinName) && GameDataManager.Instance.GetCurrentLevel()<= GamePlayController
                 .Instance.level)
             {
                 trySkinName = skin.skinName;

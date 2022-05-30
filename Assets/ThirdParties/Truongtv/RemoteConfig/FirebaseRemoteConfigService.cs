@@ -69,7 +69,7 @@ namespace ThirdParties.Truongtv.RemoteConfig
             FirebaseRemoteConfig.DefaultInstance.SetDefaultsAsync(defaults);
             var timeSpan = TimeSpan.Zero;
 //#if !UNITY_EDITOR
-            timeSpan = TimeSpan.FromHours(12);
+            //timeSpan = TimeSpan.FromHours(12);
 //#endif
             FirebaseRemoteConfig.DefaultInstance.FetchAsync(timeSpan).ContinueWithOnMainThread(FetchComplete);
         }

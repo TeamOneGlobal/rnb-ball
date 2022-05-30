@@ -21,7 +21,7 @@ namespace Projects.Scripts.Data
         {
             get
             {
-                #if UNITY_IOS|| UNITY_IPHONE
+#if UNITY_IOS||UNITY_IPHONE
                 if (GameDataManager.Instance.versionReview.Equals(Application.version))
                 {
                     var result  = new List<SkinInfo>(skinList);

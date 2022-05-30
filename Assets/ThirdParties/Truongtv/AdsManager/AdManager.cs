@@ -69,13 +69,11 @@ namespace ThirdParties.Truongtv.AdsManager
         #region Public Function
         public void ShowBanner(Action<bool> result = null)
         {
-#if UNITY_IOS|| UNITY_IPHONE
-            if (GameDataManager.Instance.versionReview.Equals(Application.version))
+            if (GameDataManager.Instance.cheated)
             {
                 result?.Invoke(false);
                 return;
             }
-#endif
             if(GameDataManager.Instance.IsPurchaseBlockAd()) return;
             _adClient.ShowBannerAd(result);
         }
@@ -87,6 +85,11 @@ namespace ThirdParties.Truongtv.AdsManager
         public void ShowInterstitialAd(
             Action adResult = null)
         {
+            if (GameDataManager.Instance.cheated)
+            {
+                adResult?.Invoke();
+                return;
+            }
             if (Application.internetReachability == NetworkReachability.NotReachable)
             {
                 adResult?.Invoke();
@@ -109,6 +112,11 @@ namespace ThirdParties.Truongtv.AdsManager
         public void ShowRewardedAd(string location, Action adResult = null)
         {
             
+            if (GameDataManager.Instance.cheated)
+            {
+                adResult?.Invoke();
+                return;
+            }
             GameServiceManager.Instance.logEventManager.LogEvent("ads_reward_click",new Dictionary<string, object>
             {
                 {"reward_for",location}

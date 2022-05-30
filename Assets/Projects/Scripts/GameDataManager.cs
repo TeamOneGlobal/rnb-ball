@@ -68,11 +68,12 @@ namespace Projects.Scripts
             if (_instance != null)
                 Destroy(_instance.gameObject);
             _instance = this ;
+            GameServiceManager.FetchComplete += RemoteConfigLoaded;
         }
         private void Start()
         {
             Application.targetFrameRate = 300;
-            GameServiceManager.FetchComplete += RemoteConfigLoaded;
+            
         }
 
         #region GameData
@@ -85,6 +86,7 @@ namespace Projects.Scripts
 
         private void RemoteConfigLoaded(RemoteConfigManager remoteConfig)
         {
+            Debug.Log("data fetch");
             blockAdTime = remoteConfig.GetIntValue("blockAdTime");
             checkInternetPerLevel = remoteConfig.GetIntValue("checkInternetPerLevel");
             coinValueInGame = remoteConfig.GetIntValue("coinValueInGame");
