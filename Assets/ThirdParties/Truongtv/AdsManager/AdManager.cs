@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Projects.Scripts;
 using Truongtv.PopUpController;
 using Truongtv.Services.Ad;
@@ -12,11 +13,12 @@ namespace ThirdParties.Truongtv.AdsManager
         private IAdClient _adClient;
         private DateTime _lastTimeInterstitialShow;
         private int _countLevel;
+        public bool pauseByIapAndAd = false;
         #region Unity Function
         public void Init()
         {
             #if USING_MAX
-            _adClient = new MAXAdClient();
+            _adClient = new MaxAdClient();
             #elif USING_ADMOB
             _adClient = new AdMobClient();
             #elif USING_IRON_SOURCE
@@ -156,6 +158,39 @@ namespace ThirdParties.Truongtv.AdsManager
                     {"reward_for",location}
                 });
             });
+        }
+
+        public bool IsAppOpenAdLoaded()
+        {
+            return _adClient != null && _adClient.IsAppOpenAdLoaded();
+        }
+
+        public void ShowAppOpenAd()
+        {
+            if (pauseByIapAndAd)
+            {
+                pauseByIapAndAd = false;
+                return;
+            }
+            _adClient.ShowAppOpenAd();
+        }
+        public void OnApplicationPause(bool pauseStatus)
+        {
+            _adClient?.OnApplicationPause(pauseStatus);
+        }
+        public async void ShowAppOpenAdColdStart(float duration)
+        {
+            if(!GameDataManager.Instance.activeOpenAd) return;
+            var time = 0f;
+            while (!IsAppOpenAdLoaded() && time<duration)
+            {
+                time += 0.1f;
+                await Task.Delay(TimeSpan.FromSeconds(0.1f));
+            }
+            if (time < duration)
+            {
+                ShowAppOpenAd();
+            }
         }
         #endregion
 

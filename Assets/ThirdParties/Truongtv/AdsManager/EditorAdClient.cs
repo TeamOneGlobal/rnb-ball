@@ -47,5 +47,16 @@ namespace ThirdParties.Truongtv.AdsManager
         {
             Debug.Log("EditorAdClient HideBannerAd");
         }
+
+        public bool IsAppOpenAdLoaded()
+        {
+            return false;
+            Debug.Log("EditorAdClient HideBannerAd");
+        }
+
+        public void ShowAppOpenAd()
+        {
+            Debug.Log("EditorAdClient ShowAppOpenAd");
+        }
     }
 }

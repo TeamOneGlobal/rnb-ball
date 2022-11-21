@@ -18,6 +18,7 @@ namespace ThirdParties.Truongtv.IapManager
         #region Private Function
         public void Init()
         {
+            
             var skuItem = iapData.GetSkuItems();
             #if USING_IAP
             _paymentService = new UnityInAppPurchase(skuItem);
