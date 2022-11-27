@@ -26,6 +26,9 @@ namespace Projects.Scripts
         [SerializeField, FoldoutGroup("Constant Value/Ad")]public int adCoin = 1000;
         [SerializeField, FoldoutGroup("Constant Value/Ad")]public int adLife = 1;
         [SerializeField, FoldoutGroup("Constant Value/Ad")]public int checkInternetPerLevel = 3;
+
+        [SerializeField, FoldoutGroup("Constant Value/Ad")]
+        public bool activeOpenAd = true;
         [SerializeField, FoldoutGroup("Constant Value/Ad")]
         public string versionReview = "0.2.5";
         [SerializeField, FoldoutGroup("Constant Value/Menu")] public int freeSpinCooldownHours = 8;
@@ -102,6 +105,7 @@ namespace Projects.Scripts
             showRatingPerLevel = remoteConfig.GetIntValue("showRatingPerLevel");
             showSpinLevel = remoteConfig.GetIntValue("showSpinLevel");
             versionReview = remoteConfig.GetStringValue("versionReview");
+            activeOpenAd = remoteConfig.GetBoolValue("activeOpenAd");
         }
         public void LoadUserData()
         {
