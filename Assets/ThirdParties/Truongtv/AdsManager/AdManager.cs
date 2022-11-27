@@ -174,10 +174,16 @@ namespace ThirdParties.Truongtv.AdsManager
             }
             _adClient.ShowAppOpenAd();
         }
+
         public void OnApplicationPause(bool pauseStatus)
         {
-            _adClient?.OnApplicationPause(pauseStatus);
+            if (!GameDataManager.Instance.activeOpenAd) return;
+            if (!pauseStatus)
+            {
+                ShowAppOpenAd();
+            }
         }
+
         public async void ShowAppOpenAdColdStart(float duration)
         {
             if(!GameDataManager.Instance.activeOpenAd) return;

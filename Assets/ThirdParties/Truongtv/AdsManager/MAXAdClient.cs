@@ -13,15 +13,15 @@ namespace ThirdParties.Truongtv.AdsManager
 
 #if UNITY_ANDROID
         private const string INTERSTITIAL_AD_UNIT_ID = "18b431bf13deebb6";
-        private const string REWARDED_AD_UNIT_ID = "d5d1b3a84b817ebc";
+        private const string REWARDED_AD_UNIT_ID = "1ecbcd6172416117";
         private const string BANNER_AD_UNIT_ID = "35cd3e95717c2e1f";
-        private const string MREC_AD_UNIT_ID = "1ecbcd6172416117";
+        // private const string MREC_AD_UNIT_ID = "";
         private const string APP_OPEN_AD_UNIT_ID = "f2dd1c9471f2caca";
 #elif UNITY_IOS
         private const string INTERSTITIAL_AD_UNIT_ID = "b3411ee1ed0756a5";
         private const string REWARDED_AD_UNIT_ID = "bbdcd5a4287b451c";
         private const string BANNER_AD_UNIT_ID = "71974066cca86660";
-        private const string MREC_AD_UNIT_ID = "";
+        // private const string MREC_AD_UNIT_ID = "";
         private const string APP_OPEN_AD_UNIT_ID = "c7b009297d71bb8b";
 #endif
         private Action<bool> _adCallback;
@@ -38,13 +38,13 @@ namespace ThirdParties.Truongtv.AdsManager
                 InitializeInterstitialAds();
                 InitializeRewardedAds();
                 InitializeBannerAds();
-                InitializeMRecAds();
+                // InitializeMRecAds();
                 LoadAppOpenAd();
                 await Task.Delay(TimeSpan.FromSeconds(4f));
                 LoadInterstitial();
                 LoadRewardedAd();
                 LoadBannerAd();
-                LoadMRECAd();
+                // LoadMRECAd();
 
             };
 
@@ -194,22 +194,22 @@ namespace ThirdParties.Truongtv.AdsManager
         }
         #endregion
 
-        #region MRECs Ads
-
-        private void InitializeMRecAds()
-        {
-            
-            MaxSdkCallbacks.MRec.OnAdLoadedEvent += OnAdLoadedEvent;
-            MaxSdkCallbacks.MRec.OnAdLoadFailedEvent += OnAdLoadFailedEvent;
-            MaxSdkCallbacks.MRec.OnAdRevenuePaidEvent += OnAdRevenuePaidEvent;
-        }
-
-        private void LoadMRECAd()
-        {
-            if (string.IsNullOrEmpty(MREC_AD_UNIT_ID)) return;
-            MaxSdk.CreateMRec(MREC_AD_UNIT_ID, MaxSdkBase.AdViewPosition.Centered);
-        }
-        #endregion
+        // #region MRECs Ads
+        //
+        // private void InitializeMRecAds()
+        // {
+        //     
+        //     MaxSdkCallbacks.MRec.OnAdLoadedEvent += OnAdLoadedEvent;
+        //     MaxSdkCallbacks.MRec.OnAdLoadFailedEvent += OnAdLoadFailedEvent;
+        //     MaxSdkCallbacks.MRec.OnAdRevenuePaidEvent += OnAdRevenuePaidEvent;
+        // }
+        //
+        // private void LoadMRECAd()
+        // {
+        //     if (string.IsNullOrEmpty(MREC_AD_UNIT_ID)) return;
+        //     MaxSdk.CreateMRec(MREC_AD_UNIT_ID, MaxSdkBase.AdViewPosition.Centered);
+        // }
+        // #endregion
 
         #region AppOpenAd
 
@@ -265,13 +265,13 @@ namespace ThirdParties.Truongtv.AdsManager
 
         private async void OnAdLoadFailedEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo)
         {
-            if (adUnitId == MREC_AD_UNIT_ID)
-            {
-                MaxSdk.CreateMRec(MREC_AD_UNIT_ID, MaxSdkBase.AdViewPosition.Centered);
-            }
-            
-            else
-            {
+            // if (adUnitId == MREC_AD_UNIT_ID)
+            // {
+            //     MaxSdk.CreateMRec(MREC_AD_UNIT_ID, MaxSdkBase.AdViewPosition.Centered);
+            // }
+            //
+            // else
+            // {
                 if (adUnitId == REWARDED_AD_UNIT_ID)
                 {
                     _rewardedRetryAttempt++;
@@ -293,7 +293,7 @@ namespace ThirdParties.Truongtv.AdsManager
                     await Task.Delay(TimeSpan.FromSeconds(retryDelay));
                     LoadAppOpenAd();
                 }
-            }
+            // }
         }
 
         private void OnAdDisplayedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
