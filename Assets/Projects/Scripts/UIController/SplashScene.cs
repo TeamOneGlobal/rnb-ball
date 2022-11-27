@@ -15,7 +15,8 @@ namespace Projects.Scripts.UIController
         {
             
             GameDataManager.Instance.LoadUserData();
-            GameServiceManager.Instance.adManager.ShowAppOpenAdColdStart(3f);
+            var currentLevel = GameDataManager.Instance.GetCurrentLevel();
+            if(currentLevel > 1) GameServiceManager.Instance.adManager.ShowAppOpenAdColdStart(3f);
             StartCoroutine(Loading());
         }
 
