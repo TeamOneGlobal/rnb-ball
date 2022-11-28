@@ -42,7 +42,8 @@ namespace ThirdParties.Truongtv.IapManager
         }
         public void PurchaseProduct(string sku, Action<bool, string> pAction)
         {
-           #if UNITY_EDITOR
+            GameServiceManager.Instance.adManager.pauseByIapAndAd = true;
+            #if UNITY_EDITOR
             pAction?.Invoke(true,sku);
             return;
             #endif

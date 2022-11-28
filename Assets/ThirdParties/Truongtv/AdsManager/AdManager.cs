@@ -99,8 +99,10 @@ namespace ThirdParties.Truongtv.AdsManager
             }
             if (IsInterstitialLoaded() && IsInterstitialAvailableToShow())
             {
+                pauseByIapAndAd = true;
                 ShowInterstitial(result =>
                 {
+                    pauseByIapAndAd = false;
                     GameServiceManager.Instance.logEventManager.LogEvent("ads_interstitial");
                     adResult?.Invoke();
                 });
@@ -142,8 +144,10 @@ namespace ThirdParties.Truongtv.AdsManager
                 });
                 return;
             }
+            pauseByIapAndAd = true;
             ShowRewardVideo(location,result =>
             {
+                pauseByIapAndAd = false;
                 if (!result)
                 {
                     GameServiceManager.Instance.logEventManager.LogEvent("ads_reward_fail",new Dictionary<string, object>
