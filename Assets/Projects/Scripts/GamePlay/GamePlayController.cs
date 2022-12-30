@@ -121,7 +121,7 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
-            if (!GameDataManager.Instance.IsPurchaseBlockAd())
+            if (!GameDataManager.Instance.IsPurchaseBlockAd()&& GameDataManager.Instance.showBannerInGame)
             {
                 GameServiceManager.Instance.adManager.ShowBanner();
             }
