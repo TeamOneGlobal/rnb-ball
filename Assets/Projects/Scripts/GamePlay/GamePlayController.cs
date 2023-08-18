@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ByteBrewSDK;
 using Com.LuisPedroFonseca.ProCamera2D;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -121,6 +122,7 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
+            ByteBrew.NewProgressionEvent(ByteBrewProgressionTypes.Started,"",level.ToString());
             if (!GameDataManager.Instance.IsPurchaseBlockAd()&& GameDataManager.Instance.showBannerInGame)
             {
                 GameServiceManager.Instance.adManager.ShowBanner();
@@ -219,6 +221,7 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
+            ByteBrew.NewProgressionEvent(ByteBrewProgressionTypes.Completed,"",level.ToString());
             GameDataManager.Instance.GameResult(GameResult.Win, level, (int)CoinCollector.Instance.total);
             var skin = GameDataManager.Instance.skinData.Skins.Find(a =>
                 a.unlockType == UnlockType.Level && a.unlockValue == level);
@@ -299,6 +302,7 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
+            ByteBrew.NewProgressionEvent(ByteBrewProgressionTypes.Failed,"",level.ToString());
             SoundInGameManager.Instance.PlayLoseSound(() =>
             {
                 gameState = GameState.End;

@@ -121,6 +121,11 @@ namespace ThirdParties.Truongtv.IapManager
             _isInit = false;
         }
 
+        public void OnInitializeFailed(InitializationFailureReason error, string message)
+        {
+            
+        }
+
         private async void Initialized(IEnumerable<SkuItem> skuItems)
         {
             var options = new InitializationOptions()

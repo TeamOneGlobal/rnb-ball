@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -34.281025, y: -6.453867, z: 52.679718}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,7 +49,6 @@ MonoBehaviour:
   coinValueInGame: 100
   maxLevel: 50
   showBannerInGame: 0
-  squidDifficulty: 1
   magnetDuration: 15
   blockAdTime: 30
   minLevelShowInterstitial: 2
@@ -56,24 +56,24 @@ MonoBehaviour:
   adCoin: 1000
   adLife: 1000
   checkInternetPerLevel: 10
+  activeOpenAd: 1
   versionReview: 0.2.5
   freeSpinCooldownHours: 8
+  levelShowDailyReward: 3
+  showSpinLevel: 5
+  showGiftLevel: 7
   levelShowSpecialOffer: 11
   showOfferPerLevel: 10
-  levelShowDailyReward: 3
   levelShowRating: 14
   showRatingPerLevel: 10
-  levelShowLottery: 9
-  showLotteryPerLevel: 10
   showContinueAfterLevel: 10
   multipleCoinInMenu: 5
   startData:
-    level: 1
-    life: 1
+    level: 30
+    life: 10
     currentSkin: 0
   skinData: {fileID: 11400000, guid: 271d9e2df426bee4695575c9ceb6b402, type: 2}
   shopData: {fileID: 11400000, guid: f344011a69546144797e021e88a13156, type: 2}
   termOfUseUrl: https://teamone.studio/term-of-use/
   privacyPolicyUrl: https://teamone.studio/policy/
-  firstCreate: 0
   defaultSkin: 

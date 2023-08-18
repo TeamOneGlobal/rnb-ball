@@ -10,13 +10,5 @@
       <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
     </activity>
     <meta-data android:name="applovin.sdk.key" android:value="zhCclCTFiAv41HA09J1y3lQa-z7GFq6mBgaVWPUACRUmQFTRzUb8sySJtA_X6TMKeambpvOCWuUpczo3H8LTk1" />
-
-    <receiver android:name ="com.kochava.base.ReferralReceiver"
-              android:enabled="true"
-              android:exported ="true">
-      <intent-filter>
-        <action android:name ="com.android.vending.INSTALL_REFERRER" />
-      </intent-filter>
-    </receiver>
   </application>
 </manifest>
