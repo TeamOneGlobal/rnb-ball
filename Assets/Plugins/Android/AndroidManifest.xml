@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.one.ball.jungle" android:versionCode="1" android:versionName="1.0">
-  <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+  <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
   <application android:label="@string/app_name" android:icon="@drawable/app_icon">
     <activity android:name="com.unity3d.player.UnityPlayerActivity" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
       <intent-filter>
@@ -10,5 +10,13 @@
       <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
     </activity>
     <meta-data android:name="applovin.sdk.key" android:value="zhCclCTFiAv41HA09J1y3lQa-z7GFq6mBgaVWPUACRUmQFTRzUb8sySJtA_X6TMKeambpvOCWuUpczo3H8LTk1" />
+    <receiver android:name="com.adjust.sdk.AdjustReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES" android:exported="true">
+      <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+      </intent-filter>
+    </receiver>
   </application>
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

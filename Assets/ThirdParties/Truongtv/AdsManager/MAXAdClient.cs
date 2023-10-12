@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TeamOne.Tracking;
 using Truongtv.Services.Ad;
 using UnityEngine;
 
@@ -32,8 +33,7 @@ namespace ThirdParties.Truongtv.AdsManager
             MaxSdkCallbacks.OnSdkInitializedEvent += async (sdkConfiguration) =>
             {
                 Debug.Log("MAX SDK Initialized");
-                MaxSdk.SetHasUserConsent(true);
-                MaxSdk.SetIsAgeRestrictedUser(true);
+                
                 InitAppOpenAd();
                 InitializeInterstitialAds();
                 InitializeRewardedAds();
@@ -47,7 +47,9 @@ namespace ThirdParties.Truongtv.AdsManager
                 // LoadMRECAd();
 
             };
-
+            
+            MaxSdk.SetHasUserConsent(true);
+            MaxSdk.SetIsAgeRestrictedUser(false);
             MaxSdk.SetSdkKey(MaxSdkKey);
             MaxSdk.InitializeSdk();
         }
@@ -251,14 +253,24 @@ namespace ThirdParties.Truongtv.AdsManager
                 {"currency", "USD"}
             };
             GameServiceManager.Instance.logEventManager.LogEvent("ad_impression", dictParameter);
+            
+            MarketingTrackManager.Instance.TrackAdRevenue(dictParameter);
+            
         }
 
         private void OnAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
             if (adUnitId == REWARDED_AD_UNIT_ID)
+            {
                 _rewardedRetryAttempt = 0;
+                MarketingTrackManager.Instance.TrackAdLoad(AdType.Reward);
+            }
+
             if (adUnitId == INTERSTITIAL_AD_UNIT_ID)
+            {
                 _interRetryAttempt = 0;
+                MarketingTrackManager.Instance.TrackAdLoad(AdType.Inter);
+            }
             if (adUnitId == APP_OPEN_AD_UNIT_ID)
                 _aoaRetryAttempt = 0;
         }
@@ -298,10 +310,14 @@ namespace ThirdParties.Truongtv.AdsManager
 
         private void OnAdDisplayedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
-            // if (adUnitId == REWARDED_AD_UNIT_ID)
-            //     GameServiceManager.MarketingTrackEvent("af_rewarded_ad_displayed");
-            // else if (adUnitId == INTERSTITIAL_AD_UNIT_ID) 
-            //     GameServiceManager.MarketingTrackEvent("af_inters_displayed");
+            if (adUnitId == REWARDED_AD_UNIT_ID)
+            {
+                MarketingTrackManager.Instance.TrackAdShow(AdType.Reward);
+            }
+            else if (adUnitId == INTERSTITIAL_AD_UNIT_ID)
+            {
+                MarketingTrackManager.Instance.TrackAdShow(AdType.Inter);
+            }
         }
 
         private void OnAdFailedToDisplayEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo,

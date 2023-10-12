@@ -15,6 +15,7 @@ using Projects.Scripts.UIController;
 using Projects.Scripts.UIController.Popup;
 using Sirenix.OdinInspector;
 using Spine.Unity;
+using TeamOne.Tracking;
 using ThirdParties.Truongtv;
 using ThirdParties.Truongtv.SoundManager;
 using TMPro;
@@ -221,6 +222,7 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
+            MarketingTrackManager.Instance.TrackLevelArchive(level.ToString());
             ByteBrew.NewProgressionEvent(ByteBrewProgressionTypes.Completed,"",level.ToString());
             GameDataManager.Instance.GameResult(GameResult.Win, level, (int)CoinCollector.Instance.total);
             var skin = GameDataManager.Instance.skinData.Skins.Find(a =>

@@ -126,12 +126,8 @@ namespace ThirdParties.Truongtv.IapManager
             
         }
 
-        private async void Initialized(IEnumerable<SkuItem> skuItems)
+        private void Initialized(IEnumerable<SkuItem> skuItems)
         {
-            var options = new InitializationOptions()
-                .SetEnvironmentName("production");
-
-            await UnityServices.InitializeAsync(options);
             var module = StandardPurchasingModule.Instance();
             var builder = ConfigurationBuilder.Instance(module);
             //var skuItems = GameService.Instance.GetIAPSku();

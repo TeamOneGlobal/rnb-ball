@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ByteBrewSDK;
 using Projects.Scripts;
+using TeamOne.Tracking;
 using Truongtv.PopUpController;
 using Truongtv.Services.Ad;
 using UnityEngine;
@@ -178,6 +179,7 @@ namespace ThirdParties.Truongtv.AdsManager
 
         public void ShowAppOpenAd()
         {
+            if (_adClient == null) return;
             if (pauseByIapAndAd)
             {
                 pauseByIapAndAd = false;

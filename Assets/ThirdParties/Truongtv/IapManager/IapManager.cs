@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using Sirenix.OdinInspector;
+using TeamOne.Tracking;
 using Truongtv.PopUpController;
 using Truongtv.Services.IAP;
 using UnityEngine;
@@ -72,10 +73,28 @@ namespace ThirdParties.Truongtv.IapManager
                     yield return new WaitForSeconds(0.1f);
                 }
                 _purchaseCallback = pAction;
+                _purchaseCallback += (done, sku) =>
+                {
+                    if (done)
+                    {
+                        var currency = GetItemLocalCurrency(sku);
+                        var price = GetItemLocalPrice(sku);
+                        MarketingTrackManager.Instance.TrackIap(sku,price * 0.63f, currency);
+                    }
+                };
                 _paymentService.PurchaseProduct(sku);
             }
-           
         }
+
+        public string GetItemLocalCurrency(string sku)
+        {
+            return _paymentService.GetItemLocalCurrency(sku);
+        }
+
+        public float GetItemLocalPrice(string sku)
+        {
+            return _paymentService.GetItemLocalPrice(sku);
+        }        
         public string GetItemLocalPriceString(string sku)
         {
             #if UNITY_EDITOR
