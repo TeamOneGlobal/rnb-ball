@@ -26,7 +26,7 @@ namespace Projects.Scripts.UIController.Popup
         
         public void Init()
         {
-            GameServiceManager.Instance.adManager.HideBanner();
+            //GameServiceManager.Instance.adManager.HideBanner();
             var skins = GameDataManager.Instance.skinData.GetAllPremiumSkin().Select(a => a.skinName)
                 .Except(GameDataManager.Instance.GetUnlockedSkin()).ToList();
             if (skins.Count == 0)

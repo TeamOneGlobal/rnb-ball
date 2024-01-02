@@ -22,7 +22,7 @@ namespace Projects.Scripts.UIController.Popup
 
         public void Initialized()
         {
-            GameServiceManager.Instance.adManager.HideBanner();
+            //GameServiceManager.Instance.adManager.HideBanner();
             RegisterEvent();
             
         }

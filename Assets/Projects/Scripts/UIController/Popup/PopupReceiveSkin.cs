@@ -51,7 +51,7 @@ namespace Projects.Scripts.UIController.Popup
                 title.text = "NEW SKIN";
                 viewAdButton.gameObject.SetActive(true);
             }
-            GameServiceManager.Instance.adManager.HideBanner();
+            //GameServiceManager.Instance.adManager.HideBanner();
         }
         private void RegisterEvent()
         {

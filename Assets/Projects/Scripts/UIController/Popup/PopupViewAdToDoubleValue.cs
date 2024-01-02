@@ -28,7 +28,7 @@ namespace Projects.Scripts.UIController.Popup
 
         public void Init(ItemData itemData)
         {
-            GameServiceManager.Instance.adManager.HideBanner();
+            //GameServiceManager.Instance.adManager.HideBanner();
             data = itemData;
             coinObj.SetActive(itemData.coinValue>0);
             lifeObj.SetActive(itemData.lifeValue>0);
