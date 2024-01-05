@@ -68,7 +68,7 @@ namespace GamePlay
 
         private void Start()
         {
-            if (GameDataManager.Instance.cheated)
+            if (GameDataManager.Instance!=null&&GameDataManager.Instance.cheated)
             {
                 toggleShowUI.gameObject.SetActive(true);
                 toggleShowUI.onValueChanged.AddListener(value =>
@@ -463,15 +463,21 @@ namespace GamePlay
             if (ProCamera2D.Instance.CameraTargets[0].TargetTransform == red.transform)
             {
                 ProCamera2D.Instance.CameraTargets[0].TargetTransform = blue.transform;
-                ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_2";
-                ball.Initialize(true);
+                if (GameDataManager.Instance != null)
+                {
+                    ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_2";
+                    ball.Initialize(true);
+                }
             }
 
             else if (ProCamera2D.Instance.CameraTargets[0].TargetTransform == blue.transform)
             {
                 ProCamera2D.Instance.CameraTargets[0].TargetTransform = red.transform;
-                ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_1";
-                ball.Initialize(true);
+                if (GameDataManager.Instance != null)
+                {
+                    ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_1";
+                    ball.Initialize(true);
+                }
             }
         }
 

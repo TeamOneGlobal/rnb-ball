@@ -1,4 +1,5 @@
 using DG.Tweening;
+using GamePlay.CameraControl;
 using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace GamePlay.Item
         [SerializeField] private Collider2D collider;
         [SerializeField] private float openY, closeY;
         [SerializeField] private SimpleAudio audio;
-
+        [SerializeField] private bool useCinematic;
         private void Start()
         {
             if (close)
@@ -25,31 +26,59 @@ namespace GamePlay.Item
             }
         }
 
-        public void Open()
+        public void Open(Transform target)
         {
-            collider.enabled = true;
-            var sequence = DOTween.Sequence();
-            sequence.Append(cover.DOLocalMoveY(openY, 0.5f).OnComplete(() =>
+            if (useCinematic)
             {
-                effect.SetActive(true);
-                audio.Play();
-            }));
-            sequence.Append(line.DOFade(1, 1f));
-            sequence.OnComplete(() => {  });
-            sequence.Play();
+                CinematicView.Instance.StartCinematic(transform, Active);
+            }
+
+            else
+            {
+                Active();
+            }
+            void Active()
+            {
+                collider.enabled = true;
+                var sequence = DOTween.Sequence();
+                sequence.Append(cover.DOLocalMoveY(openY, 0.5f).OnComplete(() =>
+                {
+                    effect.SetActive(true);
+                    audio.Play();
+                }));
+                sequence.Append(line.DOFade(1, 1f));
+                sequence.OnComplete(() =>
+                {
+                    CinematicView.Instance.MoveBack(target);
+                });
+                sequence.Play();
+            }
         }
-        public void Close()
+        public void Close(Transform target)
         {
-            collider.enabled = false;
-            var sequence = DOTween.Sequence();
-            sequence.Append(cover.DOLocalMoveY(closeY, 0.5f).OnComplete(() =>
+            if (useCinematic)
             {
-                effect.SetActive(false);
-                audio.Play();
-            }));
-            sequence.Append(line.DOFade(0, 1f));
-            sequence.OnComplete(() => {  });
-            sequence.Play();
+                CinematicView.Instance.StartCinematic(transform, Deactive);
+            }
+
+            else
+            {
+                Deactive();
+            }
+            void Deactive()
+            {
+                collider.enabled = false;
+                var sequence = DOTween.Sequence();
+                sequence.Append(cover.DOLocalMoveY(closeY, 0.5f).OnComplete(() =>
+                {
+                    effect.SetActive(false);
+                    audio.Play();
+                }));
+                sequence.Append(line.DOFade(0, 1f));
+                sequence.OnComplete(() => { CinematicView.Instance.MoveBack(target); });
+                sequence.Play();
+            }
+            
         }
     }
 }
