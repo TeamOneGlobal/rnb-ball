@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using ByteBrewSDK;
 using Projects.Scripts;
+using TeamOne.Tracking;
 using Truongtv.PopUpController;
 using Truongtv.Services.Ad;
 using UnityEngine;
@@ -12,11 +15,12 @@ namespace ThirdParties.Truongtv.AdsManager
         private IAdClient _adClient;
         private DateTime _lastTimeInterstitialShow;
         private int _countLevel;
+        public bool pauseByIapAndAd = false;
         #region Unity Function
         public void Init()
         {
             #if USING_MAX
-            _adClient = new MAXAdClient();
+            _adClient = new MaxAdClient();
             #elif USING_ADMOB
             _adClient = new AdMobClient();
             #elif USING_IRON_SOURCE
@@ -35,8 +39,12 @@ namespace ThirdParties.Truongtv.AdsManager
             
             _adClient.ShowRewardVideo((result) =>
             {
-                if(result)
+                if (result)
+                {
                     _lastTimeInterstitialShow = DateTime.Now;
+                    
+                }
+
                 actionCloseAd?.Invoke(result);
                 
             });
@@ -74,13 +82,6 @@ namespace ThirdParties.Truongtv.AdsManager
                 result?.Invoke(false);
                 return;
             }
-#if UNITY_IOS|| UNITY_IPHONE
-            if (GameDataManager.Instance.versionReview.Equals(Application.version))
-            {
-                result?.Invoke(false);
-                return;
-            }
-#endif
             if(GameDataManager.Instance.IsPurchaseBlockAd()) return;
             _adClient.ShowBannerAd(result);
         }
@@ -104,10 +105,13 @@ namespace ThirdParties.Truongtv.AdsManager
             }
             if (IsInterstitialLoaded() && IsInterstitialAvailableToShow())
             {
+                pauseByIapAndAd = true;
                 ShowInterstitial(result =>
                 {
+                    pauseByIapAndAd = false;
                     GameServiceManager.Instance.logEventManager.LogEvent("ads_interstitial");
                     adResult?.Invoke();
+                    ByteBrew.TrackAdEvent(ByteBrewAdTypes.Interstitial,"");
                 });
             }
             else
@@ -147,8 +151,10 @@ namespace ThirdParties.Truongtv.AdsManager
                 });
                 return;
             }
+            pauseByIapAndAd = true;
             ShowRewardVideo(location,result =>
             {
+                pauseByIapAndAd = false;
                 if (!result)
                 {
                     GameServiceManager.Instance.logEventManager.LogEvent("ads_reward_fail",new Dictionary<string, object>
@@ -162,7 +168,48 @@ namespace ThirdParties.Truongtv.AdsManager
                 {
                     {"reward_for",location}
                 });
+                ByteBrew.TrackAdEvent(ByteBrewAdTypes.Reward,location);
             });
+        }
+
+        public bool IsAppOpenAdLoaded()
+        {
+            return _adClient != null && _adClient.IsAppOpenAdLoaded();
+        }
+
+        public void ShowAppOpenAd()
+        {
+            if (_adClient == null) return;
+            if (pauseByIapAndAd)
+            {
+                pauseByIapAndAd = false;
+                return;
+            }
+            _adClient.ShowAppOpenAd();
+        }
+
+        public void OnApplicationPause(bool pauseStatus)
+        {
+            if (!GameDataManager.Instance.activeOpenAd) return;
+            if (!pauseStatus)
+            {
+                ShowAppOpenAd();
+            }
+        }
+
+        public async void ShowAppOpenAdColdStart(float duration)
+        {
+            if(!GameDataManager.Instance.activeOpenAd) return;
+            var time = 0f;
+            while (!IsAppOpenAdLoaded() && time<duration)
+            {
+                time += 0.1f;
+                await Task.Delay(TimeSpan.FromSeconds(0.1f));
+            }
+            if (time < duration)
+            {
+                ShowAppOpenAd();
+            }
         }
         #endregion
 

@@ -91,8 +91,6 @@ public class PopupWinSquidGame : BasePopup
                 {"level", "lv_" + GamePlayController.Instance.level},
                 {"type", "revive"}
             });
-            if (!GameDataManager.Instance.showBannerInGame)
-                GameServiceManager.Instance.adManager.HideBanner();
             Close();
             _onWatchAd?.Invoke();
         });

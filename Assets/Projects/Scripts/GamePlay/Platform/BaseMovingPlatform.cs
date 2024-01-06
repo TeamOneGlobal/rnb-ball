@@ -83,7 +83,7 @@ namespace GamePlay.Platform
             }
 
             if (points.Count <= 1) return;
-            platform.transform.position = points[0].position;
+            if(platform != null) platform.transform.position = points[0].position;
             lineRenderer.positionCount = positionList.Count;
             lineRenderer.SetPositions(positionList.ToArray());
             lineRenderer.useWorldSpace = true;

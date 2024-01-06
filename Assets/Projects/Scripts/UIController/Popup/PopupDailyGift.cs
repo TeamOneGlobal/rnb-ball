@@ -27,7 +27,7 @@ namespace Projects.Scripts.UIController.Popup
         private bool isInit;
         public void Inititialized()
         {
-            GameServiceManager.Instance.adManager.HideBanner();
+            //GameServiceManager.Instance.adManager.HideBanner();
             isInit = false;
             RegisterEvent();
             openAction = OnStart;

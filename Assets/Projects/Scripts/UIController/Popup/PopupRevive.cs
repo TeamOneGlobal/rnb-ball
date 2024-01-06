@@ -93,16 +93,16 @@ namespace Projects.Scripts.UIController.Popup
                         {"level", "lv_" + GamePlayController.Instance.level},
                         {"type", "revive"}
                     });
-                    if (!GameDataManager.Instance.showBannerInGame)
-                        GameServiceManager.Instance.adManager.HideBanner();
+                    // if (!GameDataManager.Instance.showBannerInGame)
+                    //     GameServiceManager.Instance.adManager.HideBanner();
                     Close();
                     _onWatchAd?.Invoke();
                 });
             }
             else
             {
-                if(!GameDataManager.Instance.showBannerInGame)
-                    GameServiceManager.Instance.adManager.HideBanner();
+                // if(!GameDataManager.Instance.showBannerInGame)
+                //     GameServiceManager.Instance.adManager.HideBanner();
                 closeCompleteAction = null;
                 Close();
                 _onWatchAd?.Invoke();

@@ -14,5 +14,7 @@ namespace Truongtv.Services.Ad
       void ShowBannerAd(Action<bool> actionFinishAd = null);
 
       void HideBannerAd();
+      bool IsAppOpenAdLoaded();
+      void ShowAppOpenAd();
    }
 }

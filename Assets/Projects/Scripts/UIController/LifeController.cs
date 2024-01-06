@@ -57,7 +57,8 @@ namespace UIController
 
         private void UpdateLifeText()
         {
-            totalLifeText.text = $"{GameDataManager.Instance.GetCurrentLife()}";
+            if(GameDataManager.Instance!=null)
+                totalLifeText.text = $"{GameDataManager.Instance.GetCurrentLife()}";
         }
     }
 }

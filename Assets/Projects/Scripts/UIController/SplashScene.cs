@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Threading.Tasks;
+using ThirdParties.Truongtv;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ namespace Projects.Scripts.UIController
         {
             
             GameDataManager.Instance.LoadUserData();
+            var currentLevel = GameDataManager.Instance.GetCurrentLevel();
+            if(currentLevel > 1) GameServiceManager.Instance.adManager.ShowAppOpenAdColdStart(3f);
             StartCoroutine(Loading());
         }
 

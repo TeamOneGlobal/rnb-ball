@@ -31,7 +31,7 @@ namespace ThirdParties.Truongtv.LogManager
                 }
                 else if (double.TryParse(keyValuePair.Value.ToString(), out var resultDouble))
                 {
-                    paramList.Add(new Parameter(keyValuePair.Key,Math.Round(resultDouble,2)));
+                    paramList.Add(new Parameter(keyValuePair.Key,resultDouble));
                 }
                 else
                 {

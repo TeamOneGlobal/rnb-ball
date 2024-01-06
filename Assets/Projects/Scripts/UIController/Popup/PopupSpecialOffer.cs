@@ -29,7 +29,7 @@ namespace Projects.Scripts.UIController.Popup
 
         public void Initialized()
         {
-            GameServiceManager.Instance.adManager.HideBanner();
+            //GameServiceManager.Instance.adManager.HideBanner();
             shopItem = GameDataManager.Instance.shopData.GetItemById(shopId);
             RegisterEvent();
             if (shopItem.purchaseType == PurchaseType.Ad)

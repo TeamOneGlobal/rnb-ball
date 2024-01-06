@@ -2,6 +2,7 @@
 using Sirenix.OdinInspector;
 using ThirdParties.Truongtv.SoundManager;
 using UnityEngine;
+using static ThirdParties.Truongtv.SoundManager.Bgm;
 using Random = UnityEngine.Random;
 
 namespace Projects.Scripts.GamePlay.Sound
@@ -31,7 +32,8 @@ namespace Projects.Scripts.GamePlay.Sound
         private void Start()
         {
             var r = Random.Range(0, bgm.Length);
-            Bgm.Instance.Play(bgm[r]);
+            if(Bgm.Instance!=null)
+                Bgm.Instance.Play(bgm[r]);
         }
 
         #region UI

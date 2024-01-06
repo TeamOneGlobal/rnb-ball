@@ -318,75 +318,74 @@ namespace Com.LuisPedroFonseca.ProCamera2D
             var pointSnap = Vector3.one * EditorPrefs.GetFloat("RailsSnapping", PrefsData.RailsSnapping);
 
             // Draw a handle for each node
-            for (int i = 0; i < nodesCount; i++)
-            {
-                var oldPos = proCamera2DRails.RailNodes[i];
-                var newPos = Handles.FreeMoveHandle(
-                                 oldPos,
-                                 Quaternion.identity,
-                                 handleSize,
-                                 pointSnap,
-                                #if UNITY_5_5_OR_NEWER
-                                Handles.DotHandleCap);
-                                #else
-                                Handles.DotCap);
-                                #endif
-                
-                // Move
-                if (newPos != oldPos)
-                {
-                    newPos.x = Handles.SnapValue(newPos.x, pointSnap.x);
-                    newPos.y = Handles.SnapValue(newPos.y, pointSnap.y);
-                    newPos.z = Handles.SnapValue(newPos.z, pointSnap.z);
-
-                    Undo.RecordObject(proCamera2DRails, "Move");
-                    proCamera2DRails.RailNodes[i] = VectorHV(Vector3H(newPos), Vector3V(newPos));
-                }
-
-                // Draw the midpoint button
-                if (i > 0)
-                {
-                    var midPoint = Vector3.Lerp(proCamera2DRails.RailNodes[i - 1], proCamera2DRails.RailNodes[i], 0.5f);
-
-                    if (Handles.Button(
-                        midPoint, 
-                        Quaternion.identity, 
-                        handleSize * .5f, 
-                        handleSize, 
-                        #if UNITY_5_5_OR_NEWER
-                        Handles.RectangleHandleCap))
-                        #else
-                        Handles.RectangleCap))
-                        #endif
-                    {
-                        Undo.RecordObject(proCamera2DRails, "Add");
-                        proCamera2DRails.RailNodes.Insert(i, midPoint);
-                    }
-                }
-
-                // Draw the delete button
-                if (deleteMode && nodesCount > 2)
-                {
-                    Handles.color = Color.red;
-                    var deleteButtonPos = proCamera2DRails.RailNodes[i];
-                    if (Handles.Button(
-                        deleteButtonPos, 
-                        Quaternion.identity, 
-                        handleSize, 
-                        handleSize, 
-                        #if UNITY_5_5_OR_NEWER
-                        Handles.DotHandleCap))
-                        #else
-                        Handles.DotCap))
-                        #endif
-                    {
-                        Undo.RecordObject(proCamera2DRails, "Remove");
-                        proCamera2DRails.RailNodes.RemoveAt(i);
-                        return;
-                    }
-                    Handles.color = EditorPrefsX.GetColor(PrefsData.RailsColorKey, PrefsData.RailsColorValue);
-                }
-            }
+            // for (int i = 0; i < nodesCount; i++)
+            // {
+            //     var oldPos = proCamera2DRails.RailNodes[i];
+            //     var fmh_326_34_638243192473070449 = Quaternion.identity; var newPos = Handles.FreeMoveHandle(
+            //                      oldPos,
+            //                      handleSize,
+            //                      pointSnap,
+            //                     #if UNITY_5_5_OR_NEWER
+            //                     Handles.DotHandleCap);
+            //                     #else
+            //                     Handles.DotCap);
+            //                     #endif
+            //     
+            //     // Move
+            //     if (newPos != oldPos)
+            //     {
+            //         newPos.x = Handles.SnapValue(newPos.x, pointSnap.x);
+            //         newPos.y = Handles.SnapValue(newPos.y, pointSnap.y);
+            //         newPos.z = Handles.SnapValue(newPos.z, pointSnap.z);
+            //
+            //         Undo.RecordObject(proCamera2DRails, "Move");
+            //         proCamera2DRails.RailNodes[i] = VectorHV(Vector3H(newPos), Vector3V(newPos));
+            //     }
+            //
+            //     // Draw the midpoint button
+            //     if (i > 0)
+            //     {
+            //         var midPoint = Vector3.Lerp(proCamera2DRails.RailNodes[i - 1], proCamera2DRails.RailNodes[i], 0.5f);
+            //
+            //         if (Handles.Button(
+            //             midPoint, 
+            //             Quaternion.identity, 
+            //             handleSize * .5f, 
+            //             handleSize, 
+            //             #if UNITY_5_5_OR_NEWER
+            //             Handles.RectangleHandleCap))
+            //             #else
+            //             Handles.RectangleCap))
+            //             #endif
+            //         {
+            //             Undo.RecordObject(proCamera2DRails, "Add");
+            //             proCamera2DRails.RailNodes.Insert(i, midPoint);
+            //         }
+            //     }
+            //
+            //     // Draw the delete button
+            //     if (deleteMode && nodesCount > 2)
+            //     {
+            //         Handles.color = Color.red;
+            //         var deleteButtonPos = proCamera2DRails.RailNodes[i];
+            //         if (Handles.Button(
+            //             deleteButtonPos, 
+            //             Quaternion.identity, 
+            //             handleSize, 
+            //             handleSize, 
+            //             #if UNITY_5_5_OR_NEWER
+            //             Handles.DotHandleCap))
+            //             #else
+            //             Handles.DotCap))
+            //             #endif
+            //         {
+            //             Undo.RecordObject(proCamera2DRails, "Remove");
+            //             proCamera2DRails.RailNodes.RemoveAt(i);
+            //             return;
+            //         }
+            //         Handles.color = EditorPrefsX.GetColor(PrefsData.RailsColorKey, PrefsData.RailsColorValue);
+            //     }
+            // }
         }
     }
 }

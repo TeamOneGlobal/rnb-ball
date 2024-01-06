@@ -67,11 +67,18 @@ namespace ThirdParties.Truongtv.RemoteConfig
         {
             var defaults = new  Dictionary<string, object>();
             FirebaseRemoteConfig.DefaultInstance.SetDefaultsAsync(defaults);
-            var timeSpan = TimeSpan.Zero;
-//#if !UNITY_EDITOR
-            timeSpan = TimeSpan.FromHours(12);
-//#endif
-            FirebaseRemoteConfig.DefaultInstance.FetchAsync(timeSpan).ContinueWithOnMainThread(FetchComplete);
+            var currentVersion = Application.version;
+            var saveVersion = PlayerPrefs.GetString("current_version");
+            if (currentVersion.Equals(saveVersion))
+            {
+                FirebaseRemoteConfig.DefaultInstance.FetchAsync().ContinueWithOnMainThread(FetchComplete);
+            }
+            else
+            {
+                PlayerPrefs.SetString("current_version",currentVersion);
+                FirebaseRemoteConfig.DefaultInstance.FetchAsync(TimeSpan.Zero).ContinueWithOnMainThread(FetchComplete);
+            }
+            
         }
         private void FetchComplete(Task fetchTask) {
             if (fetchTask.IsCanceled) {

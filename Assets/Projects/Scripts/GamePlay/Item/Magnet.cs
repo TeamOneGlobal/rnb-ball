@@ -24,27 +24,35 @@ namespace GamePlay.Item
             if (adsItem)
             {
                 GamePlayController.Instance.controlCharacter.CancelAllMove();
-                GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_click",new Dictionary<string, object>
+                if (GameServiceManager.Instance != null)
                 {
-                    {"reward_for","magnet"},
-                    {"level","lv_"+GamePlayController.Instance.level}
-                });
-                GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_magnet_item", () =>
-                {
-                    GameDataManager.Instance.IncreaseMagnetDuration(GameDataManager.Instance.magnetDuration);
-                    MagneticController.Instance.ActiveMagnetic();
-                    GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_finish",new Dictionary<string, object>
+                    GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_click",new Dictionary<string, object>
                     {
                         {"reward_for","magnet"},
                         {"level","lv_"+GamePlayController.Instance.level}
                     });
-                    gameObject.SetActive(false);
-                });
+                    GameServiceManager.Instance.adManager.ShowRewardedAd("in_game_magnet_item", () =>
+                    {
+                        GameDataManager.Instance.IncreaseMagnetDuration(GameDataManager.Instance.magnetDuration);
+                        MagneticController.Instance.ActiveMagnetic();
+                        GameServiceManager.Instance.logEventManager.LogEvent("in_game_reward_finish",new Dictionary<string, object>
+                        {
+                            {"reward_for","magnet"},
+                            {"level","lv_"+GamePlayController.Instance.level}
+                        });
+                        gameObject.SetActive(false);
+                    });
+                }
+                
             }
             else
             {
-                GameDataManager.Instance.IncreaseMagnetDuration(GameDataManager.Instance.magnetDuration);
-                MagneticController.Instance.ActiveMagnetic();
+                if (GameDataManager.Instance != null)
+                {
+                    GameDataManager.Instance.IncreaseMagnetDuration(GameDataManager.Instance.magnetDuration);
+                    MagneticController.Instance.ActiveMagnetic();
+                }
+
                 gameObject.SetActive(false);
             }
             audio.Play();

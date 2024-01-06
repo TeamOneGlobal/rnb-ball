@@ -4,6 +4,7 @@ using UnityEngine;
 #if UNITY_ANDROID && USING_IN_APP_REVIEW
 using Google.Play.Review;
 #endif
+using ThirdParties.Truongtv.AdsManager;
 
 namespace ThirdParties.Truongtv.Rating
 {
@@ -11,14 +12,15 @@ namespace ThirdParties.Truongtv.Rating
     {
         public void Rate()
         {
+            GameServiceManager.Instance.adManager.pauseByIapAndAd = true;
 #if UNITY_ANDROID
-            #if USING_IN_APP_REVIEW
+#if USING_IN_APP_REVIEW
             StartCoroutine(RequestReviewInfo());
-            #else
+#else
             Application.OpenURL("market://details?id=" + Application.identifier);
-            #endif
+#endif
 #elif UNITY_IOS
-                var result = UnityEngine.iOS.Device.RequestStoreReview();
+            var result = UnityEngine.iOS.Device.RequestStoreReview();
                 if (!result)
                 {
                     Application.OpenURL("https://apps.apple.com/app/id" + Application.identifier);

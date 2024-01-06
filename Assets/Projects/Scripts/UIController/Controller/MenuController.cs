@@ -380,7 +380,7 @@ namespace Projects.Scripts.UIController
                         }
 #else
                     PopupMenuController.Instance.OpenPopupSpecialOffer(); 
-                        GameServiceManager.Instance.adManager.HideBanner();
+                        //GameServiceManager.Instance.adManager.HideBanner();
                     #endif
                         
                         return;

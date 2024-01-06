@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using Truongtv.Services.IAP;
+using Unity.Services.Core;
+using Unity.Services.Core.Environments;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Security;
@@ -119,9 +121,13 @@ namespace ThirdParties.Truongtv.IapManager
             _isInit = false;
         }
 
-        private void Initialized(IEnumerable<SkuItem> skuItems)
+        public void OnInitializeFailed(InitializationFailureReason error, string message)
         {
             
+        }
+
+        private void Initialized(IEnumerable<SkuItem> skuItems)
+        {
             var module = StandardPurchasingModule.Instance();
             var builder = ConfigurationBuilder.Instance(module);
             //var skuItems = GameService.Instance.GetIAPSku();

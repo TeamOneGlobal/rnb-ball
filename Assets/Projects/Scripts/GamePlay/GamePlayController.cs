@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ByteBrewSDK;
 using Com.LuisPedroFonseca.ProCamera2D;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -14,6 +15,7 @@ using Projects.Scripts.UIController;
 using Projects.Scripts.UIController.Popup;
 using Sirenix.OdinInspector;
 using Spine.Unity;
+using TeamOne.Tracking;
 using ThirdParties.Truongtv;
 using ThirdParties.Truongtv.SoundManager;
 using TMPro;
@@ -66,7 +68,7 @@ namespace GamePlay
 
         private void Start()
         {
-            if (GameDataManager.Instance.cheated)
+            if (GameDataManager.Instance!=null&&GameDataManager.Instance.cheated)
             {
                 toggleShowUI.gameObject.SetActive(true);
                 toggleShowUI.onValueChanged.AddListener(value =>
@@ -121,7 +123,8 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
-            if (!GameDataManager.Instance.IsPurchaseBlockAd())
+            ByteBrew.NewProgressionEvent(ByteBrewProgressionTypes.Started,"",level.ToString());
+            if (!GameDataManager.Instance.IsPurchaseBlockAd()&& GameDataManager.Instance.showBannerInGame)
             {
                 GameServiceManager.Instance.adManager.ShowBanner();
             }
@@ -219,6 +222,8 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
+            MarketingTrackManager.Instance.TrackLevelArchive(level.ToString());
+            ByteBrew.NewProgressionEvent(ByteBrewProgressionTypes.Completed,"",level.ToString());
             GameDataManager.Instance.GameResult(GameResult.Win, level, (int)CoinCollector.Instance.total);
             var skin = GameDataManager.Instance.skinData.Skins.Find(a =>
                 a.unlockType == UnlockType.Level && a.unlockValue == level);
@@ -299,6 +304,7 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
+            ByteBrew.NewProgressionEvent(ByteBrewProgressionTypes.Failed,"",level.ToString());
             SoundInGameManager.Instance.PlayLoseSound(() =>
             {
                 gameState = GameState.End;
@@ -457,15 +463,21 @@ namespace GamePlay
             if (ProCamera2D.Instance.CameraTargets[0].TargetTransform == red.transform)
             {
                 ProCamera2D.Instance.CameraTargets[0].TargetTransform = blue.transform;
-                ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_2";
-                ball.Initialize(true);
+                if (GameDataManager.Instance != null)
+                {
+                    ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_2";
+                    ball.Initialize(true);
+                }
             }
 
             else if (ProCamera2D.Instance.CameraTargets[0].TargetTransform == blue.transform)
             {
                 ProCamera2D.Instance.CameraTargets[0].TargetTransform = red.transform;
-                ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_1";
-                ball.Initialize(true);
+                if (GameDataManager.Instance != null)
+                {
+                    ball.initialSkinName = GameDataManager.Instance.GetCurrentSkin()+"_1";
+                    ball.Initialize(true);
+                }
             }
         }
 
