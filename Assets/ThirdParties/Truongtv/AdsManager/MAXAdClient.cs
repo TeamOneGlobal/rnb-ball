@@ -13,11 +13,11 @@ namespace ThirdParties.Truongtv.AdsManager
         private const string MaxSdkKey = "_mvVQTBIbzvJoHiX7np3dCoIiei9V8Bp4sttwDEq88ULZ38FG5rUNM93JFgVgMOp0Q2gBKN3RTvvr21GdDrztB";
 
 #if UNITY_ANDROID
-        private const string INTERSTITIAL_AD_UNIT_ID = "18b431bf13deebb6";
-        private const string REWARDED_AD_UNIT_ID = "1ecbcd6172416117";
-        private const string BANNER_AD_UNIT_ID = "35cd3e95717c2e1f";
+        private const string INTERSTITIAL_AD_UNIT_ID = "638e28190a7f84f5";
+        private const string REWARDED_AD_UNIT_ID = "e70fe0ff20981503";
+        private const string BANNER_AD_UNIT_ID = "7ac1e798c7927ad8";
         // private const string MREC_AD_UNIT_ID = "";
-        private const string APP_OPEN_AD_UNIT_ID = "f2dd1c9471f2caca";
+        private const string APP_OPEN_AD_UNIT_ID = "281d7ccabcf4f1e1";
 #elif UNITY_IOS
         private const string INTERSTITIAL_AD_UNIT_ID = "b3411ee1ed0756a5";
         private const string REWARDED_AD_UNIT_ID = "bbdcd5a4287b451c";
