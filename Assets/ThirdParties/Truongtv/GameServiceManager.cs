@@ -1,5 +1,4 @@
 ﻿using System;
-using ByteBrewSDK;
 using Sirenix.OdinInspector;
 using ThirdParties.Truongtv.AdsManager;
 using ThirdParties.Truongtv.LogManager;
@@ -83,7 +82,6 @@ namespace ThirdParties.Truongtv
             logEventManager.Init();
             mobileNotification.Init();
             #endif
-            ByteBrew.InitializeByteBrew();
             
         }
 #if UNITY_EDITOR

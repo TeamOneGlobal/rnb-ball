@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ByteBrewSDK;
 using Projects.Scripts;
 using TeamOne.Tracking;
 using Truongtv.PopUpController;
@@ -111,7 +110,6 @@ namespace ThirdParties.Truongtv.AdsManager
                     pauseByIapAndAd = false;
                     GameServiceManager.Instance.logEventManager.LogEvent("ads_interstitial");
                     adResult?.Invoke();
-                    ByteBrew.TrackAdEvent(ByteBrewAdTypes.Interstitial,"");
                 });
             }
             else
@@ -168,7 +166,6 @@ namespace ThirdParties.Truongtv.AdsManager
                 {
                     {"reward_for",location}
                 });
-                ByteBrew.TrackAdEvent(ByteBrewAdTypes.Reward,location);
             });
         }
 

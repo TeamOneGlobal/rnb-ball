@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ByteBrewSDK;
 using Com.LuisPedroFonseca.ProCamera2D;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -123,7 +122,6 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
-            ByteBrew.NewProgressionEvent(ByteBrewProgressionTypes.Started,"",level.ToString());
             if (!GameDataManager.Instance.IsPurchaseBlockAd()&& GameDataManager.Instance.showBannerInGame)
             {
                 GameServiceManager.Instance.adManager.ShowBanner();
@@ -223,64 +221,42 @@ namespace GamePlay
                 { "level","lv_"+level}
             });
             MarketingTrackManager.Instance.TrackLevelArchive(level.ToString());
-            ByteBrew.NewProgressionEvent(ByteBrewProgressionTypes.Completed,"",level.ToString());
             GameDataManager.Instance.GameResult(GameResult.Win, level, (int)CoinCollector.Instance.total);
             var skin = GameDataManager.Instance.skinData.Skins.Find(a =>
                 a.unlockType == UnlockType.Level && a.unlockValue == level);
-            if (level >= 3||GameDataManager.Instance.GetCurrentLevel()>3)
+            
+            SoundInGameManager.Instance.PlayWinSound(()=>
             {
-                SoundInGameManager.Instance.PlayWinSound(()=>
+                if (skin != null && !string.IsNullOrEmpty(skin.skinName) &&
+                    GameDataManager.Instance.GetCurrentLevel() == level)
                 {
-                    if (skin != null && !string.IsNullOrEmpty(skin.skinName) &&
-                        GameDataManager.Instance.GetCurrentLevel() == level)
-                    {
-                        PopupInGameController.Instance.OpenPopupReceiveSkin(skin.skinName,
-                            () =>
-                            {
-                                GameServiceManager.Instance.adManager.ShowInterstitialAd(LoadSceneController.LoadMenu);
-                            });
-                    }
-                    else
-                    {
-                        GameServiceManager.Instance.adManager.ShowInterstitialAd(LoadSceneController.LoadMenu);
-                    }
-                });
-            }
-            else
-            {
-                SoundInGameManager.Instance.PlayWinSound(() =>
-                {
-                    if (skin != null && !string.IsNullOrEmpty(skin.skinName) &&
-                        GameDataManager.Instance.GetCurrentLevel() == level)
-                    {
-                        PopupInGameController.Instance.OpenPopupReceiveSkin(skin.skinName,
-                            () =>
-                            {
-                                GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
-                                {
-                                    var lastLevelData = GameDataManager.Instance.GetLastLevelData();
-                                    GameDataManager.Instance.UpdateCoin((int)CoinCollector.Instance.total);
-                                    GameDataManager.Instance.UpdateCoin(lastLevelData.coins);
-                                    GameDataManager.Instance.UpdateLastLevel();
-                                    var newLevel = GameDataManager.Instance.GetCurrentLevel();
-                                    LoadSceneController.LoadLevel(newLevel);
-                                });
-                            });
-                    }
-                    else
-                    {
-                        GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
+                    PopupInGameController.Instance.OpenPopupReceiveSkin(skin.skinName,
+                        () =>
                         {
-                            var lastLevelData = GameDataManager.Instance.GetLastLevelData();
-                            GameDataManager.Instance.UpdateCoin((int)CoinCollector.Instance.total);
-                            GameDataManager.Instance.UpdateCoin(lastLevelData.coins);
-                            GameDataManager.Instance.UpdateLastLevel();
-                            var newLevel = GameDataManager.Instance.GetCurrentLevel();
-                            LoadSceneController.LoadLevel(newLevel);
+                            GameServiceManager.Instance.adManager.ShowInterstitialAd(Continue);
                         });
-                    }
-                    
-                });
+                }
+                else
+                {
+                    GameServiceManager.Instance.adManager.ShowInterstitialAd(Continue);
+                }
+            });
+
+            void Continue()
+            {
+                if (level >= 3)
+                {
+                    LoadSceneController.LoadMenu();
+                }
+                else
+                {
+                    var lastLevelData = GameDataManager.Instance.GetLastLevelData();
+                    GameDataManager.Instance.UpdateCoin((int)CoinCollector.Instance.total);
+                    GameDataManager.Instance.UpdateCoin(lastLevelData.coins);
+                    GameDataManager.Instance.UpdateLastLevel();
+                    var newLevel = GameDataManager.Instance.GetCurrentLevel();
+                    LoadSceneController.LoadLevel(newLevel);
+                }
             }
         }
 
@@ -304,7 +280,6 @@ namespace GamePlay
             {
                 { "level","lv_"+level}
             });
-            ByteBrew.NewProgressionEvent(ByteBrewProgressionTypes.Failed,"",level.ToString());
             SoundInGameManager.Instance.PlayLoseSound(() =>
             {
                 gameState = GameState.End;
@@ -312,7 +287,11 @@ namespace GamePlay
                 red.SetVelocity(Vector2.zero);
                 blue.CancelAllMove();
                 blue.SetVelocity(Vector2.zero);
-                PopupInGameController.Instance.OpenPopupRevive(SetCharacterRevive, () =>
+                PopupInGameController.Instance.OpenPopupRevive(()=>
+                {
+                    SoundInGameManager.Instance.PlayBgmSound();
+                    SetCharacterRevive();
+                }, () =>
                 {
                     GameDataManager.Instance.GameResult(GameResult.Lose, level, (int)CoinCollector.Instance.total);
                     LogicalResume();

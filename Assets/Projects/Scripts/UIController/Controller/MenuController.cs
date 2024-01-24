@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Com.LuisPedroFonseca.ProCamera2D;
 using DG.Tweening;
 using Projects.Scripts.Data;
 using Projects.Scripts.GamePlay.Sound;
@@ -9,6 +10,7 @@ using Projects.Scripts.UIController.Menu;
 using ThirdParties.Truongtv;
 using ThirdParties.Truongtv.SoundManager;
 using TMPro;
+using Truongtv.PopUpController;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -127,7 +129,20 @@ namespace Projects.Scripts.UIController
         private void OnSelectLevelButtonClick()
         {
             SoundManager.Instance.PlayButtonSound();
-            PopupMenuController.Instance.OpenPopupSelectLevel();
+            //PopupMenuController.Instance.OpenPopupSelectLevel();
+            if (!GameDataManager.Instance.CanPlayWithoutInternet())
+            {
+                PopupController.Instance.ShowNoInternet();
+                return;
+            }
+            ProCamera2DTransitionsFX.Instance.OnTransitionExitEnded += () =>
+            {
+                var level = GameDataManager.Instance.GetCurrentLevel();
+                if (level > GameDataManager.Instance.maxLevel)
+                    level = GameDataManager.Instance.maxLevel;
+                LoadSceneController.LoadLevel(level);
+            };
+            ProCamera2DTransitionsFX.Instance.TransitionExit();
         }
         private void OnBuySkinButtonClick()
         {
