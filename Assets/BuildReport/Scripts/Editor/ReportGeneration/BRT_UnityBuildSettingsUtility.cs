@@ -627,7 +627,7 @@ namespace BuildReportTool
 
 			settings.AndroidBuildSubtarget = EditorUserBuildSettings.androidBuildSubtarget.ToString();
 
-			settings.AndroidUseAPKExpansionFiles = PlayerSettings.Android.useAPKExpansionFiles;
+			settings.AndroidUseAPKExpansionFiles = PlayerSettings.Android.splitApplicationBinary;
 
 #if !UNITY_4
 			settings.AndroidAsAndroidProject = EditorUserBuildSettings.exportAsGoogleAndroidProject;
@@ -879,7 +879,7 @@ namespace BuildReportTool
 #if !UNITY_4
 			// Xbox One build settings
 			// ---------------------------------------------------------------
-			settings.XboxOneDeployMethod = EditorUserBuildSettings.xboxOneDeployMethod.ToString();
+			//settings.XboxOneDeployMethod = EditorUserBuildSettings.xboxOneDeployMethod.ToString();
 			settings.XboxOneTitleId = PlayerSettings.XboxOne.TitleId;
 			settings.XboxOneContentId = PlayerSettings.XboxOne.ContentId;
 			settings.XboxOneProductId = PlayerSettings.XboxOne.ProductId;
@@ -900,7 +900,7 @@ namespace BuildReportTool
 
 			settings.XboxOneDisableKinectGpuReservation = PlayerSettings.XboxOne.DisableKinectGpuReservation;
 			settings.XboxOneEnableVariableGPU = PlayerSettings.XboxOne.EnableVariableGPU;
-			settings.XboxOneStreamingInstallLaunchRange = EditorUserBuildSettings.streamingInstallLaunchRange;
+			//settings.XboxOneStreamingInstallLaunchRange = EditorUserBuildSettings.streamingInstallLaunchRange;
 			settings.XboxOnePersistentLocalStorageSize = PlayerSettings.XboxOne.PersistentLocalStorageSize;
 
 			settings.XboxOneSocketNames = PlayerSettings.XboxOne.SocketNames;
