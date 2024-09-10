@@ -38,6 +38,9 @@ namespace Projects.Scripts.UIController
         [SerializeField] private TextMeshProUGUI specialOfferTimeText, adLifeValueText, adCoinValueText;
         [SerializeField] private ParticleGold particleGold;
         [SerializeField] private ParticleGold particleHeart;
+        
+        [SerializeField] private GameObject loadingFake;
+
         private int _currentSkinIndex;
         private List<string> _allSkinNames;
         private Sequence _increaseCoin, _increaseLife,_increaseStar;
@@ -50,12 +53,16 @@ namespace Projects.Scripts.UIController
             }
 
             _instance = this;
+            
+            loadingFake.SetActive(true);
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
             Init();
             UpdateLevelResult();
+            yield return new WaitForSeconds(0.5f);
+            loadingFake.SetActive(false);
         }
 
         private void Init()

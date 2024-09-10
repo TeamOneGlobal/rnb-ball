@@ -68,13 +68,21 @@ namespace Projects.Scripts.UIController.Popup
         }
         void OnClose()
         {
+            StartCoroutine(IELoadingClose());
+        }
+
+        private IEnumerator IELoadingClose()
+        {
+            gameObject.GetComponent<CanvasGroup>().alpha = 0f;
+            GameServiceManager.Instance.adManager.HideBanner();
+            GamePlayController.Instance.loadingFake.SetActive(true);
+            yield return new WaitForSeconds(0.75f);
             GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
             {
                 closeCompleteAction = null;
                 Close();
                 _onClose?.Invoke();
             });
-            
         }
         
         void OnWatchAd()

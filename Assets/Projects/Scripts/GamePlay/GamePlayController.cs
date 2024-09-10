@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Com.LuisPedroFonseca.ProCamera2D;
@@ -47,6 +48,9 @@ namespace GamePlay
         [SerializeField, BoxGroup("Cheat")] private Image[] imgList;
         [SerializeField, BoxGroup("Cheat")] private GameObject[] objList;
         [HideInInspector]public GameState gameState;
+        
+        public GameObject loadingFake;
+
         private bool _isBlueGateOpen, _isRedGateOpen;
         private bool _changingCharacter;
         private string _skin;
@@ -63,9 +67,11 @@ namespace GamePlay
             
             ProCamera2D.Instance.RemoveAllCameraTargets();
             ProCamera2D.Instance.AddCameraTarget(blue.transform);
+            
+            loadingFake.SetActive(true);
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
             if (GameDataManager.Instance!=null&&GameDataManager.Instance.cheated)
             {
@@ -130,6 +136,10 @@ namespace GamePlay
             {
                 GameServiceManager.Instance.adManager.HideBanner();
             }
+            
+            
+            yield return new WaitForSeconds(0.5f);
+            loadingFake.SetActive(false);
         }
         #region Gate state
 
@@ -233,30 +243,43 @@ namespace GamePlay
                     PopupInGameController.Instance.OpenPopupReceiveSkin(skin.skinName,
                         () =>
                         {
-                            GameServiceManager.Instance.adManager.ShowInterstitialAd(Continue);
+                            LoadingShowInterstitialAd();
                         });
                 }
                 else
                 {
-                    GameServiceManager.Instance.adManager.ShowInterstitialAd(Continue);
+                    LoadingShowInterstitialAd();
                 }
             });
+        }
 
-            void Continue()
+        public void LoadingShowInterstitialAd()
+        {
+            StartCoroutine(IELoadingShowInterstitialAd());
+        }
+
+        private IEnumerator IELoadingShowInterstitialAd()
+        {
+            GameServiceManager.Instance.adManager.HideBanner();
+            loadingFake.SetActive(true);
+            yield return new WaitForSeconds(0.75f);
+            GameServiceManager.Instance.adManager.ShowInterstitialAd(Continue);
+        }
+
+        void Continue()
+        {
+            if (level >= 3)
             {
-                if (level >= 3)
-                {
-                    LoadSceneController.LoadMenu();
-                }
-                else
-                {
-                    var lastLevelData = GameDataManager.Instance.GetLastLevelData();
-                    GameDataManager.Instance.UpdateCoin((int)CoinCollector.Instance.total);
-                    GameDataManager.Instance.UpdateCoin(lastLevelData.coins);
-                    GameDataManager.Instance.UpdateLastLevel();
-                    var newLevel = GameDataManager.Instance.GetCurrentLevel();
-                    LoadSceneController.LoadLevel(newLevel);
-                }
+                LoadSceneController.LoadMenu();
+            }
+            else
+            {
+                var lastLevelData = GameDataManager.Instance.GetLastLevelData();
+                GameDataManager.Instance.UpdateCoin((int)CoinCollector.Instance.total);
+                GameDataManager.Instance.UpdateCoin(lastLevelData.coins);
+                GameDataManager.Instance.UpdateLastLevel();
+                var newLevel = GameDataManager.Instance.GetCurrentLevel();
+                LoadSceneController.LoadLevel(newLevel);
             }
         }
 

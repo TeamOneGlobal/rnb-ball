@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using GamePlay;
@@ -62,10 +63,24 @@ namespace Projects.Scripts.UIController
         private void OnReplayButtonClick()
         {
             SoundManager.Instance.PlayButtonSound();
-            
+
+            LoadingReplay();
+        }
+        
+        public void LoadingReplay()
+        {
+            StartCoroutine(IELoadingReplay());
+        }
+
+        private IEnumerator IELoadingReplay()
+        {
+            gameObject.GetComponent<CanvasGroup>().alpha = 0f;
+            GamePlayController.Instance.Resume();
+            GameServiceManager.Instance.adManager.HideBanner();
+            GamePlayController.Instance.loadingFake.SetActive(true);
+            yield return new WaitForSeconds(0.75f);
             GameServiceManager.Instance.adManager.ShowInterstitialAd(() =>
             {
-                GamePlayController.Instance.Resume();
                 LoadSceneController.LoadLevel(GamePlayController.Instance.level);
             });
         }
@@ -73,9 +88,23 @@ namespace Projects.Scripts.UIController
         private void OnHomeButtonClick()
         {
             SoundManager.Instance.PlayButtonSound();
-            GamePlayController.Instance.Resume();
-            GameServiceManager.Instance.adManager.ShowInterstitialAd(LoadSceneController.LoadMenu);
             
+            LoadingHome();
+        }
+        
+        public void LoadingHome()
+        {
+            StartCoroutine(IELoadingHome());
+        }
+
+        private IEnumerator IELoadingHome()
+        {
+            gameObject.GetComponent<CanvasGroup>().alpha = 0f;
+            GamePlayController.Instance.Resume();
+            GameServiceManager.Instance.adManager.HideBanner();
+            GamePlayController.Instance.loadingFake.SetActive(true);
+            yield return new WaitForSeconds(0.75f);
+            GameServiceManager.Instance.adManager.ShowInterstitialAd(LoadSceneController.LoadMenu);
         }
 
         private void OnSkipButtonClick()
