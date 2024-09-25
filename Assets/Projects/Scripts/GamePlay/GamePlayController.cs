@@ -50,6 +50,7 @@ namespace GamePlay
         [HideInInspector]public GameState gameState;
         
         public GameObject loadingFake;
+        public GameObject quickBreak;
 
         private bool _isBlueGateOpen, _isRedGateOpen;
         private bool _changingCharacter;
@@ -261,9 +262,16 @@ namespace GamePlay
         private IEnumerator IELoadingShowInterstitialAd()
         {
             GameServiceManager.Instance.adManager.HideBanner();
-            loadingFake.SetActive(true);
-            yield return new WaitForSeconds(0.75f);
+            if (GameServiceManager.Instance.adManager.IsInterstitialAvailableToShow())
+            {
+                quickBreak.SetActive(true);
+                yield return new WaitForSeconds(4.0f);
+            }
             GameServiceManager.Instance.adManager.ShowInterstitialAd(Continue);
+            yield return new WaitForSeconds(0.15f);
+            quickBreak.SetActive(false);
+            loadingFake.SetActive(true);
+            GameDataManager.Instance.UpdateCoin(10);
         }
 
         void Continue()
